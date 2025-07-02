@@ -167,8 +167,10 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
-            CameraRotation();
+            if (!IsOwner)
+                return;
 
+            CameraRotation();
         }
 
         private void AssignAnimationIDs()
