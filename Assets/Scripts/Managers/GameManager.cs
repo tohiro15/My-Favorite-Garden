@@ -2,27 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _playerInput;
-    private InputAction _exitAction;
-
-    void Awake()
-    {
-        _exitAction = _playerInput.actions["Escape"];
-    }
-
-    private void OnEnable()
-    {
-        _exitAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _exitAction.Disable();
-    }
-
     void Update()
     {
-        if (_exitAction.triggered)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ExitGame();
         }
