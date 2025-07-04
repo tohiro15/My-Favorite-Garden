@@ -1,8 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("HUD")]
+    [Space]
+
+    [SerializeField] private TMP_Text _moneyText;
+
     [Header("Shop")]
     [Space]
 
