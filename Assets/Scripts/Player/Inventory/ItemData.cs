@@ -7,4 +7,5 @@ public class ItemData : ScriptableObject
     public Sprite Icon;
     public int DefaultCount = 1;
     public int MaxStackSize = 99;
+    public float ItemPrice = 0;
 }

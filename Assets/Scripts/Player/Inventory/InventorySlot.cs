@@ -1,9 +1,76 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private Item _item;
+    [SerializeField] private GameObject _itemPrefab;
+    private Item _item;
     public Item Item => _item;
-    public bool IsFree { get; private set; }
+
+    private bool _isEmpty = true;
+    public bool IsEmpty => _isEmpty;
+
+    private void Awake()
+    {
+        _item = GetComponentInChildren<Item>();
+        if(_item != null ) _isEmpty = false; 
+    }
+    public void Add(ItemData itemData, int count)
+    {
+        if (_item == null)
+        {
+            var go = Instantiate(_itemPrefab, transform);
+            _item = go.GetComponent<Item>();
+        }
+        _item.Change(itemData, count);
+        _item.gameObject.SetActive(true);
+        _isEmpty = false;
+    }
+
+
+    public void Clear()
+    {
+        if (_item != null)
+        {
+            Destroy(_item.gameObject);
+            _item = null;
+        }
+
+        _isEmpty = true;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        var draggedItem = eventData.pointerDrag?.GetComponent<Item>();
+        if (draggedItem == null)
+            return;
+
+        var sourceSlot = draggedItem.OriginSlot;
+
+        if (sourceSlot == this)
+        {
+            draggedItem.transform.SetParent(transform);
+            draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            return;
+        }
+
+        if (IsEmpty)
+        {
+            Add(draggedItem.ItemData, draggedItem.ItemCount);
+            sourceSlot.Clear();
+        }
+        else
+        {
+            var tmpData = _item.ItemData;
+            var tmpCount = _item.ItemCount;
+
+            Add(draggedItem.ItemData, draggedItem.ItemCount);
+            sourceSlot.Add(tmpData, tmpCount);
+        }
+
+        draggedItem.transform.SetParent(transform);
+        draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+    }
+
 
 }
