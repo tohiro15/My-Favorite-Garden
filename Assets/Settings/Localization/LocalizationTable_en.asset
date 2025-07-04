@@ -30,6 +30,14 @@ MonoBehaviour:
     m_Localized: Sell
     m_Metadata:
       m_Items: []
+  - m_Id: 161342839390208
+    m_Localized: z/x - Add/Remove Money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161382135824384
+    m_Localized: c/v - Add/Remove Items
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

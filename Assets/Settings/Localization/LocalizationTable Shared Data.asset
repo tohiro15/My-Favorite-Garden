@@ -27,6 +27,14 @@ MonoBehaviour:
     m_Key: SellButton
     m_Metadata:
       m_Items: []
+  - m_Id: 161342839390208
+    m_Key: MoneyManualKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161382135824384
+    m_Key: ItemManualKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
