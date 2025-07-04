@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4834197414808902}
   - component: {fileID: 33160212787352178}
   - component: {fileID: 23125493121239836}
-  - component: {fileID: 3618614000636004502}
+  - component: {fileID: 2238051363257081430}
   m_Layer: 0
   m_Name: SM_Env_Tree_Apricot_01
   m_TagString: Untagged
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3618614000636004502
-MeshCollider:
+--- !u!136 &2238051363257081430
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +105,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 80245c5c93f60774e8770123c736d099, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.32134542
+  m_Height: 4.867985
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.1098356, z: 0.104148775}

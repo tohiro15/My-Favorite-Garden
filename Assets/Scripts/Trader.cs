@@ -4,18 +4,18 @@ public class Trader : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _interactionButton;
-    [SerializeField] private GameObject _shopCanvas;
+    [SerializeField] private GameObject _traderCanvas;
     [SerializeField] private float _interactionDistance = 3f;
     private bool _isPlayerNear;
     private void Start()
     {
-        if (_shopCanvas != null) _shopCanvas?.SetActive(false);
+        if (_traderCanvas != null) _traderCanvas?.SetActive(false);
         else Debug.Log("ShopCanvas - not found!");
     }
     private void Update()
     {
         CheckDistance();
-        if (_shopCanvas != null && Input.GetKeyDown(KeyCode.E) && _isPlayerNear)
+        if (_traderCanvas != null && Input.GetKeyDown(KeyCode.E) && _isPlayerNear)
         {
             OpenCanvas();
         }
@@ -41,6 +41,6 @@ public class Trader : MonoBehaviour
 
     private void OpenCanvas()
     {
-        _shopCanvas?.SetActive(true);
+        _traderCanvas?.SetActive(true);
     }
 }

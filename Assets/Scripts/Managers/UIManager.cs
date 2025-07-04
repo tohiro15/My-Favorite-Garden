@@ -6,8 +6,20 @@ public class UIManager : MonoBehaviour
     [Header("Shop")]
     [Space]
 
-    [SerializeField] private Canvas _shopCanvas;
-    [SerializeField] private Button _exitButton;
+    [SerializeField] private Canvas _buyerCanvas;
+    [SerializeField] private Button _exitShopButton;
+
+    [Header("Seller")]
+    [Space]
+
+    [SerializeField] private Canvas _sellerCanvas;
+    [SerializeField] private Button _exitSellerButton;
+
+    [Header("Plant")]
+    [Space]
+
+    [SerializeField] private Canvas _plantsCanvas;
+    [SerializeField] private Button _exitPlantsButton;
 
     [Header("Backpack")]
     [Space]
@@ -18,8 +30,14 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _exitButton?.onClick.RemoveAllListeners();
-        _exitButton?.onClick.AddListener(CloseShopCanvas);
+        _exitShopButton?.onClick.RemoveAllListeners();
+        _exitShopButton?.onClick.AddListener(CloseShopCanvas);
+
+        _exitSellerButton?.onClick.RemoveAllListeners();
+        _exitSellerButton?.onClick?.AddListener(CloseSellerCanvas);
+
+        _exitPlantsButton?.onClick.RemoveAllListeners();
+        _exitPlantsButton?.onClick.AddListener(ClosePlantsCanvas);
 
         _backpackButton?.onClick.RemoveAllListeners();
         _backpackButton?.onClick.AddListener(OpenCloseBackpackPanel);
@@ -32,7 +50,17 @@ public class UIManager : MonoBehaviour
     }
     private void CloseShopCanvas()
     {
-        _shopCanvas?.gameObject.SetActive(false);
+        _buyerCanvas?.gameObject.SetActive(false);
+    }
+
+    private void CloseSellerCanvas()
+    {
+        _sellerCanvas?.gameObject.SetActive(false);
+    }
+
+    private void ClosePlantsCanvas()
+    {
+        _plantsCanvas?.gameObject.SetActive(false);
     }
 
     private void OpenCloseBackpackPanel()
