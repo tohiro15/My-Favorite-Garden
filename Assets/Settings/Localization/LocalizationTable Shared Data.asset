@@ -15,16 +15,16 @@ MonoBehaviour:
   m_TableCollectionName: LocalizationTable
   m_TableCollectionNameGuidString: bd860135052cfc9478a224a6034fb9cc
   m_Entries:
-  - m_Id: 5224071168
-    m_Key: PlantsCanvasKey
-    m_Metadata:
-      m_Items: []
   - m_Id: 207364358144
     m_Key: BuyerCanvasKey
     m_Metadata:
       m_Items: []
   - m_Id: 321407483904
     m_Key: SellerCanvasKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12588563890176
+    m_Key: SellButton
     m_Metadata:
       m_Items: []
   m_Metadata:
