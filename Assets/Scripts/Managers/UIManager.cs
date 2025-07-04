@@ -7,7 +7,8 @@ public class UIManager : MonoBehaviour
     [Header("HUD")]
     [Space]
 
-    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private PlayerStatistic _playerStatistics;
+    [SerializeField] private TMP_Text _moneyCount;
 
     [Header("Shop")]
     [Space]
@@ -41,6 +42,10 @@ public class UIManager : MonoBehaviour
         _backpackButton?.onClick.AddListener(OpenCloseBackpackPanel);
         _backpackPanel?.gameObject.SetActive(_openBackpack);
 
+        if (_playerStatistics != null)
+            _playerStatistics.OnMoneyChanged += UpdateMoneyCount;
+
+        UpdateMoneyCount(_playerStatistics.Money);
     }
     private void Update()
     {
@@ -60,5 +65,10 @@ public class UIManager : MonoBehaviour
     {
         _openBackpack = !_openBackpack;
         _backpackPanel?.gameObject.SetActive(_openBackpack);
+    }
+
+    public void UpdateMoneyCount(int money)
+    {
+        _moneyCount.text = $"{money}";
     }
 }
