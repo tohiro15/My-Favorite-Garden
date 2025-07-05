@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private ItemData _itemData;
     [SerializeField] private Image _iconImage;
     [SerializeField] private TextMeshProUGUI _countText;
+    [SerializeField] private TextMeshProUGUI _itemNameText;
 
     private AudioSource _audioSource;
     private RectTransform _rectTransform;
@@ -32,6 +33,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private void Start()
     {
         _originSlot = GetComponentInParent<InventorySlot>();
+        _itemNameText.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -73,7 +75,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         _iconImage.sprite = _itemData.Icon;
 
-        if (hasAny) _countText.text = $"x{_itemCount}";
+        if (hasAny)
+        {
+            _countText.text = $"x{_itemCount}";
+            _itemNameText.text = $"{_itemData.ItemName}";
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -93,6 +99,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnDrag(PointerEventData eventData)
     {
         _rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
+        _itemNameText.gameObject.SetActive(true);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -101,6 +108,17 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         transform.SetParent(_originalParent);
         _rectTransform.anchoredPosition = Vector2.zero;
+
+        _itemNameText.gameObject.SetActive(false);
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _itemNameText.gameObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _itemNameText.gameObject.SetActive(false);
+    }
 }
