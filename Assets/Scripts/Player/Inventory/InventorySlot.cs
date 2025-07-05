@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private GameObject _itemPrefab;
+    [SerializeField] private int _slotIndex;
     private Item _item;
     public Item Item => _item;
 
@@ -14,6 +15,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         _item = GetComponentInChildren<Item>();
         if(_item != null ) _isEmpty = false; 
+    }
+    public void Initialization(int index)
+    {
+        _slotIndex = index;
     }
     public void Add(ItemData itemData, int count)
     {
@@ -67,6 +72,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             Add(draggedItem.ItemData, draggedItem.ItemCount);
             sourceSlot.Add(tmpData, tmpCount);
         }
+
+        string keySlot = $"SlotFor_{draggedItem.ItemData.name}";
+        string keyCount = $"CountFor_{draggedItem.ItemData.name}";
+
+        PlayerPrefs.SetInt(keySlot, _slotIndex);
+        PlayerPrefs.SetInt(keyCount, draggedItem.ItemCount);
+        PlayerPrefs.Save();
 
         draggedItem.transform.SetParent(transform);
         draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
