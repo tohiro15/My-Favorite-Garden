@@ -9,6 +9,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     [SerializeField] private Image _iconImage;
     [SerializeField] private TextMeshProUGUI _countText;
 
+    private AudioSource _audioSource;
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
     private Transform _originalParent;
@@ -23,6 +24,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
+        _audioSource = GetComponent<AudioSource>();
 
         _itemCount = PlayerPrefs.GetInt(PrefKey, _itemData.DefaultCount);
         UpdateUI();
@@ -84,6 +86,8 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         transform.SetParent(rootCanvas.transform);
         transform.SetAsLastSibling();
+
+        _audioSource.PlayOneShot(_audioSource.clip);
     }
 
     public void OnDrag(PointerEventData eventData)
