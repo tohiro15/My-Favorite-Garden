@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
+using UnityEngine.EventSystems;
 
 public class BuyerUI : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class BuyerUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _totalPriceText;
     [SerializeField] private TextMeshProUGUI _selectedItemPriceText;
+    [Space]
     [SerializeField] private Button _sellButton;
     [SerializeField] private Button _sellAllButton;
 
@@ -63,8 +65,26 @@ public class BuyerUI : MonoBehaviour
             }
         }
 
-        if (totalItems <= 0 && _emptyItemText != null) _emptyItemText?.gameObject.SetActive(true);
-        else if(totalItems > 0) _emptyItemText?.gameObject.SetActive(false);
+        if (totalItems <= 0 && _emptyItemText != null)
+        {
+            _emptyItemText?.gameObject.SetActive(true);
+
+            if (_sellAllButton != null && _sellButton != null)
+            {
+                _sellAllButton?.gameObject.SetActive(false);
+                _sellButton?.gameObject.SetActive(false);
+            }
+        }
+        else if (_emptyItemText != null)
+        {
+            _emptyItemText?.gameObject.SetActive(false);
+
+            if (_sellAllButton != null && _sellButton != null)
+            {
+                _sellAllButton?.gameObject.SetActive(true);
+                _sellButton?.gameObject.SetActive(true) ;
+            }
+        }
     }
     public void AddPrice()
     {

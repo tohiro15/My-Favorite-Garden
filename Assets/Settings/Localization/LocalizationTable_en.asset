@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Backpack is empty
     m_Metadata:
       m_Items: []
+  - m_Id: 3407533765099520
+    m_Localized: 'TOTAL PRICE:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3407616917176320
+    m_Localized: 'SELECTED ITEM PRICE: '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
