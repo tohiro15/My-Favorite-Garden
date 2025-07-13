@@ -1,30 +1,34 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class BuyerSlot : MonoBehaviour
 {
+    private Inventory _inventory;
     private Item _item;
+    private ItemData _itemData;
     private GameObject _itemPrefab;
-    private int _slotIndex;
+
+    private int _count;
     private bool _isEmpty = true;
-    public Item Item => _item;
     public bool IsEmpty => _isEmpty;
 
-    private void Awake()
+    public void Initialization(ItemData itemData, Inventory inventory, GameObject itemPrefab, int count)
     {
-        _item = GetComponentInChildren<Item>();
-        if(_item != null ) _isEmpty = false; 
+        _inventory = inventory;
+        _itemData = itemData;
+        _itemPrefab = itemPrefab;
+        _count = count;
+
+        _item = _inventory.InventorySlots[count].Item;
+
+        if (_item != null) _isEmpty = false;
     }
-    public void Initialization(GameObject itemPrefab, int index)
-    {
-        _slotIndex = index;
-    }
+
     public void Add(ItemData itemData, int count)
     {
         if (_item == null)
         {
-            var go = Instantiate(_itemPrefab, transform);
-            _item = go.GetComponent<Item>();
+            //_item = go.GetComponent<Item>();
         }
         _item.Change(itemData, count);
         _item.gameObject.SetActive(true);
@@ -58,7 +62,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             return;
         }
 
-        if (IsEmpty)
+        if (_isEmpty)
         {
             Add(draggedItem.ItemData, draggedItem.ItemCount);
             sourceSlot.Clear();
@@ -72,16 +76,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             sourceSlot.Add(tmpData, tmpCount);
         }
 
-        string keySlot = $"SlotFor_{draggedItem.ItemData.name}";
-        string keyCount = $"CountFor_{draggedItem.ItemData.name}";
-
-        PlayerPrefs.SetInt(keySlot, _slotIndex);
-        PlayerPrefs.SetInt(keyCount, draggedItem.ItemCount);
-        PlayerPrefs.Save();
-
         draggedItem.transform.SetParent(transform);
         draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
     }
-
-
 }

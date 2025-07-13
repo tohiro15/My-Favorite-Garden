@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private GameObject _itemPrefab;
+    [Space]
     [SerializeField] private InventorySlot[] _inventorySlots;
     [SerializeField] private ItemData[] _allItemTypes;
 
@@ -10,7 +12,7 @@ public class Inventory : MonoBehaviour
     {
         for(int i = 0;  i < _inventorySlots.Length; i++)
         {
-            _inventorySlots[i].Initialization(i);
+            _inventorySlots[i].Initialization(_itemPrefab,i);
         }
     }
     private void Start()
