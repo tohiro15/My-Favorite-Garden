@@ -4,6 +4,8 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private InventorySlot[] _inventorySlots;
     [SerializeField] private ItemData[] _allItemTypes;
+
+    public InventorySlot[] InventorySlots => _inventorySlots;
     private void Awake()
     {
         for(int i = 0;  i < _inventorySlots.Length; i++)

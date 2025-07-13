@@ -24054,7 +24054,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1090550941}
-  - component: {fileID: 1090550942}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -24082,70 +24081,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 90}
   m_SizeDelta: {x: 800, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1090550942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090550940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dee66b618b81f84d8b1836286cebbac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventorySlots:
-  - {fileID: 1712193328}
-  - {fileID: 133944190}
-  - {fileID: 987584681}
-  - {fileID: 919093089}
-  - {fileID: 491756299}
-  - {fileID: 385196908}
-  - {fileID: 1156407527}
-  - {fileID: 925345342}
-  - {fileID: 1512241410}
-  - {fileID: 520285967}
-  - {fileID: 1836308827}
-  - {fileID: 1732334914}
-  - {fileID: 929972587}
-  - {fileID: 2034333791}
-  - {fileID: 1169813552}
-  - {fileID: 2035627360}
-  - {fileID: 874471384}
-  - {fileID: 987808919}
-  - {fileID: 143039173}
-  - {fileID: 777808741}
-  - {fileID: 1503325557}
-  - {fileID: 1615483870}
-  - {fileID: 1526694008}
-  - {fileID: 2098287636}
-  - {fileID: 158733296}
-  - {fileID: 741529527}
-  - {fileID: 1491067617}
-  - {fileID: 234831252}
-  - {fileID: 857917556}
-  - {fileID: 1235724231}
-  - {fileID: 762250076}
-  - {fileID: 669200409}
-  - {fileID: 1178048773}
-  - {fileID: 1233495354}
-  - {fileID: 1552601507}
-  - {fileID: 2081666267}
-  - {fileID: 1681743890}
-  - {fileID: 838110676}
-  - {fileID: 752978702}
-  - {fileID: 659029559}
-  - {fileID: 1423978384}
-  - {fileID: 152208214}
-  - {fileID: 1183429796}
-  - {fileID: 1034543023}
-  - {fileID: 993837679}
-  _allItemTypes:
-  - {fileID: 11400000, guid: 52ce3445201e3ca458e1d782ee7c2de3, type: 2}
-  - {fileID: 11400000, guid: d71a32ca8ce904443896afffc3cbae09, type: 2}
-  - {fileID: 11400000, guid: 707df4d53b486cc499ba32f876952ccb, type: 2}
-  - {fileID: 11400000, guid: f2525a2c4422d4a47a9054d39ed8a930, type: 2}
-  - {fileID: 11400000, guid: 887c5e4170cf4054e9e2675d0790680b, type: 2}
 --- !u!1001 &1093871331
 PrefabInstance:
   m_ObjectHideFlags: 0
