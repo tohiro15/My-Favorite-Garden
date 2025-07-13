@@ -29,8 +29,6 @@ public class BuyerUI : MonoBehaviour
     {
         InitializeItem();
 
-        _emptyItemText?.gameObject.SetActive(false);
-
         _sellAllButton?.onClick.RemoveAllListeners();
         _sellAllButton?.onClick.AddListener(SellAll);
         _sellButton?.onClick.RemoveAllListeners();
@@ -65,8 +63,8 @@ public class BuyerUI : MonoBehaviour
             }
         }
 
-        if (filledSlots.Length <= 0 && _emptyItemText != null) _emptyItemText?.gameObject.SetActive(true);
-        else _emptyItemText?.gameObject.SetActive(false);
+        if (totalItems <= 0 && _emptyItemText != null) _emptyItemText?.gameObject.SetActive(true);
+        else if(totalItems > 0) _emptyItemText?.gameObject.SetActive(false);
     }
     public void AddPrice()
     {

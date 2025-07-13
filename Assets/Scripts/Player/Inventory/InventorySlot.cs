@@ -37,11 +37,19 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (_item != null)
         {
             Destroy(_item.gameObject);
+
+            string keySlot = $"SlotFor_{_item.ItemData.name}";
+            string keyCount = $"CountFor_{_item.ItemData.name}";
+            PlayerPrefs.DeleteKey(keySlot);
+            PlayerPrefs.DeleteKey(keyCount);
+            PlayerPrefs.Save();
+
             _item = null;
         }
 
         _isEmpty = true;
     }
+
 
     public void OnDrop(PointerEventData eventData)
     {
