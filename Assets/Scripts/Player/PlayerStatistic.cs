@@ -3,6 +3,20 @@ using UnityEngine;
 
 public class PlayerStatistic : MonoBehaviour
 {
+    public static PlayerStatistic Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     public int Money { get; private set; }
 
     public event Action<int> OnMoneyChanged;
@@ -16,30 +30,29 @@ public class PlayerStatistic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X)) AddMoney(10000);
         else if (Input.GetKeyDown(KeyCode.Z)) RemoveMoney(100);
     }
-    public void AddMoney(int count)
+    public void AddMoney(int amount)
     {
-        Money += count;
-        PlayerPrefs.SetInt("MoneyKey", Money);
-        SaveStatistic();
-
-        OnMoneyChanged?.Invoke(Money);
+        ChangeMoney(Money + amount);
     }
 
-    public void RemoveMoney(int count)
+    public void RemoveMoney(int amount)
     {
-        Money -= count;
-
-        if(Money < 0) Money = 0;
-
-        PlayerPrefs.SetInt("MoneyKey", Money);
-        SaveStatistic();
-
-        OnMoneyChanged?.Invoke(Money);
+        ChangeMoney(Mathf.Max(Money - amount, 0));
     }
+
+    private void ChangeMoney(int newAmount)
+    {
+        Money = newAmount;
+        OnMoneyChanged?.Invoke((int)Money);
+        SaveStatistic();
+    }
+
     public void SaveStatistic()
     {
+        PlayerPrefs.SetInt("MoneyKey", (int)Money);
         PlayerPrefs.Save();
     }
+
     public void LoadStatistic()
     {
         Money = PlayerPrefs.GetInt("MoneyKey", 0);

@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [Header("HUD")]
     [Space]
 
-    [SerializeField] private PlayerStatistic _playerStatistics;
+    [SerializeField] private Canvas _HUDCanvas;
     [SerializeField] private TMP_Text _moneyCount;
 
     [Header("Shop")]
@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Canvas _buyerCanvas;
     [SerializeField] private Button _exitShopButton;
+
 
     [Header("Seller")]
     [Space]
@@ -33,6 +34,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        _HUDCanvas?.gameObject.SetActive(true);
+        _buyerCanvas?.gameObject.SetActive(false);
+        _sellerCanvas?.gameObject.SetActive(false);
+
         _exitShopButton?.onClick.RemoveAllListeners();
         _exitShopButton?.onClick.AddListener(CloseShopCanvas);
 
@@ -43,10 +48,9 @@ public class UIManager : MonoBehaviour
         _backpackButton?.onClick.AddListener(OpenCloseBackpackPanel);
         _backpackPanel?.gameObject.SetActive(_openBackpack);
 
-        if (_playerStatistics != null)
-            _playerStatistics.OnMoneyChanged += UpdateMoneyCount;
+        PlayerStatistic.Instance.OnMoneyChanged += UpdateMoneyCount;
 
-        UpdateMoneyCount(_playerStatistics.Money);
+        UpdateMoneyCount(PlayerStatistic.Instance.Money);
     }
     private void Update()
     {

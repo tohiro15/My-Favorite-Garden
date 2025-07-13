@@ -16,4 +16,4 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 0f23346d89e008f46badaeb5ce56d965, type: 3}
   DefaultCount: 1
   MaxStackSize: 99
-  ItemPrice: 0
+  ItemPrice: 5

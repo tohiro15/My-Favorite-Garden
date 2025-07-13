@@ -39,6 +39,10 @@ MonoBehaviour:
     m_Key: ItemManualKey
     m_Metadata:
       m_Items: []
+  - m_Id: 3386249941417984
+    m_Key: BackpackEmptyBuyerKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -45,6 +45,7 @@ public class InventoryUI : MonoBehaviour
         //    }
         //}
 
+        // Переместить в незанятый слот
         foreach (var slot in _inventorySlots)
         {
             if (slot.IsEmpty)
