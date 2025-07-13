@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BuyerUI : MonoBehaviour
 {
-    [SerializeField] private Inventory _playerInventory;
+    [SerializeField] private InventoryUI _playerInventory;
     [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private BuyerLine[] _lines;
 

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class BuyerSlot : MonoBehaviour
 {
-    private Inventory _inventory;
+    private InventoryUI _inventory;
     private Item _item;
     private ItemData _itemData;
     private GameObject _itemPrefab;
@@ -12,7 +12,7 @@ public class BuyerSlot : MonoBehaviour
     private bool _isEmpty = true;
     public bool IsEmpty => _isEmpty;
 
-    public void Initialization(ItemData itemData, Inventory inventory, GameObject itemPrefab, int count)
+    public void Initialization(ItemData itemData, InventoryUI inventory, GameObject itemPrefab, int count)
     {
         _inventory = inventory;
         _itemData = itemData;

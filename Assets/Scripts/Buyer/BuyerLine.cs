@@ -4,7 +4,7 @@ public class BuyerLine : MonoBehaviour
 {
     [SerializeField] private BuyerSlot[] _slots;
 
-    public void Initialize(Inventory playerInventory, GameObject itemPrefab)
+    public void Initialize(InventoryUI playerInventory, GameObject itemPrefab)
     {
         for (int i = 0; i > _slots.Length; i++)
         {

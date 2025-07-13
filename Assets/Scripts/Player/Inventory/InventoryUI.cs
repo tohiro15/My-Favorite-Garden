@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject _itemPrefab;
     [Space]
