@@ -1,3 +1,4 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,6 +70,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateMoneyCount(int money)
     {
-        _moneyCount.text = $"{money}";
+        var nfi = new NumberFormatInfo()
+        {
+            NumberGroupSeparator = ".",
+            NumberDecimalDigits = 0
+        };
+
+        _moneyCount.text = money.ToString("N0", nfi);
     }
 }

@@ -13,8 +13,8 @@ public class PlayerStatistic : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X)) AddMoney(1);
-        else if (Input.GetKeyDown(KeyCode.Z)) RemoveMoney(1);
+        if (Input.GetKeyDown(KeyCode.X)) AddMoney(10000);
+        else if (Input.GetKeyDown(KeyCode.Z)) RemoveMoney(100);
     }
     public void AddMoney(int count)
     {
