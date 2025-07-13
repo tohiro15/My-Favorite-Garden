@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: c/v - Add/Remove Items
     m_Metadata:
       m_Items: []
+  - m_Id: 3360300394938368
+    m_Localized: Sell All
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

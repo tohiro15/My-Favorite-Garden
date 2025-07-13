@@ -1,12 +1,21 @@
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class BuyerUI : MonoBehaviour
 {
-    [SerializeField] private InventoryUI _playerInventory;
+    [Header("Item List Settings")]
+    [Space]
     [SerializeField] private GameObject _buyerItemPrefab;
+    [Space]
+    [SerializeField] private InventoryUI _playerInventory;
     [SerializeField] private BuyerLine[] _lines;
 
+    [Header("Buyer Settings")]
+    [Space]
+
+    [SerializeField] private Button _sellButton;
+    [SerializeField] private Button _sellAllButton;
     private void Start()
     {
         var filledSlots = _playerInventory.InventorySlots.Where(s => !s.IsEmpty).ToArray();
@@ -33,5 +42,9 @@ public class BuyerUI : MonoBehaviour
                 _lines[lineIndex].gameObject.SetActive(false);
             }
         }
+
+        _sellAllButton?.onClick.RemoveAllListeners();
+        _sellButton?.onClick.RemoveAllListeners();
     }
+
 }
