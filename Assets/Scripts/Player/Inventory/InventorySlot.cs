@@ -17,6 +17,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void Initialization(GameObject itemPrefab, int index)
     {
+        _itemPrefab = itemPrefab;
         _slotIndex = index;
     }
     public void Add(ItemData itemData, int count)
@@ -30,7 +31,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         _item.gameObject.SetActive(true);
         _isEmpty = false;
     }
-
 
     public void Clear()
     {

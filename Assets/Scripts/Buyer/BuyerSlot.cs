@@ -1,82 +1,36 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class BuyerSlot : MonoBehaviour
 {
-    private InventoryUI _inventory;
-    private Item _item;
-    private ItemData _itemData;
-    private GameObject _itemPrefab;
-
-    private int _count;
+    private BuyerItem _buyerItem;
     private bool _isEmpty = true;
     public bool IsEmpty => _isEmpty;
 
-    public void Initialization(ItemData itemData, InventoryUI inventory, GameObject itemPrefab, int count)
+    private void Awake()
     {
-        _inventory = inventory;
-        _itemData = itemData;
-        _itemPrefab = itemPrefab;
-        _count = count;
-
-        _item = _inventory.InventorySlots[count].Item;
-
-        if (_item != null) _isEmpty = false;
+        _buyerItem = GetComponentInChildren<BuyerItem>();
+        if (_buyerItem != null) _isEmpty = false;
     }
-
-    public void Add(ItemData itemData, int count)
+    public void Add(ItemData data, GameObject buyerItemPrefab, int count)
     {
-        if (_item == null)
+        if (_buyerItem == null)
         {
-            //_item = go.GetComponent<Item>();
+            var go = Instantiate(buyerItemPrefab, transform);
+            _buyerItem = go.GetComponent<BuyerItem>();
         }
-        _item.Change(itemData, count);
-        _item.gameObject.SetActive(true);
+        _buyerItem.Change(data, count);
+        _buyerItem.gameObject.SetActive(true);
         _isEmpty = false;
     }
 
 
     public void Clear()
     {
-        if (_item != null)
-        {
-            Destroy(_item.gameObject);
-            _item = null;
-        }
+        if (_buyerItem != null)
+            Destroy(_buyerItem.gameObject);
 
+        _buyerItem = null;
         _isEmpty = true;
     }
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        var draggedItem = eventData.pointerDrag?.GetComponent<Item>();
-        if (draggedItem == null)
-            return;
-
-        var sourceSlot = draggedItem.OriginSlot;
-
-        if (sourceSlot == this)
-        {
-            draggedItem.transform.SetParent(transform);
-            draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            return;
-        }
-
-        if (_isEmpty)
-        {
-            Add(draggedItem.ItemData, draggedItem.ItemCount);
-            sourceSlot.Clear();
-        }
-        else
-        {
-            var tmpData = _item.ItemData;
-            var tmpCount = _item.ItemCount;
-
-            Add(draggedItem.ItemData, draggedItem.ItemCount);
-            sourceSlot.Add(tmpData, tmpCount);
-        }
-
-        draggedItem.transform.SetParent(transform);
-        draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-    }
 }

@@ -4,13 +4,19 @@ public class BuyerLine : MonoBehaviour
 {
     [SerializeField] private BuyerSlot[] _slots;
 
-    public void Initialize(InventoryUI playerInventory, GameObject itemPrefab)
+    public void Initialize(InventorySlot[] filledSlots, GameObject buyerItemPrefab)
     {
-        for (int i = 0; i > _slots.Length; i++)
+        for (int i = 0; i < _slots.Length; i++)
         {
-            _slots[i].Initialization(playerInventory.InventorySlots[i].Item.ItemData,playerInventory, itemPrefab, playerInventory.InventorySlots[i].Item.ItemCount);
-            if(_slots[i].IsEmpty == false)
+            if (i < filledSlots.Length)
             {
+                var invSlot = filledSlots[i];
+                _slots[i].Add(invSlot.Item.ItemData, buyerItemPrefab, invSlot.Item.ItemCount);
+                _slots[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                _slots[i].Clear();
                 _slots[i].gameObject.SetActive(false);
             }
         }
