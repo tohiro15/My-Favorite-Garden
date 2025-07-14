@@ -17,3 +17,4 @@ MonoBehaviour:
   DefaultCount: 1
   MaxStackSize: 99
   ItemPrice: 8
+  _canSell: 1

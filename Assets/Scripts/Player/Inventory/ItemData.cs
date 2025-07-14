@@ -8,4 +8,5 @@ public class ItemData : ScriptableObject
     public int DefaultCount = 1;
     public int MaxStackSize = 99;
     public int ItemPrice = 0;
+    public bool _canSell = false;
 }

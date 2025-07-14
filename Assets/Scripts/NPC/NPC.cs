@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class Trader : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _interactionButton;
-    [SerializeField] private GameObject _traderCanvas;
+    [SerializeField] private GameObject _npcCanvas;
     [SerializeField] private float _interactionDistance = 3f;
     private bool _isPlayerNear;
     private void Start()
     {
-        if (_traderCanvas != null) _traderCanvas?.SetActive(false);
+        if (_npcCanvas != null) _npcCanvas?.SetActive(false);
         else Debug.Log("ShopCanvas - not found!");
     }
     private void Update()
     {
         CheckDistance();
-        if (_traderCanvas != null && Input.GetKeyDown(KeyCode.E) && _isPlayerNear)
+        if (_npcCanvas != null && Input.GetKeyDown(KeyCode.E) && _isPlayerNear)
         {
             OpenCanvas();
         }
@@ -41,6 +41,6 @@ public class Trader : MonoBehaviour
 
     private void OpenCanvas()
     {
-        _traderCanvas?.SetActive(true);
+        _npcCanvas?.SetActive(true);
     }
 }

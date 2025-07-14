@@ -11,11 +11,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas _HUDCanvas;
     [SerializeField] private TMP_Text _moneyCount;
 
-    [Header("Shop")]
+    [Header("Buyer")]
     [Space]
 
     [SerializeField] private Canvas _buyerCanvas;
-    [SerializeField] private Button _exitShopButton;
+    [SerializeField] private Button _exitBuyerButton;
 
 
     [Header("Seller")]
@@ -38,8 +38,8 @@ public class UIManager : MonoBehaviour
         _buyerCanvas?.gameObject.SetActive(false);
         _sellerCanvas?.gameObject.SetActive(false);
 
-        _exitShopButton?.onClick.RemoveAllListeners();
-        _exitShopButton?.onClick.AddListener(CloseShopCanvas);
+        _exitBuyerButton?.onClick.RemoveAllListeners();
+        _exitBuyerButton?.onClick.AddListener(CloseShopCanvas);
 
         _exitSellerButton?.onClick.RemoveAllListeners();
         _exitSellerButton?.onClick?.AddListener(CloseSellerCanvas);
