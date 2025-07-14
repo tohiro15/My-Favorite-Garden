@@ -25,7 +25,7 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
     public void Add(InventorySlot sourceSlot, ItemData data, GameObject buyerItemPrefab, int count)
     {
         _sourceSlot = sourceSlot;
-        if (_buyerItem == null)
+        if (_buyerItem == null && data.CanSell)
         {
             var go = Instantiate(buyerItemPrefab, transform);
             _buyerItem = go.GetComponent<BuyerItem>();
@@ -34,6 +34,7 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
         _buyerItem.gameObject.SetActive(true);
         _isEmpty = false;
     }
+
 
     public void Clear()
     {

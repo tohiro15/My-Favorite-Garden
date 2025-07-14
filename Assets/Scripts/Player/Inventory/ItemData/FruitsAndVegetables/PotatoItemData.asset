@@ -25,7 +25,7 @@ MonoBehaviour:
   DefaultCount: 1
   MaxStackSize: 99
   ItemPrice: 10
-  _canSell: 1
+  CanSell: 1
   references:
     version: 2
     RefIds: []

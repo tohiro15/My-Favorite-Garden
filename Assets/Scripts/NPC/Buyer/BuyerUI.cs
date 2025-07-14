@@ -40,7 +40,8 @@ public class BuyerUI : MonoBehaviour
         _sellButton?.onClick.RemoveAllListeners();
         _sellButton?.onClick.AddListener(SellSelectedItem);
 
-        AddAllPrice();
+        RecalculateAllPrice();
+        UpdateUI();
     }
 
     private void SubscribeSlots()
@@ -60,15 +61,30 @@ public class BuyerUI : MonoBehaviour
         _selectedItemPrice = 0;
         foreach (var line in _lines)
             foreach (var slot in line.Slots)
-                if (slot.IsSeleted && slot.BuyerItem != null)
+                if (slot.IsSeleted && slot.BuyerItem.ItemData.CanSell && slot.BuyerItem != null)
                     _selectedItemPrice += slot.BuyerItem.ItemData.ItemPrice * slot.BuyerItem.ItemCount;
     }
 
+    private void RecalculateAllPrice()
+    {
+        _totalPrice = 0;
+
+        for (int i = 0; i < _playerInventory.InventorySlots.Length; i++)
+        {
+            var slot = _playerInventory.InventorySlots[i];
+            if (slot != null && !slot.IsEmpty && slot.Item != null && slot.Item.ItemData.CanSell && slot.Item.ItemData != null)
+            {
+                _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
+            }
+        }
+    }
     public void InitializeItem()
     {
-        var filledSlots = _playerInventory.InventorySlots.Where(s => !s.IsEmpty).ToArray();
+        var sellableSlots = _playerInventory.InventorySlots
+            .Where(s => !s.IsEmpty && s.Item.ItemData.CanSell)
+            .ToArray();
 
-        int totalItems = filledSlots.Length;
+        int totalItems = sellableSlots.Length;
         int neededLines = Mathf.CeilToInt(totalItems / 3f);
 
         for (int lineIndex = 0; lineIndex < _lines.Length; lineIndex++)
@@ -79,9 +95,8 @@ public class BuyerUI : MonoBehaviour
 
                 int startIdx = lineIndex * 3;
                 int countInThisLine = Mathf.Min(3, totalItems - startIdx);
-
                 var slice = new InventorySlot[countInThisLine];
-                System.Array.Copy(filledSlots, startIdx, slice, 0, countInThisLine);
+                Array.Copy(sellableSlots, startIdx, slice, 0, countInThisLine);
 
                 _lines[lineIndex].Initialize(slice, _buyerItemPrefab);
             }
@@ -112,28 +127,12 @@ public class BuyerUI : MonoBehaviour
             }
         }
     }
-    public void AddAllPrice()
-    {
-        _totalPrice = 0;
-
-        for (int i = 0; i < _playerInventory.InventorySlots.Length; i++)
-        {
-            var slot = _playerInventory.InventorySlots[i];
-            if (slot != null && !slot.IsEmpty && slot.Item != null && slot.Item.ItemData != null)
-            {
-                _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
-            }
-        }
-
-        InitializeItem();
-        UpdateUI();
-    }
     public void SellAll()
     {
         for (int i = 0; i < _playerInventory.InventorySlots.Length; i++)
         {
             var slot = _playerInventory.InventorySlots[i];
-            if (slot != null && !slot.IsEmpty && slot.Item != null && slot.Item.ItemData != null)
+            if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell && slot.Item != null && slot.Item.ItemData != null)
             {
                 slot.Clear();
             }
@@ -148,7 +147,7 @@ public class BuyerUI : MonoBehaviour
 
     private void SellSelectedItem()
     {
-        var selectedSlots = _lines.SelectMany(line => line.Slots).Where(s => s.IsSeleted && s.BuyerItem != null).ToList();
+        var selectedSlots = _lines.SelectMany(line => line.Slots).Where(s => s.IsSeleted && s.BuyerItem.ItemData.CanSell && s.BuyerItem != null).ToList();
 
         foreach (var slot in selectedSlots)
         {
@@ -160,7 +159,7 @@ public class BuyerUI : MonoBehaviour
         }
 
         _selectedItemPrice = 0;
-        AddAllPrice();
+        RecalculateAllPrice();
         InitializeItem();
         UpdateUI();
     }
