@@ -10,52 +10,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: LocalizationTable_en
+  m_Name: ItemNames_en
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: en
-  m_SharedData: {fileID: 11400000, guid: bd860135052cfc9478a224a6034fb9cc, type: 2}
+  m_SharedData: {fileID: 11400000, guid: cfedb9ba72f35c84ca5fb960ba280c44, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 207364358144
-    m_Localized: Buyer
+  - m_Id: 17878286336
+    m_Localized: Cabbage
     m_Metadata:
       m_Items: []
-  - m_Id: 321407483904
-    m_Localized: Seller
+  - m_Id: 75344445440
+    m_Localized: Carrot
     m_Metadata:
       m_Items: []
-  - m_Id: 12588563890176
-    m_Localized: Sell
+  - m_Id: 120215109632
+    m_Localized: Potato
     m_Metadata:
       m_Items: []
-  - m_Id: 161342839390208
-    m_Localized: z/x - Add/Remove Money
+  - m_Id: 179426099200
+    m_Localized: Strawberry
     m_Metadata:
       m_Items: []
-  - m_Id: 161382135824384
-    m_Localized: c/v - Add/Remove Items
+  - m_Id: 288905822208
+    m_Localized: Tomato
     m_Metadata:
       m_Items: []
-  - m_Id: 3360300394938368
-    m_Localized: Sell All
+  - m_Id: 729043501056
+    m_Localized: Carrot Seed
     m_Metadata:
       m_Items: []
-  - m_Id: 3386249941417984
-    m_Localized: Backpack is empty
+  - m_Id: 849424220160
+    m_Localized: Tomato Seed
     m_Metadata:
       m_Items: []
-  - m_Id: 3407533765099520
-    m_Localized: 'TOTAL PRICE:'
+  - m_Id: 926377115648
+    m_Localized: Strawberry Seed
     m_Metadata:
       m_Items: []
-  - m_Id: 3407616917176320
-    m_Localized: 'SELECTED ITEM PRICE: '
+  - m_Id: 996480712704
+    m_Localized: Cabbage Seed
     m_Metadata:
       m_Items: []
-  - m_Id: 3734607532982272
-    m_Localized: BUY
+  - m_Id: 1077132984320
+    m_Localized: Potato Seed
     m_Metadata:
       m_Items: []
   references:

@@ -11,8 +11,10 @@ public class SellerItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _buyText;
     [SerializeField] private TextMeshProUGUI _itemNameText;
 
-    private void Start()
+    public void Init(ItemData itemData)
     {
+        _itemData = itemData;
+
         UpdateUI();
     }
     private void UpdateUI()
@@ -24,7 +26,7 @@ public class SellerItem : MonoBehaviour
         };
 
         _iconImage.sprite = _itemData.Icon;
-        _itemNameText.text = _itemData.ItemName.ToString();
+        _itemData.ItemName.StringChanged += s => _itemNameText.text = s;
         _priceText.text = $"{_itemData.ItemPrice.ToString("N0", nfi)} $";
     }
 }

@@ -29,7 +29,7 @@ public class BuyerItem : MonoBehaviour
         if (hasAny)
         {
             _countText.text = $"x{_itemCount}";
-            _itemNameText.text = $"{_itemData.ItemName}";
+            _itemData.ItemName.StringChanged += s => _itemNameText.text = s;
         }
     }
 }

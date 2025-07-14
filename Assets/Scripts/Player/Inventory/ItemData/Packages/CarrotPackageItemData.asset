@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: CarrotPackageItemData
   m_EditorClassIdentifier: 
-  ItemName: "\u0421\u0435\u043C\u0435\u043D\u0430 \u043C\u043E\u0440\u043A\u043E\u0432\u043A\u0438"
+  ItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
+    m_TableEntryReference:
+      m_KeyId: 729043501056
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Icon: {fileID: 21300000, guid: 2da6142a0b2204049af2eb53e40252a2, type: 3}
   DefaultCount: 1
   MaxStackSize: 99
   ItemPrice: 2
   _canSell: 0
+  references:
+    version: 2
+    RefIds: []

@@ -10,59 +10,59 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: LocalizationTable Shared Data
+  m_Name: ItemNames Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: LocalizationTable
-  m_TableCollectionNameGuidString: bd860135052cfc9478a224a6034fb9cc
+  m_TableCollectionName: ItemNames
+  m_TableCollectionNameGuidString: cfedb9ba72f35c84ca5fb960ba280c44
   m_Entries:
-  - m_Id: 207364358144
-    m_Key: BuyerCanvasKey
+  - m_Id: 17878286336
+    m_Key: CabbageItemkey
     m_Metadata:
       m_Items: []
-  - m_Id: 321407483904
-    m_Key: SellerCanvasKey
+  - m_Id: 75344445440
+    m_Key: CarrotItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 12588563890176
-    m_Key: SellButton
+  - m_Id: 120215109632
+    m_Key: PotatoItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 3360300394938368
-    m_Key: SellAllButton
+  - m_Id: 179426099200
+    m_Key: StrawberryItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 161342839390208
-    m_Key: MoneyManualKey
+  - m_Id: 288905822208
+    m_Key: TomatoItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 161382135824384
-    m_Key: ItemManualKey
+  - m_Id: 729043501056
+    m_Key: CarrotPackageItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 3386249941417984
-    m_Key: BackpackEmptyBuyerKey
+  - m_Id: 849424220160
+    m_Key: TomatoPackageItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 3407533765099520
-    m_Key: TotalPriceKey
+  - m_Id: 926377115648
+    m_Key: StrawberryPackageItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 3407616917176320
-    m_Key: SelectedItemPriceKey
+  - m_Id: 996480712704
+    m_Key: CabbagePackageItemKey
     m_Metadata:
       m_Items: []
-  - m_Id: 3734607532982272
-    m_Key: BuyKey
+  - m_Id: 1077132984320
+    m_Key: PotatoPackageItemKey
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 2797373186104885598
+    rid: 2797373419231379579
   references:
     version: 2
     RefIds:
-    - rid: 2797373186104885598
+    - rid: 2797373419231379579
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1751627168978
+        m_CustomEpoch: 1752516958498

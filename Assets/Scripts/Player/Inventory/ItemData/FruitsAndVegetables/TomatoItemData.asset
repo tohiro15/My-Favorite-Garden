@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: TomatoItemData
   m_EditorClassIdentifier: 
-  ItemName: "\u041F\u043E\u043C\u0438\u0434\u043E\u0440"
+  ItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
+    m_TableEntryReference:
+      m_KeyId: 288905822208
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Icon: {fileID: 21300000, guid: 1dd40b9d4c47d9649b308877e62872e0, type: 3}
   DefaultCount: 1
   MaxStackSize: 99
   ItemPrice: 8
   _canSell: 1
+  references:
+    version: 2
+    RefIds: []

@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: CabbageItemData
   m_EditorClassIdentifier: 
-  ItemName: "\u041A\u0430\u043F\u0443\u0441\u0442\u0430"
+  ItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
+    m_TableEntryReference:
+      m_KeyId: 17878286336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Icon: {fileID: 21300000, guid: ebcd6d6bdbbd5064c8688a6851e5863b, type: 3}
   DefaultCount: 1
   MaxStackSize: 99
   ItemPrice: 8
   _canSell: 1
+  references:
+    version: 2
+    RefIds: []
