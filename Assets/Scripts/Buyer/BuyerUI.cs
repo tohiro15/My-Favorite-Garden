@@ -121,10 +121,11 @@ public class BuyerUI : MonoBehaviour
             var slot = _playerInventory.InventorySlots[i];
             if (slot != null && !slot.IsEmpty && slot.Item != null && slot.Item.ItemData != null)
             {
-                _totalPrice += slot.Item.ItemData.ItemPrice;
+                _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
             }
         }
 
+        InitializeItem();
         UpdateUI();
     }
     public void SellAll()
@@ -160,6 +161,7 @@ public class BuyerUI : MonoBehaviour
 
         _selectedItemPrice = 0;
         AddAllPrice();
+        InitializeItem();
         UpdateUI();
     }
 
