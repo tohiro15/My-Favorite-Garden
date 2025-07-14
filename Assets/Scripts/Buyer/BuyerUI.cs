@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
 using UnityEngine.EventSystems;
+using System;
 
 public class BuyerUI : MonoBehaviour
 {
@@ -27,15 +28,40 @@ public class BuyerUI : MonoBehaviour
 
     private int _totalPrice;
     private int _selectedItemPrice;
+
+    public event Action<int> OnSelectedItemPriceChanged;
     private void Start()
     {
         InitializeItem();
+        SubscribeSlots();
 
         _sellAllButton?.onClick.RemoveAllListeners();
         _sellAllButton?.onClick.AddListener(SellAll);
         _sellButton?.onClick.RemoveAllListeners();
+        _sellButton?.onClick.AddListener(SellSelectedItem);
 
-        AddPrice();
+        AddAllPrice();
+    }
+
+    private void SubscribeSlots()
+    {
+        foreach (var line in _lines)
+            foreach (var slot in line.Slots)
+                slot.OnSlotClicked += HandleSlotClicked;
+    }
+    private void HandleSlotClicked(BuyerSlot slot)
+    {
+        RecalculateSelectedPrice();
+        OnSelectedItemPriceChanged?.Invoke(_selectedItemPrice);
+        UpdateUI();
+    }
+    private void RecalculateSelectedPrice()
+    {
+        _selectedItemPrice = 0;
+        foreach (var line in _lines)
+            foreach (var slot in line.Slots)
+                if (slot.IsSeleted && slot.BuyerItem != null)
+                    _selectedItemPrice += slot.BuyerItem.ItemData.ItemPrice * slot.BuyerItem.ItemCount;
     }
 
     public void InitializeItem()
@@ -86,7 +112,7 @@ public class BuyerUI : MonoBehaviour
             }
         }
     }
-    public void AddPrice()
+    public void AddAllPrice()
     {
         _totalPrice = 0;
 
@@ -101,7 +127,6 @@ public class BuyerUI : MonoBehaviour
 
         UpdateUI();
     }
-
     public void SellAll()
     {
         for (int i = 0; i < _playerInventory.InventorySlots.Length; i++)
@@ -117,6 +142,24 @@ public class BuyerUI : MonoBehaviour
         PlayerStatistic.Instance.AddMoney(_totalPrice);
         _totalPrice = 0;
         InitializeItem();
+        UpdateUI();
+    }
+
+    private void SellSelectedItem()
+    {
+        var selectedSlots = _lines.SelectMany(line => line.Slots).Where(s => s.IsSeleted && s.BuyerItem != null).ToList();
+
+        foreach (var slot in selectedSlots)
+        {
+            int price = slot.BuyerItem.ItemData.ItemPrice * slot.BuyerItem.ItemCount;
+
+            PlayerStatistic.Instance.AddMoney(price);
+            slot.Clear();
+            slot.gameObject.SetActive(false);
+        }
+
+        _selectedItemPrice = 0;
+        AddAllPrice();
         UpdateUI();
     }
 

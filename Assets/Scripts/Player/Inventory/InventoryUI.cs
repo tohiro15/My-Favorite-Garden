@@ -14,9 +14,6 @@ public class InventoryUI : MonoBehaviour
         {
             _inventorySlots[i].Initialization(_itemPrefab,i);
         }
-    }
-    private void Start()
-    {
         foreach (var itemData in _allItemTypes)
         {
             string keySlot = $"SlotFor_{itemData.name}";

@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuyerLine : MonoBehaviour
 {
     [SerializeField] private BuyerSlot[] _slots;
+    public BuyerSlot[] Slots => _slots;
 
     public void Initialize(InventorySlot[] filledSlots, GameObject buyerItemPrefab)
     {
@@ -11,7 +12,7 @@ public class BuyerLine : MonoBehaviour
             if (i < filledSlots.Length)
             {
                 var invSlot = filledSlots[i];
-                _slots[i].Add(invSlot.Item.ItemData, buyerItemPrefab, invSlot.Item.ItemCount);
+                _slots[i].Add(invSlot, invSlot.Item.ItemData, buyerItemPrefab, invSlot.Item.ItemCount);
                 _slots[i].gameObject.SetActive(true);
             }
             else
@@ -21,4 +22,5 @@ public class BuyerLine : MonoBehaviour
             }
         }
     }
+
 }
