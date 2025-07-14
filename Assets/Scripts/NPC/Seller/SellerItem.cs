@@ -7,13 +7,23 @@ public class SellerItem : MonoBehaviour
 {
     [SerializeField] private ItemData _itemData;
     [SerializeField] private Image _iconImage;
+    [SerializeField] private Button _buyButton;
     [SerializeField] private TextMeshProUGUI _priceText;
     [SerializeField] private TextMeshProUGUI _buyText;
     [SerializeField] private TextMeshProUGUI _itemNameText;
 
-    public void Init(ItemData itemData)
+    private InventoryUI _inventoryUI;
+    private BuyButton _buyButtonScript;
+
+    public void Init(ItemData itemData, InventoryUI inventoryUI)
     {
         _itemData = itemData;
+        _inventoryUI = inventoryUI;
+
+        _buyButton?.onClick.RemoveAllListeners();
+        _buyButton?.onClick.AddListener(BuyItem);
+        _buyButtonScript = _buyButton.GetComponent<BuyButton>();
+        _buyButtonScript.Init(itemData, inventoryUI, _buyText, _priceText);
 
         UpdateUI();
     }
@@ -28,5 +38,14 @@ public class SellerItem : MonoBehaviour
         _iconImage.sprite = _itemData.Icon;
         _itemData.ItemName.StringChanged += s => _itemNameText.text = s;
         _priceText.text = $"{_itemData.ItemPrice.ToString("N0", nfi)} $";
+    }
+
+    public void BuyItem()
+    {
+        if (PlayerStatistic.Instance.Money >= _itemData.ItemPrice)
+        {
+            _inventoryUI.AddItem(_itemData, 1);
+            PlayerStatistic.Instance.RemoveMoney(_itemData.ItemPrice);
+        }
     }
 }

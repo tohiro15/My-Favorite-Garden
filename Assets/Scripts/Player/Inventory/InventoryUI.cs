@@ -33,14 +33,14 @@ public class InventoryUI : MonoBehaviour
     public void AddItem(ItemData itemData, int count)
     {
         // Достакать в уже существующий слот
-        //foreach (var slot in _inventorySlots)
-        //{
-        //    if (!slot.IsEmpty && slot.Item.ItemData == itemData)
-        //    {
-        //        slot.Item.Add(count);
-        //        return;
-        //    }
-        //}
+        foreach (var slot in _inventorySlots)
+        {
+            if (!slot.IsEmpty && slot.Item.ItemData == itemData)
+            {
+                slot.Item.Add(count);
+                return;
+            }
+        }
 
         // Переместить в незанятый слот
         foreach (var slot in _inventorySlots)

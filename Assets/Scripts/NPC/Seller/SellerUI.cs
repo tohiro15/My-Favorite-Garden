@@ -24,7 +24,7 @@ public class SellerUI : MonoBehaviour
         {
             var go = Instantiate(_itemPrefab, _sellerContainer);
             var sellerItem = go.GetComponent<SellerItem>();
-            sellerItem.Init(sortedItems[i]);
+            sellerItem.Init(sortedItems[i], _inventoryUI);
         }
     }
 }
