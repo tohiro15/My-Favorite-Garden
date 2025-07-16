@@ -845,9 +845,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2069931509}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
+        - m_Target: {fileID: 1344987179}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: 7abccce1359ba0d4a8421bcc212783c5, type: 3}
@@ -13108,7 +13108,6 @@ GameObject:
   - component: {fileID: 617147338}
   - component: {fileID: 617147337}
   - component: {fileID: 617147336}
-  - component: {fileID: 617147340}
   - component: {fileID: 617147339}
   m_Layer: 5
   m_Name: SellButton
@@ -13236,9 +13235,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2069931509}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
+        - m_Target: {fileID: 1344987179}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
@@ -13248,21 +13247,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &617147340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617147334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248db62e7b620f041b82bed243076700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSource: {fileID: 2069931509}
-  _sellClickSound: {fileID: 0}
-  _errorClickSound: {fileID: 0}
 --- !u!1001 &624718566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13645,37 +13629,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1572217214}
   m_SourcePrefab: {fileID: 100100000, guid: 91a08135758fb3e4e8e176cfb9787335, type: 3}
---- !u!1 &635120939
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 635120940}
-  m_Layer: 0
-  m_Name: ------------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &635120940
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635120939}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2812235, y: 14.386109, z: -23.146317}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638311296
 GameObject:
   m_ObjectHideFlags: 0
@@ -28086,7 +28039,6 @@ GameObject:
   - component: {fileID: 1270121432}
   - component: {fileID: 1270121431}
   - component: {fileID: 1270121430}
-  - component: {fileID: 1270121434}
   - component: {fileID: 1270121433}
   m_Layer: 5
   m_Name: SellAllButton
@@ -28214,9 +28166,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2069931509}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
+        - m_Target: {fileID: 1344987179}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
@@ -28226,21 +28178,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1270121434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270121428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248db62e7b620f041b82bed243076700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSource: {fileID: 2069931509}
-  _sellClickSound: {fileID: 0}
-  _errorClickSound: {fileID: 0}
 --- !u!1001 &1282145966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29501,6 +29438,57 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 462673243}
   m_SourcePrefab: {fileID: 100100000, guid: b28439d2722e88b469ef11ac4a6e5b6c, type: 3}
+--- !u!1 &1344987178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344987180}
+  - component: {fileID: 1344987179}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1344987179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344987178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5914323ab53f5964e9988c50798f2458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SFXAudioSource: {fileID: 2069931509}
+  _MusicAudioSource: {fileID: 1523683926}
+  _buyClickSound: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
+  _sellClickSound: {fileID: 0}
+  _errorClickSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
+--- !u!4 &1344987180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344987178}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.546742, y: 6.479065, z: 9.4376745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2069931510}
+  - {fileID: 1523683927}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1348423278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32866,12 +32854,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523683925}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.88895607, z: 0.010344118}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -14.546742, y: -5.590109, z: -9.42733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1344987180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1526694003
 GameObject:
@@ -38692,9 +38680,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2069931509}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
+        - m_Target: {fileID: 1344987179}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySFX
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: 7abccce1359ba0d4a8421bcc212783c5, type: 3}
@@ -44930,12 +44918,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069931508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.728148, y: -8.173098, z: -24.013468}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -34.27489, y: -14.652163, z: -33.45114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1344987180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2071428457
 PrefabInstance:
@@ -47744,13 +47732,11 @@ SceneRoots:
   - {fileID: 560172805}
   - {fileID: 819022188}
   - {fileID: 434592939}
-  - {fileID: 635120940}
-  - {fileID: 1523683927}
-  - {fileID: 2069931510}
   - {fileID: 1486751898}
   - {fileID: 832575519}
   - {fileID: 410087041}
   - {fileID: 1548817121}
   - {fileID: 1039716837}
   - {fileID: 1541860392}
+  - {fileID: 1344987180}
   - {fileID: 640492677}

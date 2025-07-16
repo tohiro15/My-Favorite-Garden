@@ -23,7 +23,7 @@ public class SellerItem : MonoBehaviour
         _buyButton?.onClick.RemoveAllListeners();
         _buyButton?.onClick.AddListener(BuyItem);
         _buyButtonScript = _buyButton.GetComponent<BuyButton>();
-        _buyButtonScript.Init(itemData, inventoryUI, _buyText, _priceText);
+        _buyButtonScript.Init(itemData, _buyText, _priceText);
 
         UpdateUI();
     }
