@@ -39,7 +39,6 @@ public class BuyerUI : MonoBehaviour
         _sellAllButton?.onClick.AddListener(SellAll);
         _sellButton?.onClick.RemoveAllListeners();
         _sellButton?.onClick.AddListener(SellSelectedItem);
-
         RecalculateAllPrice();
         UpdateUI();
     }
@@ -129,20 +128,20 @@ public class BuyerUI : MonoBehaviour
     }
     public void SellAll()
     {
-        for (int i = 0; i < _playerInventory.InventorySlots.Length; i++)
-        {
-            var slot = _playerInventory.InventorySlots[i];
-            if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell && slot.Item != null && slot.Item.ItemData != null)
+            for (int i = 0; i < _playerInventory.InventorySlots.Length; i++)
             {
-                slot.Clear();
+                var slot = _playerInventory.InventorySlots[i];
+                if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell && slot.Item != null && slot.Item.ItemData != null)
+                {
+                    slot.Clear();
+                }
             }
-        }
 
 
-        PlayerStatistic.Instance.AddMoney(_totalPrice);
-        _totalPrice = 0;
-        InitializeItem();
-        UpdateUI();
+            PlayerStatistic.Instance.AddMoney(_totalPrice);
+            _totalPrice = 0;
+            InitializeItem();
+            UpdateUI();
     }
 
     private void SellSelectedItem()
@@ -152,7 +151,6 @@ public class BuyerUI : MonoBehaviour
         foreach (var slot in selectedSlots)
         {
             int price = slot.BuyerItem.ItemData.ItemPrice * slot.BuyerItem.ItemCount;
-
             PlayerStatistic.Instance.AddMoney(price);
             slot.Clear();
             slot.gameObject.SetActive(false);
@@ -162,6 +160,7 @@ public class BuyerUI : MonoBehaviour
         RecalculateAllPrice();
         InitializeItem();
         UpdateUI();
+
     }
 
     public void UpdateUI()
