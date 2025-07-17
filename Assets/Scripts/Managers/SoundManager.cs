@@ -25,7 +25,6 @@ public class SoundManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySFX(AudioClip clip)

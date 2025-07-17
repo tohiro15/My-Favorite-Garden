@@ -1,14 +1,18 @@
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+
     [Header("HUD")]
     [Space]
 
     [SerializeField] private Canvas _HUDCanvas;
+    [SerializeField] private Button _interactionButton;
     [SerializeField] private TMP_Text _moneyCount;
 
     [Header("Buyer")]
@@ -31,12 +35,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _backpackPanel;
     [SerializeField] private Button _backpackButton;
     private bool _openBackpack = false;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Start()
     {
         _HUDCanvas?.gameObject.SetActive(true);
         _buyerCanvas?.gameObject.SetActive(false);
         _sellerCanvas?.gameObject.SetActive(false);
+
+        _interactionButton?.onClick.RemoveAllListeners();
+        _interactionButton?.gameObject.SetActive(false);
 
         _exitBuyerButton?.onClick.RemoveAllListeners();
         _exitBuyerButton?.onClick.AddListener(CloseShopCanvas);
@@ -72,6 +89,17 @@ public class UIManager : MonoBehaviour
         _backpackPanel?.gameObject.SetActive(_openBackpack);
     }
 
+    public void EnableInteractionButton(UnityAction call)
+    {
+        _interactionButton?.gameObject.SetActive(true);
+        _interactionButton?.onClick.RemoveAllListeners();
+        _interactionButton.onClick.AddListener(call);
+    }
+    public void DisableInteractionButton()
+    {
+        _interactionButton?.gameObject.SetActive(false);
+        _interactionButton?.onClick.RemoveAllListeners();
+    }
     public void UpdateMoneyCount(int money)
     {
         var nfi = new NumberFormatInfo()
