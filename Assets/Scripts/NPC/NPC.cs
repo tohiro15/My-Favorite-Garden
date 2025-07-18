@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                OpenCanvas();
+                UIManager.Instance.OpenCanvas(_npcCanvas);
             }
         }
     }
@@ -34,20 +34,13 @@ public class NPC : MonoBehaviour
             _isPlayerNear = true;
 
             _interactionButton?.SetActive(true);
-            UIManager.Instance.EnableInteractionButton(OpenCanvas, this);
-            Debug.Log("Игрок рядом");
+            UIManager.Instance.EnableInteractionButton(() => UIManager.Instance.OpenCanvas(_npcCanvas),this);
         }
         else
         {
             _isPlayerNear = false;
             _interactionButton?.SetActive(false);
             UIManager.Instance.DisableInteractionButton(this);
-            Debug.Log("Игрок далеко");
         }
-    }
-
-    private void OpenCanvas()
-    {
-        _npcCanvas?.gameObject.SetActive(true);
     }
 }

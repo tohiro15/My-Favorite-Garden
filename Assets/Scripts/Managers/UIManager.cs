@@ -1,9 +1,9 @@
-// UIManager.cs
 using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _backpackButton;
 
     private bool _openBackpack = false;
-    // Новое поле — текущий источник взаимодействия
     private object _currentInteractionSource;
 
     private void Awake()
@@ -73,17 +72,20 @@ public class UIManager : MonoBehaviour
             OpenCloseBackpackPanel();
     }
 
-    private void CloseShopCanvas()
+    public void OpenCanvas(Canvas canvas)
+    { 
+        canvas?.gameObject.SetActive(true);
+    }
+    public void CloseShopCanvas()
     {
         _buyerCanvas?.gameObject.SetActive(false);
     }
-
-    private void CloseSellerCanvas()
+    public void CloseSellerCanvas()
     {
         _sellerCanvas?.gameObject.SetActive(false);
     }
 
-    private void OpenCloseBackpackPanel()
+    public void OpenCloseBackpackPanel()
     {
         _openBackpack = !_openBackpack;
         _backpackPanel?.gameObject.SetActive(_openBackpack);
