@@ -1,3 +1,4 @@
+// UIManager.cs
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -10,31 +11,29 @@ public class UIManager : MonoBehaviour
 
     [Header("HUD")]
     [Space]
-
     [SerializeField] private Canvas _HUDCanvas;
     [SerializeField] private Button _interactionButton;
     [SerializeField] private TMP_Text _moneyCount;
 
     [Header("Buyer")]
     [Space]
-
     [SerializeField] private Canvas _buyerCanvas;
     [SerializeField] private Button _exitBuyerButton;
 
-
     [Header("Seller")]
     [Space]
-
     [SerializeField] private Canvas _sellerCanvas;
     [SerializeField] private Button _exitSellerButton;
 
-
     [Header("Backpack")]
     [Space]
-
     [SerializeField] private GameObject _backpackPanel;
     [SerializeField] private Button _backpackButton;
+
     private bool _openBackpack = false;
+    // Новое поле — текущий источник взаимодействия
+    private object _currentInteractionSource;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,7 +41,6 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
@@ -59,20 +57,22 @@ public class UIManager : MonoBehaviour
         _exitBuyerButton?.onClick.AddListener(CloseShopCanvas);
 
         _exitSellerButton?.onClick.RemoveAllListeners();
-        _exitSellerButton?.onClick?.AddListener(CloseSellerCanvas);
+        _exitSellerButton?.onClick.AddListener(CloseSellerCanvas);
 
         _backpackButton?.onClick.RemoveAllListeners();
         _backpackButton?.onClick.AddListener(OpenCloseBackpackPanel);
         _backpackPanel?.gameObject.SetActive(_openBackpack);
 
         PlayerStatistic.Instance.OnMoneyChanged += UpdateMoneyCount;
-
         UpdateMoneyCount(PlayerStatistic.Instance.Money);
     }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I)) OpenCloseBackpackPanel();
+        if (Input.GetKeyDown(KeyCode.I))
+            OpenCloseBackpackPanel();
     }
+
     private void CloseShopCanvas()
     {
         _buyerCanvas?.gameObject.SetActive(false);
@@ -89,25 +89,36 @@ public class UIManager : MonoBehaviour
         _backpackPanel?.gameObject.SetActive(_openBackpack);
     }
 
-    public void EnableInteractionButton(UnityAction call)
+    public void EnableInteractionButton(UnityAction call, object source)
     {
+        if (_currentInteractionSource == source) return;
+
+        Debug.Log("Кнопка включена");
+        _currentInteractionSource = source;
+
         _interactionButton?.gameObject.SetActive(true);
         _interactionButton?.onClick.RemoveAllListeners();
-        _interactionButton.onClick.AddListener(call);
+        _interactionButton?.onClick.AddListener(call);
     }
-    public void DisableInteractionButton()
+
+    public void DisableInteractionButton(object source)
     {
+        if (_currentInteractionSource != source) return;
+
+        Debug.Log("Кнопка выключена");
+        _currentInteractionSource = null;
+
         _interactionButton?.onClick.RemoveAllListeners();
         _interactionButton?.gameObject.SetActive(false);
     }
+
     public void UpdateMoneyCount(int money)
     {
-        var nfi = new NumberFormatInfo()
+        var nfi = new NumberFormatInfo
         {
             NumberGroupSeparator = ".",
             NumberDecimalDigits = 0
         };
-
         _moneyCount.text = money.ToString("N0", nfi);
     }
 }

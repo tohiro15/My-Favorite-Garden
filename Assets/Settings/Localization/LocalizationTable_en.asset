@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: BUY
     m_Metadata:
       m_Items: []
+  - m_Id: 4909268719435776
+    m_Localized: INTERACTION
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

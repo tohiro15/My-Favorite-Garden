@@ -34,13 +34,15 @@ public class NPC : MonoBehaviour
             _isPlayerNear = true;
 
             _interactionButton?.SetActive(true);
-            UIManager.Instance.EnableInteractionButton(OpenCanvas);
+            UIManager.Instance.EnableInteractionButton(OpenCanvas, this);
+            Debug.Log("Игрок рядом");
         }
         else
         {
             _isPlayerNear = false;
             _interactionButton?.SetActive(false);
-            UIManager.Instance.DisableInteractionButton();
+            UIManager.Instance.DisableInteractionButton(this);
+            Debug.Log("Игрок далеко");
         }
     }
 
