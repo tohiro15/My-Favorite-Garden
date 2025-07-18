@@ -97,8 +97,8 @@ public class UIManager : MonoBehaviour
     }
     public void DisableInteractionButton()
     {
-        _interactionButton?.gameObject.SetActive(false);
         _interactionButton?.onClick.RemoveAllListeners();
+        _interactionButton?.gameObject.SetActive(false);
     }
     public void UpdateMoneyCount(int money)
     {
