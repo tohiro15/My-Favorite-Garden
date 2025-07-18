@@ -10,57 +10,49 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [Header("HUD")]
-    [Space]
     [SerializeField] private Canvas _HUDCanvas;
     [SerializeField] private Button _interactionButton;
     [SerializeField] private TMP_Text _moneyCount;
 
     [Header("Buyer")]
-    [Space]
     [SerializeField] private Canvas _buyerCanvas;
+    [SerializeField] private GameObject _buyerPanel;
     [SerializeField] private Button _exitBuyerButton;
 
     [Header("Seller")]
-    [Space]
     [SerializeField] private Canvas _sellerCanvas;
+    [SerializeField] private GameObject _sellerPanel;
     [SerializeField] private Button _exitSellerButton;
 
     [Header("Backpack")]
-    [Space]
     [SerializeField] private GameObject _backpackPanel;
     [SerializeField] private Button _backpackButton;
 
-    private bool _openBackpack = false;
     private object _currentInteractionSource;
-
+    private bool _anyPanelOpen = false;
+    private bool _isAnimatingPanel = false;
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        if (Instance != null && Instance != this) Destroy(gameObject);
+        else Instance = this;
     }
 
     private void Start()
     {
-        _HUDCanvas?.gameObject.SetActive(true);
-        _buyerCanvas?.gameObject.SetActive(false);
-        _sellerCanvas?.gameObject.SetActive(false);
+        _HUDCanvas.gameObject.SetActive(true);
 
-        _interactionButton?.onClick.RemoveAllListeners();
-        _interactionButton?.gameObject.SetActive(false);
+        _buyerCanvas.gameObject.SetActive(true);
+        _buyerPanel.SetActive(false);
+        _exitBuyerButton.onClick.AddListener(() => ClosePanel(_buyerPanel));
 
-        _exitBuyerButton?.onClick.RemoveAllListeners();
-        _exitBuyerButton?.onClick.AddListener(CloseShopCanvas);
+        _sellerCanvas.gameObject.SetActive(true);
+        _sellerPanel.SetActive(false);
+        _exitSellerButton.onClick.AddListener(() => ClosePanel(_sellerPanel));
 
-        _exitSellerButton?.onClick.RemoveAllListeners();
-        _exitSellerButton?.onClick.AddListener(CloseSellerCanvas);
+        _interactionButton.gameObject.SetActive(false);
 
-        _backpackButton?.onClick.RemoveAllListeners();
-        _backpackButton?.onClick.AddListener(OpenCloseBackpackPanel);
-        _backpackPanel?.gameObject.SetActive(_openBackpack);
+        _backpackButton.onClick.AddListener(OpenCloseBackpackPanel);
+        _backpackPanel.SetActive(false);
 
         PlayerStatistic.Instance.OnMoneyChanged += UpdateMoneyCount;
         UpdateMoneyCount(PlayerStatistic.Instance.Money);
@@ -68,53 +60,10 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-            OpenCloseBackpackPanel();
+        if(Input.GetKeyDown(KeyCode.I)) OpenCloseBackpackPanel();
     }
 
-    public void OpenCanvas(Canvas canvas)
-    { 
-        canvas?.gameObject.SetActive(true);
-    }
-    public void CloseShopCanvas()
-    {
-        _buyerCanvas?.gameObject.SetActive(false);
-    }
-    public void CloseSellerCanvas()
-    {
-        _sellerCanvas?.gameObject.SetActive(false);
-    }
-
-    public void OpenCloseBackpackPanel()
-    {
-        _openBackpack = !_openBackpack;
-        _backpackPanel?.gameObject.SetActive(_openBackpack);
-    }
-
-    public void EnableInteractionButton(UnityAction call, object source)
-    {
-        if (_currentInteractionSource == source) return;
-
-        Debug.Log("Кнопка включена");
-        _currentInteractionSource = source;
-
-        _interactionButton?.gameObject.SetActive(true);
-        _interactionButton?.onClick.RemoveAllListeners();
-        _interactionButton?.onClick.AddListener(call);
-    }
-
-    public void DisableInteractionButton(object source)
-    {
-        if (_currentInteractionSource != source) return;
-
-        Debug.Log("Кнопка выключена");
-        _currentInteractionSource = null;
-
-        _interactionButton?.onClick.RemoveAllListeners();
-        _interactionButton?.gameObject.SetActive(false);
-    }
-
-    public void UpdateMoneyCount(int money)
+    private void UpdateMoneyCount(int money)
     {
         var nfi = new NumberFormatInfo
         {
@@ -122,5 +71,81 @@ public class UIManager : MonoBehaviour
             NumberDecimalDigits = 0
         };
         _moneyCount.text = money.ToString("N0", nfi);
+    }
+
+    public void OpenPanel(GameObject panel)
+    {
+        if (panel == null || _anyPanelOpen || _isAnimatingPanel) return;
+
+        _isAnimatingPanel = true;
+        _anyPanelOpen = true;
+        _interactionButton.gameObject.SetActive(false);
+
+        RectTransform rt = panel.GetComponent<RectTransform>();
+        panel.SetActive(true);
+
+        rt.DOKill();
+
+        rt.anchoredPosition = new Vector2(0, -Screen.height);
+        rt.DOAnchorPos(Vector2.zero, 0.5f)
+          .SetEase(Ease.OutBack)
+          .OnComplete(() =>
+          {
+              _isAnimatingPanel = false;
+          });
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        if (panel == null || !_anyPanelOpen || _isAnimatingPanel) return;
+
+        _isAnimatingPanel = true;
+
+        RectTransform rt = panel.GetComponent<RectTransform>();
+
+        rt.DOKill();
+
+        rt.DOAnchorPos(new Vector2(0, -Screen.height), 0.5f)
+          .SetEase(Ease.InBack)
+          .OnComplete(() =>
+          {
+              panel.SetActive(false);
+              _anyPanelOpen = false;
+              _isAnimatingPanel = false;
+              _currentInteractionSource = null;
+          });
+    }
+
+    public void OpenCloseBackpackPanel()
+    {
+        bool opening = !_backpackPanel.activeSelf;
+        if (opening)
+        {
+            OpenPanel(_backpackPanel);
+        }
+        else
+        {
+            ClosePanel(_backpackPanel);
+        }
+    }
+
+    public void EnableInteractionButton(UnityAction call, object source)
+    {
+        if (_anyPanelOpen) return;
+        if (_currentInteractionSource == source) return;
+
+        _currentInteractionSource = source;
+        _interactionButton.onClick.RemoveAllListeners();
+        _interactionButton.onClick.AddListener(call);
+        _interactionButton.gameObject.SetActive(true);
+    }
+
+    public void DisableInteractionButton(object source)
+    {
+        if (_currentInteractionSource != source) return;
+
+        _currentInteractionSource = null;
+        _interactionButton.onClick.RemoveAllListeners();
+        _interactionButton.gameObject.SetActive(false);
     }
 }
