@@ -61,6 +61,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         _isSelected = true;
         _background.DOColor(_selectedColor, _tweenDuration);
         transform.DOScale(Vector3.one * _selectedScale, _tweenDuration);
+
+        SoundManager.Instance.PlaySelectedSound();
     }
 
     public void Deselect()
@@ -130,7 +132,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             sourceSlot.Add(tmpData, tmpCount);
         }
 
-        string keySlot = $"SlotFor_{draggedItem.ItemData.name}";
+        string keySlot = _isSelectable
+            ? $"SlotFor_{draggedItem.ItemData.name}"
+            : $"BackpackSlotFor_{draggedItem.ItemData.name}";
+
         string keyCount = $"CountFor_{draggedItem.ItemData.name}";
 
         PlayerPrefs.SetInt(keySlot, _slotIndex);

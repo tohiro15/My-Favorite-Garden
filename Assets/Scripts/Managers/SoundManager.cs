@@ -13,8 +13,12 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Clips")]
     [Space]
 
+    [Header("NPC")]
     [SerializeField] private AudioClip _buyClickSound;
     [SerializeField] private AudioClip _errorClickSound;
+
+    [Header("Inventory")]
+    [SerializeField] private AudioClip _selectedSound;
 
     private void Awake()
     {
@@ -43,6 +47,7 @@ public class SoundManager : MonoBehaviour
         _MusicAudioSource.Stop();
     }
 
+    public void PlaySelectedSound() => PlaySFX(_selectedSound);
     public void PlayBuyClick() => PlaySFX(_buyClickSound);
     public void PlayErrorClick() => PlaySFX(_errorClickSound);
 

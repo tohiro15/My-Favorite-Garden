@@ -34,15 +34,24 @@ public class InventoryUI : MonoBehaviour
 
         foreach (var itemData in _allItemTypes)
         {
-            string keySlot = $"SlotFor_{itemData.name}";
-            string keyCount = $"CountFor_{itemData.name}";
-            int savedSlot = PlayerPrefs.GetInt(keySlot, -1);
-            int savedCount = PlayerPrefs.GetInt(keyCount, itemData.DefaultCount);
+            string invKey = $"SlotFor_{itemData.name}";
+            string bpKey = $"BackpackSlotFor_{itemData.name}";
+            string cntKey = $"CountFor_{itemData.name}";
 
-            if (savedSlot >= 0 && savedSlot < _inventorySlots.Length && savedCount > 0)
-                _inventorySlots[savedSlot].Add(itemData, savedCount);
-            else if (savedSlot >= 0 && savedSlot < _backpackSlots.Length && savedCount > 0)
-                _backpackSlots[savedSlot].Add(itemData, savedCount);
+            int savedCount = PlayerPrefs.GetInt(cntKey, itemData.DefaultCount);
+
+            int invSlot = PlayerPrefs.GetInt(invKey, -1);
+            if (invSlot >= 0 && invSlot < _inventorySlots.Length && savedCount > 0)
+            {
+                _inventorySlots[invSlot].Add(itemData, savedCount);
+                continue;
+            }
+
+            int bpSlot = PlayerPrefs.GetInt(bpKey, -1);
+            if (bpSlot >= 0 && bpSlot < _backpackSlots.Length && savedCount > 0)
+            {
+                _backpackSlots[bpSlot].Add(itemData, savedCount);
+            }
         }
     }
 
