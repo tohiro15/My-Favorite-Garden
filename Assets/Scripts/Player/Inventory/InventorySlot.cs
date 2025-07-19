@@ -23,6 +23,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     public Item Item => _item;
     public bool IsEmpty => _isEmpty;
     private bool _isSelectable = true;
+    private bool _isBackpackSlot = false;
     private bool _isSelected = false;
 
     private void Awake()
@@ -37,6 +38,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         _slotIndex = index;
         _inventoryUI = parentUI;
         _isSelectable = isSelectable;
+        _isBackpackSlot = !isSelectable;
 
         _normalColor = normalColor;
         _selectedColor = selectedColor;
@@ -61,18 +63,23 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     public void Select()
     {
         _isSelected = true;
-        _background.DOColor(_selectedColor, _tweenDuration);
-        transform.DOScale(Vector3.one * _selectedScale, _tweenDuration);
+        _background.DOColor(_selectedColor, 0.2f);
+        transform.DOScale(_selectedScale, 0.2f);
+
+        if (!_isBackpackSlot && !_isEmpty)
+            _item.SetSelected(true);
 
         SoundManager.Instance.PlaySelectedSound();
     }
 
-
     public void Deselect()
     {
         _isSelected = false;
-        _background.DOColor(_normalColor, _tweenDuration);
-        transform.DOScale(Vector3.one * _normalScale, _tweenDuration);
+        _background.DOColor(_normalColor, 0.2f);
+        transform.DOScale(_normalScale, 0.2f);
+
+        if (!_isBackpackSlot && !_isEmpty)
+            _item.SetSelected(false);
     }
 
     public void Add(ItemData itemData, int count)

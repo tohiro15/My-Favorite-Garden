@@ -16,9 +16,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Transform _originalParent;
     private InventorySlot _originSlot;
 
+    private bool _isSelected = false;
+    private bool _isPointerOver = false;
     private int _itemCount;
-    public InventorySlot OriginSlot => _originSlot;
     private string PrefKey => $"ItemCount_{_itemData.name}";
+    public InventorySlot OriginSlot => _originSlot;
     public ItemData ItemData => _itemData;
     public int ItemCount => _itemCount;
     private void Awake()
@@ -68,7 +70,6 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
-
     private void UpdateUI()
     {
         bool hasAny = _itemCount > 0;
@@ -112,13 +113,22 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         _itemNameText.gameObject.SetActive(false);
     }
 
+
+    public void SetSelected(bool selected)
+    {
+        _isSelected = selected;
+        _itemNameText.gameObject.SetActive(_isSelected || _isPointerOver);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
+        _isPointerOver = true;
         _itemNameText.gameObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _itemNameText.gameObject.SetActive(false);
+        _isPointerOver = false;
+        _itemNameText.gameObject.SetActive(_isSelected);
     }
 }
