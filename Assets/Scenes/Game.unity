@@ -21945,6 +21945,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1949441486562243061, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: FootstepAudioVolume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2164545062266167315, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -29418,6 +29422,8 @@ MonoBehaviour:
   _buyClickSound: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
   _errorClickSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
   _selectedSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
+  _backpackOpenSound: {fileID: 8300000, guid: bc7b24b1b20724740b7094c7faa38a92, type: 3}
+  _backpackCloseSound: {fileID: 8300000, guid: 2be6d55e28bb07546b6b11443e6b56ce, type: 3}
 --- !u!4 &1344987180
 Transform:
   m_ObjectHideFlags: 0
@@ -32783,7 +32789,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 75ab93a2e944a4348a5e36adef1f63f4, type: 3}
   m_Resource: {fileID: 8300000, guid: 75ab93a2e944a4348a5e36adef1f63f4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.02
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -44785,7 +44791,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
