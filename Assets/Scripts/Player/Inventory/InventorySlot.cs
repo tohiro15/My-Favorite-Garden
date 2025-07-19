@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     [SerializeField] private Image _background;
 
@@ -54,6 +54,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (!_isSelectable) return;
         if (_isSelected) return;
         _inventoryUI.SelectSlot(_slotIndex);
+
+        SoundManager.Instance.PlaySelectedSound();
     }
 
     public void Select()
@@ -64,6 +66,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         SoundManager.Instance.PlaySelectedSound();
     }
+
 
     public void Deselect()
     {
