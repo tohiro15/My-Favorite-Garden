@@ -16,10 +16,11 @@ public class SoundManager : MonoBehaviour
     [Header("NPC")]
     [SerializeField] private AudioClip _buyClickSound;
     [SerializeField] private AudioClip _errorClickSound;
-
     [Header("Inventory")]
     [SerializeField] private AudioClip _selectedSound;
-
+    [Header("Backpack")]
+    [SerializeField] private AudioClip _backpackOpenSound;
+    [SerializeField] private AudioClip _backpackCloseSound;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -48,6 +49,8 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlaySelectedSound() => PlaySFX(_selectedSound);
+    public void PlayBackpackOpenSound() => PlaySFX(_backpackOpenSound);
+    public void PlayBackpackCloseSound() => PlaySFX(_backpackCloseSound);
     public void PlayBuyClick() => PlaySFX(_buyClickSound);
     public void PlayErrorClick() => PlaySFX(_errorClickSound);
 

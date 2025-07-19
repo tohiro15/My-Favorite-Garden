@@ -122,10 +122,12 @@ public class UIManager : MonoBehaviour
         if (opening)
         {
             OpenPanel(_backpackPanel);
+            SoundManager.Instance.PlayBackpackOpenSound();
         }
         else
         {
             ClosePanel(_backpackPanel);
+            SoundManager.Instance.PlayBackpackCloseSound();
         }
     }
 
