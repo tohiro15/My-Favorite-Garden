@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                UIManager.Instance.OpenPanel(_npcPanel);
+                UIManager.Instance.OpenPanel(_npcPanel, true);
             }
         }
     }

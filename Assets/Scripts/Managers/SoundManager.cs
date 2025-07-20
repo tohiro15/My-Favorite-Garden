@@ -14,10 +14,12 @@ public class SoundManager : MonoBehaviour
     [Space]
 
     [Header("NPC")]
+    [SerializeField] private AudioClip _openPanelSound;
     [SerializeField] private AudioClip _buyClickSound;
     [SerializeField] private AudioClip _errorClickSound;
     [Header("Inventory")]
     [SerializeField] private AudioClip _selectedSound;
+    [SerializeField] private AudioClip _dropSound;
     [Header("Backpack")]
     [SerializeField] private AudioClip _backpackOpenSound;
     [SerializeField] private AudioClip _backpackCloseSound;
@@ -49,8 +51,10 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlaySelectedSound() => PlaySFX(_selectedSound);
+    public void PlayInventoryDropSound() => PlaySFX(_dropSound);
     public void PlayBackpackOpenSound() => PlaySFX(_backpackOpenSound);
     public void PlayBackpackCloseSound() => PlaySFX(_backpackCloseSound);
+    public void PlayOpenPanelSound() => PlaySFX(_openPanelSound);
     public void PlayBuyClick() => PlaySFX(_buyClickSound);
     public void PlayErrorClick() => PlaySFX(_errorClickSound);
 

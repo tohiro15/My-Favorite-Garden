@@ -9904,7 +9904,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &434592939
 RectTransform:
@@ -12502,7 +12502,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &560172805
 RectTransform:
@@ -17418,7 +17418,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &820992907
 GameObject:
@@ -21947,7 +21947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1949441486562243061, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
       propertyPath: FootstepAudioVolume
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2164545062266167315, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
       propertyPath: m_Name
@@ -29419,9 +29419,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _SFXAudioSource: {fileID: 2069931509}
   _MusicAudioSource: {fileID: 1523683926}
+  _openPanelSound: {fileID: 8300000, guid: 72431433bf9fb29459549c447a28fb86, type: 3}
   _buyClickSound: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
   _errorClickSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
   _selectedSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
+  _dropSound: {fileID: 8300000, guid: d4b4564ad8ca7254c9d41efb905858eb, type: 3}
   _backpackOpenSound: {fileID: 8300000, guid: bc7b24b1b20724740b7094c7faa38a92, type: 3}
   _backpackCloseSound: {fileID: 8300000, guid: 2be6d55e28bb07546b6b11443e6b56ce, type: 3}
 --- !u!4 &1344987180
@@ -44791,7 +44793,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

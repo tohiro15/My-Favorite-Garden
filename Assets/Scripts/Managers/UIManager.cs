@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
         _moneyCount.text = money.ToString("N0", nfi);
     }
 
-    public void OpenPanel(GameObject panel)
+    public void OpenPanel(GameObject panel, bool playOpenSound = false)
     {
         if (panel == null || _anyPanelOpen || _isAnimatingPanel) return;
 
@@ -93,6 +93,8 @@ public class UIManager : MonoBehaviour
           {
               _isAnimatingPanel = false;
           });
+
+        if (playOpenSound) SoundManager.Instance.PlayOpenPanelSound();
     }
 
     public void ClosePanel(GameObject panel)
