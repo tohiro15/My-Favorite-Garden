@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: CarrotItemData
   m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 7432622799770361029, guid: 51a67f3bc21583a409feb699124a9203, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44

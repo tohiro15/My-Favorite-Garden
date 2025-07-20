@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: PotatoItemData
   m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 3575428152624000961, guid: 40a19664feea8334db2619ea861570be, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44

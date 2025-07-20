@@ -2,16 +2,35 @@ using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
+    public static HandController Instance { get; private set; }
+
     [SerializeField] private Transform _handPosition;
-    [SerializeField] private GameObject _prefabObject;
-
-    private void Start()
+    private GameObject _prefabObject;
+    private void Awake()
     {
-        Instantiate(_prefabObject, _handPosition);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
     }
-
-    private void Update()
+    public void Hold(GameObject itemPrefab)
     {
-        _prefabObject.transform.position = Vector3.zero;
+        if (itemPrefab == null || _handPosition == null) return;
+
+        if (_prefabObject != null)
+            Destroy(_prefabObject);
+
+        _prefabObject = Instantiate(itemPrefab, _handPosition, false);
+        _prefabObject.transform.localRotation = Quaternion.identity;
+    }
+    public void Clear()
+    {
+        if (_handPosition == null) return;
+
+        if (_prefabObject != null)
+            Destroy(_prefabObject);
     }
 }

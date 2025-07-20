@@ -91,12 +91,22 @@ public class InventoryUI : MonoBehaviour
 
         if (_selectedSlot >= 0)
             _inventorySlots[_selectedSlot].Deselect();
-        _selectedSlot = index;
-        _inventorySlots[_selectedSlot].Select();
 
-        // TODO: здесь можно инициировать появление предмета в руке
-        // var selectedItem = _inventorySlots[_selectedSlot].Item;
-        // HandController.Instance.Hold(selectedItem);
+        _selectedSlot = index;
+        var slot = _inventorySlots[_selectedSlot];
+
+        slot.Select();
+
+        if (!slot.IsEmpty)
+        {
+            var prefab = slot.Item.ItemData.ItemPrefab;
+            HandController.Instance.Hold(prefab);
+        }
+        else
+        {
+            HandController.Instance.Clear();
+        }
     }
+
 
 }

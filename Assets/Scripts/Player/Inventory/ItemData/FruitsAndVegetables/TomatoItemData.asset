@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: TomatoItemData
   m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 906453245972585529, guid: 00caac431abf7f948a559001b86d5377, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
