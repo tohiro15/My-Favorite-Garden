@@ -10,7 +10,7 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
     private bool _isEmpty = true;
     private bool _isSelected = false;
     private Color _defaultColor;
-
+    private BuyerUI _buyerUI;
     public BuyerItem BuyerItem => _buyerItem;
     public bool IsSeleted => _isSelected;
 
@@ -22,8 +22,9 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
         _defaultColor = GetComponent<Image>().color;
     }
 
-    public void Add(InventorySlot sourceSlot, ItemData data, GameObject buyerItemPrefab, int count)
+    public void Add(BuyerUI buyerUI, InventorySlot sourceSlot, ItemData data, GameObject buyerItemPrefab, int count)
     {
+        _buyerUI = buyerUI;
         _sourceSlot = sourceSlot;
         if (_buyerItem == null && data.CanSell)
         {

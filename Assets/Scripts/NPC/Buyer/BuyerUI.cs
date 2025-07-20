@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
-using UnityEngine.EventSystems;
 using System;
 
 public class BuyerUI : MonoBehaviour
@@ -97,7 +96,7 @@ public class BuyerUI : MonoBehaviour
                 var slice = new InventorySlot[countInThisLine];
                 Array.Copy(sellableSlots, startIdx, slice, 0, countInThisLine);
 
-                _lines[lineIndex].Initialize(slice, _buyerItemPrefab);
+                _lines[lineIndex].Initialize(this ,slice, _buyerItemPrefab);
             }
             else
             {
@@ -173,5 +172,8 @@ public class BuyerUI : MonoBehaviour
 
         _totalPriceText.text = _totalPrice.ToString("N0", nfi);
         _selectedItemPriceText.text = _selectedItemPrice.ToString("N0", nfi);
+
+        bool hasSelected = _lines.SelectMany(line => line.Slots).Any(slot => slot.IsSeleted);
+        _sellButton.gameObject.SetActive(hasSelected);
     }
 }

@@ -155,7 +155,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         draggedItem.transform.SetParent(transform);
         draggedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
-        if (_isSelectable && _inventoryUI.InventorySlots[_inventoryUI.SelectedSlotIndex] == this)
+        if (_isSelectable && _inventoryUI.SelectedSlotIndex >= 0 && _inventoryUI.SelectedSlotIndex < _inventoryUI.InventorySlots.Length && _inventoryUI.InventorySlots[_inventoryUI.SelectedSlotIndex] == this)
         {
             if (!IsEmpty && Item.ItemData?.ItemPrefab != null)
                 HandController.Instance.Hold(Item.ItemData.ItemPrefab);
