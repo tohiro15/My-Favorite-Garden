@@ -24,6 +24,8 @@ public class InventoryUI : MonoBehaviour
 
     private int _selectedSlot = -1;
 
+    public int SelectedSlotIndex => _selectedSlot;
+
     private void Awake()
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
@@ -97,7 +99,7 @@ public class InventoryUI : MonoBehaviour
 
         slot.Select();
 
-        if (!slot.IsEmpty)
+        if (!slot.IsEmpty && slot.Item.ItemData.ItemPrefab != null)
         {
             var prefab = slot.Item.ItemData.ItemPrefab;
             HandController.Instance.Hold(prefab);
