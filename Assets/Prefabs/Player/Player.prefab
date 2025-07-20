@@ -690,6 +690,37 @@ Transform:
   - {fileID: 943600150888411569}
   m_Father: {fileID: 6920874780995824541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1361377542187338541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1915159089130453072}
+  m_Layer: 0
+  m_Name: ItemHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1915159089130453072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361377542187338541}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6963643, y: -0.12278773, z: 0.6963643, w: -0.12278773}
+  m_LocalPosition: {x: 0.035, y: 0.07, z: -0.019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1773655690253846434}
+  m_LocalEulerAnglesHint: {x: -200, y: 90, z: 0}
 --- !u!1 &1408251949027967591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1494,7 @@ GameObject:
   - component: {fileID: 2289390873133367826}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4952,6 +4983,7 @@ Transform:
   - {fileID: 5617927886291660526}
   - {fileID: 3013313995495552310}
   - {fileID: 5035276413035879565}
+  - {fileID: 1915159089130453072}
   m_Father: {fileID: 4312055144786624220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7143104911943555186
@@ -6275,6 +6307,7 @@ GameObject:
   - component: {fileID: 1949441486562243061}
   - component: {fileID: 2282103955558485885}
   - component: {fileID: 3323307797947065082}
+  - component: {fileID: 1400012717102685743}
   - component: {fileID: 7298469651420581001}
   m_Layer: 8
   m_Name: PlayerArmature
@@ -6377,7 +6410,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ba6466c0db2d12649a51ba73749902d3, type: 3}
   - {fileID: 8300000, guid: be378a7ab9654eb41ab1e85da1701672, type: 3}
   - {fileID: 8300000, guid: cee5e6c416359ef4cbb722f0cd3a5a14, type: 3}
-  FootstepAudioVolume: 0.3
+  FootstepAudioVolume: 1
   JumpHeight: 1.2
   Gravity: -15
   JumpTimeout: 0.3
@@ -6429,6 +6462,20 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+--- !u!114 &1400012717102685743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165468646605130016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085eeaeb0f4708b4a87d40b6aec63f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handPosition: {fileID: 1915159089130453072}
+  _prefabObject: {fileID: 7823310272705202865, guid: 738b5a9777fd2fb4fb52c057138df7fc, type: 3}
 --- !u!114 &7298469651420581001
 MonoBehaviour:
   m_ObjectHideFlags: 0

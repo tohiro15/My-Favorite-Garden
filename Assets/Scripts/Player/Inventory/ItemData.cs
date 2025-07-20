@@ -4,6 +4,8 @@ using UnityEngine.Localization;
 [CreateAssetMenu(menuName = "Scripts/Player/Inventory/ItemData")]
 public class ItemData : ScriptableObject
 {
+    public GameObject _itemPrefab;
+    [Space]
     public LocalizedString ItemName;
     public Sprite Icon;
     public int DefaultCount = 1;

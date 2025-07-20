@@ -6818,6 +6818,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263089338}
   m_CullTransparentMesh: 1
+--- !u!4 &266002847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1773655690253846434, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+  m_PrefabInstance: {fileID: 988718084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &276379796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12705,6 +12710,37 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &583349517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583349518}
+  m_Layer: 0
+  m_Name: ItemHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &583349518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583349517}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6963643, y: -0.12278773, z: 0.6963643, w: -0.12278773}
+  m_LocalPosition: {x: 0.035, y: 0.07, z: -0.019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 266002847}
+  m_LocalEulerAnglesHint: {x: -200, y: 90, z: 0}
 --- !u!1 &594426119
 GameObject:
   m_ObjectHideFlags: 0
@@ -17032,6 +17068,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9165468646605130016, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
   m_PrefabInstance: {fileID: 988718084}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &793734475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793734467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085eeaeb0f4708b4a87d40b6aec63f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handPosition: {fileID: 583349518}
+  _prefabObject: {fileID: 7823310272705202865, guid: 738b5a9777fd2fb4fb52c057138df7fc, type: 3}
 --- !u!1001 &798797317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21957,6 +22007,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.20000032
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926442630988785945, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.20000032
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926442630988785945, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.0000005
+      objectReference: {fileID: 0}
     - target: {fileID: 9190591400148423184, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
@@ -21965,8 +22031,14 @@ PrefabInstance:
     - {fileID: 1230704846425066601, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
     - {fileID: 1581662782168612419, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1773655690253846434, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583349518}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9165468646605130016, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 793734475}
   m_SourcePrefab: {fileID: 100100000, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
 --- !u!1001 &992887906
 PrefabInstance:
