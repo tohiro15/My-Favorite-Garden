@@ -1,19 +1,22 @@
-﻿using System;
-using UnityEngine.EventSystems;
+﻿// BuyerSlot.cs
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 public class BuyerSlot : MonoBehaviour, IPointerClickHandler
 {
-    private InventorySlot _sourceSlot;
+    [SerializeField] private InventorySlot _sourceSlot;
+    public InventorySlot SourceSlot => _sourceSlot;
+
     private BuyerItem _buyerItem;
     private bool _isEmpty = true;
     private bool _isSelected = false;
     private Color _defaultColor;
     private BuyerUI _buyerUI;
+
     public BuyerItem BuyerItem => _buyerItem;
     public bool IsSeleted => _isSelected;
-
     public event Action<BuyerSlot> OnSlotClicked;
 
     private void Awake()
@@ -26,16 +29,17 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
     {
         _buyerUI = buyerUI;
         _sourceSlot = sourceSlot;
+
         if (_buyerItem == null && data.CanSell)
         {
             var go = Instantiate(buyerItemPrefab, transform);
             _buyerItem = go.GetComponent<BuyerItem>();
         }
+
         _buyerItem.Change(data, count);
         _buyerItem.gameObject.SetActive(true);
         _isEmpty = false;
     }
-
 
     public void Clear()
     {
@@ -45,14 +49,9 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
         GetComponent<Image>().color = _defaultColor;
         _buyerItem = null;
         _isEmpty = true;
-
         _isSelected = false;
 
-        if (_sourceSlot != null)
-        {
-            _sourceSlot.Clear();
-            _sourceSlot = null;
-        }
+        // Больше не очищаем _sourceSlot здесь!
     }
 
     public void OnPointerClick(PointerEventData eventData)

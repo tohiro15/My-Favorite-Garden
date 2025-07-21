@@ -27,13 +27,18 @@ public class InventoryUI : MonoBehaviour
 
     public int SelectedSlotIndex => _selectedSlot;
 
+
     private void Awake()
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
-            _inventorySlots[i].Initialization(_itemPrefab, i, this, _normalColor, _selectedColor, _normalSlotScale, _selectedSlotScale, _tweenSlotDuration, true);
+            _inventorySlots[i].Initialization(
+                _itemPrefab, i, this, _normalColor, _selectedColor,
+                _normalSlotScale, _selectedSlotScale, _tweenSlotDuration, true);
 
         for (int i = 0; i < _backpackSlots.Length; i++)
-            _backpackSlots[i].Initialization(_itemPrefab, i, this, _backpackColor, _backpackColor, _normalSlotScale, _selectedSlotScale, _tweenSlotDuration, false);
+            _backpackSlots[i].Initialization(
+                _itemPrefab, i, this, _backpackColor, _backpackColor,
+                _normalSlotScale, _selectedSlotScale, _tweenSlotDuration, false);
 
         foreach (var itemData in _allItemTypes)
         {
@@ -41,22 +46,25 @@ public class InventoryUI : MonoBehaviour
             string bpKey = $"BackpackSlotFor_{itemData.name}";
             string cntKey = $"CountFor_{itemData.name}";
 
-            int savedCount = PlayerPrefs.GetInt(cntKey, itemData.DefaultCount);
+            int savedCount = PlayerPrefs.GetInt(cntKey, 0);
+            if (savedCount <= 0)
+                continue;
 
             int invSlot = PlayerPrefs.GetInt(invKey, -1);
-            if (invSlot >= 0 && invSlot < _inventorySlots.Length && savedCount > 0)
+            if (invSlot >= 0 && invSlot < _inventorySlots.Length)
             {
                 _inventorySlots[invSlot].Add(itemData, savedCount);
                 continue;
             }
 
             int bpSlot = PlayerPrefs.GetInt(bpKey, -1);
-            if (bpSlot >= 0 && bpSlot < _backpackSlots.Length && savedCount > 0)
+            if (bpSlot >= 0 && bpSlot < _backpackSlots.Length)
             {
                 _backpackSlots[bpSlot].Add(itemData, savedCount);
             }
         }
     }
+
 
     private void Update()
     {
