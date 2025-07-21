@@ -70,9 +70,10 @@ public class InventoryUI : MonoBehaviour
         InventorySlot[] firstSearch = preferBackpack ? _backpackSlots : _inventorySlots;
         InventorySlot[] secondSearch = preferBackpack ? _inventorySlots : _backpackSlots;
 
+        // Достак уже в существующий слот
         foreach (var slot in firstSearch.Concat(secondSearch))
         {
-            if (!slot.IsEmpty && slot.Item.ItemData == itemData)
+            if (!slot.IsEmpty && slot.Item.ItemData == itemData && slot.Item.ItemCount < slot.Item.ItemData.MaxStackSize)
             {
                 slot.Item.Add(count);
                 SaveSlot(slot);
