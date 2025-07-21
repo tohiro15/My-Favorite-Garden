@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2018447302736682179}
+  - component: {fileID: 7238277476983045267}
+  - component: {fileID: 2626998611826360804}
   - component: {fileID: 8498154980346971404}
   - component: {fileID: 8825955633195425130}
-  - component: {fileID: 7238277476983045267}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -36,6 +37,37 @@ Transform:
   - {fileID: 8454610938176136922}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &7238277476983045267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926214624571227698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be57a4cf474b3e14b9871ef0aa53748f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fxPool: {fileID: 2626998611826360804}
+  _player: {fileID: 0}
+  _itemPrefab: {fileID: 5351048861960697227, guid: 776b39028bb7b6c4488c00f5cce2fc0e, type: 3}
+  _plantZone: {fileID: 7100424563777172036}
+  _interactionDistance: 5
+--- !u!114 &2626998611826360804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926214624571227698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6bdf30ece02534aaa79149bcf1bb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fxDigPrefab: {fileID: 8579966591951127539, guid: afbaad5e885477641b7d006c2bf8125a, type: 3}
+  _poolSize: 10
 --- !u!33 &8498154980346971404
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,22 +121,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7238277476983045267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926214624571227698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be57a4cf474b3e14b9871ef0aa53748f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _itemPrefab: {fileID: 5351048861960697227, guid: 776b39028bb7b6c4488c00f5cce2fc0e, type: 3}
-  _plantZone: {fileID: 7100424563777172036}
-  _interactionDistance: 5
 --- !u!1 &1555188751012648977
 GameObject:
   m_ObjectHideFlags: 0

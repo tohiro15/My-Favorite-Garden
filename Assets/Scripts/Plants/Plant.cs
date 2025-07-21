@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+    [SerializeField] private FXPool _fxPool;
+
     [SerializeField] private Transform _player;
     [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private GameObject _plantZone;
@@ -17,6 +19,7 @@ public class Plant : MonoBehaviour
         _plantZoneCollider = _plantZone.GetComponent<Collider>();
         _mainCamera = Camera.main;
         _player = FindAnyObjectByType<ThirdPersonController>().transform;
+        _fxPool = GetComponent<FXPool>();
     }
 
     private void Update()
@@ -30,24 +33,23 @@ public class Plant : MonoBehaviour
         Vector3 offset = transform.position - _player.position;
         float sqrDistance = offset.sqrMagnitude;
 
-        if (sqrDistance < _interactionDistance * _interactionDistance) _isPlayerNear = true;
-        else _isPlayerNear = false;
+        _isPlayerNear = sqrDistance < _interactionDistance * _interactionDistance;
     }
 
     private bool TryGetInteractionPosition(out Vector2 screenPos)
     {
-        // Mobile
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             screenPos = Input.GetTouch(0).position;
             return true;
         }
-        // PC
+
         if (Input.GetMouseButtonDown(0))
         {
             screenPos = Input.mousePosition;
             return true;
         }
+
         screenPos = default;
         return false;
     }
@@ -61,7 +63,6 @@ public class Plant : MonoBehaviour
         CheckRay(ray);
     }
 
-
     private void CheckRay(Ray ray)
     {
         if (!_isPlayerNear) return;
@@ -71,13 +72,16 @@ public class Plant : MonoBehaviour
             if (hit.collider == _plantZoneCollider)
             {
                 Instantiate(_itemPrefab, hit.point, Quaternion.identity, transform);
+
+                _fxPool?.GetFromPool(hit.point);
+                SoundManager.Instance.PlayDigSound();
             }
         }
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _interactionDistance);
     }
-
 }
