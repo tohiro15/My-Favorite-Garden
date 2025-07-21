@@ -28605,6 +28605,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _SFXAudioSource: {fileID: 2069931509}
   _MusicAudioSource: {fileID: 1523683926}
+  _musicClips:
+  - {fileID: 8300000, guid: 75ab93a2e944a4348a5e36adef1f63f4, type: 3}
+  - {fileID: 8300000, guid: 8b5654731717dfd48a0ae3ecf7601662, type: 3}
+  - {fileID: 8300000, guid: ee4137f1d019c874f9c0a8116d1ded3f, type: 3}
+  - {fileID: 8300000, guid: efe1c0473f383214f9f0978d83722ebe, type: 3}
   _openPanelSound: {fileID: 8300000, guid: 72431433bf9fb29459549c447a28fb86, type: 3}
   _buyClickSound: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
   _errorClickSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
@@ -31890,12 +31895,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 725f25dc7ae50f44c9b7e8c7eb4ac497, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 75ab93a2e944a4348a5e36adef1f63f4, type: 3}
-  m_Resource: {fileID: 8300000, guid: 75ab93a2e944a4348a5e36adef1f63f4, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -44046,7 +44051,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: ffa8db796b2b1954b86dc9705469211d, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
