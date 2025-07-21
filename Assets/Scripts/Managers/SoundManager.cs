@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -13,6 +14,14 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Clips")]
     [Space]
 
+    [Header("Music")]
+    [Space]
+
+    [SerializeField] private AudioClip[] _musicClips;
+    private int _currentMusic = 0;
+    [Header("SFX")]
+    [Space]
+
     [Header("NPC")]
     [SerializeField] private AudioClip _openPanelSound;
     [SerializeField] private AudioClip _buyClickSound;
@@ -23,6 +32,7 @@ public class SoundManager : MonoBehaviour
     [Header("Backpack")]
     [SerializeField] private AudioClip _backpackOpenSound;
     [SerializeField] private AudioClip _backpackCloseSound;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,6 +43,11 @@ public class SoundManager : MonoBehaviour
 
         Instance = this;
     }
+    private void Start()
+    {
+        StartCoroutine(PlayMusicSequence());
+    }
+
 
     public void PlaySFX(AudioClip clip)
     {
@@ -48,6 +63,22 @@ public class SoundManager : MonoBehaviour
     public void StopMusic()
     {
         _MusicAudioSource.Stop();
+    }
+    private IEnumerator PlayMusicSequence()
+    {
+        while (true)
+        {
+            if (_musicClips.Length == 0) yield break;
+
+            _MusicAudioSource.clip = _musicClips[_currentMusic];
+            _MusicAudioSource.Play();
+
+            yield return new WaitForSeconds(_musicClips[_currentMusic].length);
+
+            _currentMusic++;
+            if (_currentMusic >= _musicClips.Length)
+                _currentMusic = 0;
+        }
     }
 
     public void PlaySelectedSound() => PlaySFX(_selectedSound);
