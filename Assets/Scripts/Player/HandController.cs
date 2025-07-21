@@ -19,13 +19,23 @@ public class HandController : MonoBehaviour
     public void Hold(GameObject itemPrefab)
     {
         if (itemPrefab == null || _handPosition == null) return;
+        Clear();
 
-        if (_prefabObject != null)
-            Destroy(_prefabObject);
+        _prefabObject = Instantiate(itemPrefab, _handPosition);
+        var holdable = _prefabObject.GetComponent<Holdable>();
 
-        _prefabObject = Instantiate(itemPrefab, _handPosition, false);
-        _prefabObject.transform.localRotation = Quaternion.identity;
+        if (holdable != null)
+        {
+            _prefabObject.transform.localPosition = holdable.positionOffset;
+            _prefabObject.transform.localEulerAngles = holdable.rotationOffset;
+        }
+        else
+        {
+            _prefabObject.transform.localPosition = Vector3.zero;
+            _prefabObject.transform.localRotation = Quaternion.identity;
+        }
     }
+
     public void Clear()
     {
         if (_handPosition == null) return;
