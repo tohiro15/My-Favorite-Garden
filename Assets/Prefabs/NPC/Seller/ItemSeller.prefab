@@ -210,8 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccda9c65ed2f614ba9d24339a5dc1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buyClickSound: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
-  _errorClickSound: {fileID: 8300000, guid: aebae0e89d575dc43ae340319487ef87, type: 3}
 --- !u!1 &5394861024371360349
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,8 +277,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ITEM 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
-  m_sharedMaterial: {fileID: -5660775149628104760, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
+  m_sharedMaterial: {fileID: 2657779068781279388, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -515,7 +513,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
   m_sharedMaterial: {fileID: -5660775149628104760, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -581,7 +579,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &5616737227389726826

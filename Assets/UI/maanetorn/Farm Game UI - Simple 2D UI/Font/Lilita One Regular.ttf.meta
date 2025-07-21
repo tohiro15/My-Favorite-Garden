@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da57fb598c77b98448587ec02b2f20c4
+guid: f5346041e36ee6f4c9974539d792e7de
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Alumni Sans
+  - Lilita One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
