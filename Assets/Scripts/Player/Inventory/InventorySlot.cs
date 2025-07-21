@@ -20,11 +20,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     private GameObject _itemPrefab;
     private int _slotIndex;
     private bool _isEmpty = true;
-    public Item Item => _item;
-    public bool IsEmpty => _isEmpty;
     private bool _isSelectable = true;
     private bool _isBackpackSlot = false;
     private bool _isSelected = false;
+    public Item Item => _item;
+    public int SlotIndex => _slotIndex;
+    public bool IsEmpty => _isEmpty;
+    public bool IsSelectable => _isSelectable;
 
     private void Awake()
     {

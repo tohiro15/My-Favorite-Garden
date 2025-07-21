@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -64,27 +65,57 @@ public class InventoryUI : MonoBehaviour
                 SelectSlot(i);
     }
 
-    public void AddItem(ItemData itemData, int count)
+    public void AddItem(ItemData itemData, int count, bool preferBackpack = false)
     {
-        // Достакать в уже существующий слот
-        foreach (var slot in _inventorySlots)
+        InventorySlot[] firstSearch = preferBackpack ? _backpackSlots : _inventorySlots;
+        InventorySlot[] secondSearch = preferBackpack ? _inventorySlots : _backpackSlots;
+
+        foreach (var slot in firstSearch.Concat(secondSearch))
         {
             if (!slot.IsEmpty && slot.Item.ItemData == itemData)
             {
                 slot.Item.Add(count);
+                SaveSlot(slot);
                 return;
             }
         }
 
-        // Переместить в незанятый слот
-        foreach (var slot in _inventorySlots)
+        // Ищем первый пустой слот
+        foreach (var slot in firstSearch)
         {
             if (slot.IsEmpty)
             {
                 slot.Add(itemData, count);
+                SaveSlot(slot);
                 return;
             }
         }
+        // Если не нашли в приоритетной зоне — ищем в другой
+        foreach (var slot in secondSearch)
+        {
+            if (slot.IsEmpty)
+            {
+                slot.Add(itemData, count);
+                SaveSlot(slot);
+                return;
+            }
+        }
+
+        // Если вообще некуда добавить — показать сообщение игроку
+        Debug.LogWarning($"Нет свободного места ни в инвентаре, ни в рюкзаке для {itemData.name}");
+    }
+
+    private void SaveSlot(InventorySlot slot)
+    {
+        var item = slot.Item;
+        string keySlot = slot.IsSelectable
+            ? $"SlotFor_{item.ItemData.name}"
+            : $"BackpackSlotFor_{item.ItemData.name}";
+        string keyCount = $"CountFor_{item.ItemData.name}";
+
+        PlayerPrefs.SetInt(keySlot, slot.SlotIndex);
+        PlayerPrefs.SetInt(keyCount, item.ItemCount);
+        PlayerPrefs.Save();
     }
 
     public void SelectSlot(int index)

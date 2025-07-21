@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,7 +19,6 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private bool _isSelected = false;
     private bool _isPointerOver = false;
     private int _itemCount;
-    private string PrefKey => $"ItemCount_{_itemData.name}";
     public InventorySlot OriginSlot => _originSlot;
     public ItemData ItemData => _itemData;
     public int ItemCount => _itemCount;
@@ -27,7 +27,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
 
-        _itemCount = PlayerPrefs.GetInt(PrefKey, _itemData.DefaultCount);
+        _itemCount = PlayerPrefs.GetInt($"CountFor_{_itemData.name}", _itemData.DefaultCount);
         UpdateUI();
     }
     private void Start()
@@ -42,7 +42,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     }
     private void OnDisable()
     {
-        PlayerPrefs.SetInt(PrefKey, _itemCount);
+        PlayerPrefs.SetInt($"CountFor_{_itemData.name}", _itemCount);
         PlayerPrefs.Save();
     }
 
