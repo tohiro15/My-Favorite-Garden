@@ -1,81 +1,113 @@
+﻿using UnityEngine;
+using Unity.Cinemachine;
 using StarterAssets;
-using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    [SerializeField] private FXPool _fxPool;
+    [Header("Cameras")]
+    [Tooltip("Новая CinemachineCamera над грядкой")]
+    [SerializeField] private CinemachineCamera _plantCamera;
 
-    [SerializeField] private Transform _player;
+    private CinemachineCamera _playerCamera;
+
+    [Header("Planting Settings")]
+    [SerializeField] private FXPool _fxPool;
     [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private GameObject _plantZone;
     [SerializeField] private float _interactionDistance = 3f;
 
+    private ThirdPersonController _controller;
     private Collider _plantZoneCollider;
-    private Camera _mainCamera;
+    private Transform _player;
     private bool _isPlayerNear;
+    private bool _inPlantMode;
+    private bool _playerCamIsActive;
+
+    private const int PlayerCamPriority = 10;
+    private const int PlantCamPriority = 20;
+    private const int PlantCamIdlePriority = 0;
 
     private void Start()
     {
         _plantZoneCollider = _plantZone.GetComponent<Collider>();
-        _mainCamera = Camera.main;
-        _player = FindAnyObjectByType<ThirdPersonController>().transform;
         _fxPool = GetComponent<FXPool>();
+
+        _controller = FindAnyObjectByType<ThirdPersonController>();
+        if (_controller == null)
+        {
+            Debug.LogError("ThirdPersonController не найден в сцене!");
+            enabled = false;
+            return;
+        }
+        _player = _controller.transform;
+
+        _playerCamera = _controller.MainCamera;
+        if (_playerCamera == null)
+        {
+            Debug.LogError("Не найдена CinemachineCamera на игроке!");
+            enabled = false;
+            return;
+        }
+
+        _playerCamera.Priority = PlayerCamPriority;
+        _plantCamera.Priority = PlantCamIdlePriority;
     }
 
     private void Update()
     {
-        CheckDistance();
-        HandleInteraction();
-    }
+        CheckPlayerDistance();
 
-    private void CheckDistance()
-    {
-        Vector3 offset = transform.position - _player.position;
-        float sqrDistance = offset.sqrMagnitude;
-
-        _isPlayerNear = sqrDistance < _interactionDistance * _interactionDistance;
-    }
-
-    private bool TryGetInteractionPosition(out Vector2 screenPos)
-    {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.GetKeyDown(KeyCode.E) && _isPlayerNear)
         {
-            screenPos = Input.GetTouch(0).position;
-            return true;
+            _playerCamIsActive = _playerCamera.Priority > _plantCamera.Priority;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (!_inPlantMode && _playerCamIsActive)
         {
-            screenPos = Input.mousePosition;
-            return true;
+            EnterPlantMode();
         }
-
-        screenPos = default;
-        return false;
-    }
-
-    private void HandleInteraction()
-    {
-        if (!TryGetInteractionPosition(out Vector2 pos) || !_isPlayerNear)
-            return;
-
-        Ray ray = _mainCamera.ScreenPointToRay(pos);
-        CheckRay(ray);
-    }
-
-    private void CheckRay(Ray ray)
-    {
-        if (!_isPlayerNear) return;
-
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        else if (_inPlantMode && Input.GetMouseButtonDown(0))
         {
-            if (hit.collider == _plantZoneCollider)
-            {
-                Instantiate(_itemPrefab, hit.point, Quaternion.identity, transform);
+            TryPlantAtCursor();
+        }
+    }
 
-                _fxPool?.GetFromPool(hit.point);
-                SoundManager.Instance.PlayDigSound();
-            }
+    private void CheckPlayerDistance()
+    {
+        float sqrDist = (_player.position - transform.position).sqrMagnitude;
+        _isPlayerNear = sqrDist <= _interactionDistance * _interactionDistance;
+    }
+
+    private void EnterPlantMode()
+    {
+        _inPlantMode = true;
+        _controller.ToggleThirdPersonController(_inPlantMode);
+
+        _plantCamera.Priority = PlantCamPriority;
+        _playerCamera.Priority = PlayerCamPriority;
+    }
+
+    public void ExitPlantMode()
+    {
+        if (!_inPlantMode) return;
+
+        _inPlantMode = false;
+        _controller.ToggleThirdPersonController(_inPlantMode);
+
+        _plantCamera.Priority = PlantCamIdlePriority;
+        _playerCamera.Priority = PlayerCamPriority;
+    }
+
+    private void TryPlantAtCursor()
+    {
+        Camera cam = Camera.main;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out var hit) && hit.collider == _plantZoneCollider)
+        {
+            Instantiate(_itemPrefab, hit.point, Quaternion.identity, transform);
+            _fxPool?.GetFromPool(hit.point);
+            SoundManager.Instance.PlayDigSound();
         }
     }
 

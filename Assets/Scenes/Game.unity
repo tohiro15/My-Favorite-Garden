@@ -9931,6 +9931,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1770000852}
   m_SourcePrefab: {fileID: 100100000, guid: e3458714789ab6146a7e409bb5ea165b, type: 3}
+--- !u!114 &475905281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7163171998732200610, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+  m_PrefabInstance: {fileID: 988718084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &476344257
 GameObject:
   m_ObjectHideFlags: 0
@@ -21177,6 +21188,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1597874608727507341, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1915159089130453072, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07
@@ -21209,9 +21224,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1949441486562243061, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 475905281}
     - target: {fileID: 2164545062266167315, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187371186079984359, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.20000032
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.44500005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716736775528908213, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661823043820223396, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190591400148423184, guid: 29aada409fb1b7a4e9fe7a9161927c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43852,6 +43911,10 @@ PrefabInstance:
     - target: {fileID: 5709827281939607701, guid: 83478fc19d4a4f44caec86c8cd322e36, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210945635606724482, guid: 83478fc19d4a4f44caec86c8cd322e36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6715139025957824377, guid: 83478fc19d4a4f44caec86c8cd322e36, type: 3}
       propertyPath: m_StaticEditorFlags

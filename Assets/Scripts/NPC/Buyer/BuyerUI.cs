@@ -131,7 +131,6 @@ public class BuyerUI : MonoBehaviour
             int price = buyerSlot.BuyerItem.ItemData.ItemPrice * count;
             PlayerStatistic.Instance.AddMoney(price);
 
-            // Очищаем только InventorySlot, не трогая сам BuyerSlot
             if (buyerSlot.SourceSlot != null)
                 buyerSlot.SourceSlot.Clear();
         }
