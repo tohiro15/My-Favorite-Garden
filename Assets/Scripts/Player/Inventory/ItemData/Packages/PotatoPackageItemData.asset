@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PotatoPackageItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 0}
-  PlantPrefab: {fileID: 0}
+  PlantPrefab: {fileID: 1819358590325638, guid: e48b8d820d122d64484926ce5e8f6e8c, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44

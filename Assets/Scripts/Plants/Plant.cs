@@ -12,7 +12,6 @@ public class Plant : MonoBehaviour
 
     [Header("Planting Settings")]
     [SerializeField] private FXPool _fxPool;
-    [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private GameObject _plantZone;
     [SerializeField] private float _interactionDistance = 3f;
 

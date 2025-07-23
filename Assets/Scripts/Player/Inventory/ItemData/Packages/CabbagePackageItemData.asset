@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CabbagePackageItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 0}
-  PlantPrefab: {fileID: 0}
+  PlantPrefab: {fileID: 1289759693286266, guid: 0d64776e4e2c7de4cb02f9b3998fa4bf, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44

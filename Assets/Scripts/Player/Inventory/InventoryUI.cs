@@ -104,7 +104,7 @@ public class InventoryUI : MonoBehaviour
 
                 if (slot.IsSelectable && SelectedSlotIndex == slot.SlotIndex && itemData.PlantPrefab != null)
                 {
-                    HandController.Instance.Hold(itemData.PlantPrefab, itemData);
+                    HandController.Instance.Hold(itemData.ItemPrefab, itemData);
                 }
 
                 return;
@@ -153,7 +153,7 @@ public class InventoryUI : MonoBehaviour
 
         if (!slot.IsEmpty && slot.Item.ItemData.PlantPrefab != null)
         {
-            HandController.Instance.Hold(slot.Item.ItemData.PlantPrefab, slot.Item.ItemData);
+            HandController.Instance.Hold(slot.Item.ItemData.ItemPrefab, slot.Item.ItemData);
         }
         else
         {

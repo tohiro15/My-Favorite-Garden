@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33773876670190712}
   - component: {fileID: 23976823614827798}
   m_Layer: 0
-  m_Name: SM_Prop_Plant_Potato_01_L
+  m_Name: PotatoPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

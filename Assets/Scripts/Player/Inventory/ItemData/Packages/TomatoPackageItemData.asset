@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TomatoPackageItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 0}
-  PlantPrefab: {fileID: 5351048861960697227, guid: 776b39028bb7b6c4488c00f5cce2fc0e, type: 3}
+  PlantPrefab: {fileID: 1261134927141026, guid: 9bf2c79eafa22814a8bd2e6b64647e20, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44

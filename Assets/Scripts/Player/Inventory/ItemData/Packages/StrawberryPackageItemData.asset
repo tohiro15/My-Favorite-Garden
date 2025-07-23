@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrawberryPackageItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 0}
-  PlantPrefab: {fileID: 0}
+  PlantPrefab: {fileID: 1375989593388052, guid: 4232f6069043efb4ca1fec1a7319544f, type: 3}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44

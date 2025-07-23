@@ -12,7 +12,10 @@ public class HandController : MonoBehaviour
     public void Hold(GameObject prefab, ItemData data)
     {
         Clear();
-        _currentView = Instantiate(prefab, transform);
+        if (prefab != null)
+        {
+            _currentView = Instantiate(prefab, transform);
+        }
         CurrentItemData = data;
         Debug.Log($"У вас в руках {data.ItemName}");
     }
