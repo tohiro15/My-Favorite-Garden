@@ -6,24 +6,26 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
 
     [Header("Audio Source")]
-    [Space]
+    [Space(5)]
 
     [SerializeField] private AudioSource _SFXAudioSource;
     [SerializeField] private AudioSource _MusicAudioSource;
 
     [Header("Audio Clips")]
-    [Space]
+    [Space(5)]
 
     [Header("Music")]
-    [Space]
+    [Space(2)]
 
     [SerializeField] private AudioClip[] _musicClips;
     private int _currentMusic = 0;
+
     [Header("SFX")]
-    [Space]
+    [Space(2)]
+
+    [SerializeField] private AudioClip _openPanelSound;
 
     [Header("NPC")]
-    [SerializeField] private AudioClip _openPanelSound;
     [SerializeField] private AudioClip _buyClickSound;
     [SerializeField] private AudioClip _errorClickSound;
     [Header("Plant")]

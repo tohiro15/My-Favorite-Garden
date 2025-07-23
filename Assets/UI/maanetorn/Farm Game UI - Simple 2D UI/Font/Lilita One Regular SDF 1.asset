@@ -4219,7 +4219,7 @@ MonoBehaviour:
   fontWeights: []
   normalStyle: 0
   normalSpacingOffset: -5
-  boldStyle: 0.75
+  boldStyle: 3
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
@@ -4324,9 +4324,9 @@ Material:
     - _OutlineWidth: 0.6
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.82712984
-    - _ScaleRatioB: 0.49375
-    - _ScaleRatioC: 0.49375
+    - _ScaleRatioA: 0.53078556
+    - _ScaleRatioB: 0.025000015
+    - _ScaleRatioC: 0.025000015
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -4345,7 +4345,7 @@ Material:
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
-    - _WeightBold: 0.75
+    - _WeightBold: 3
     - _WeightNormal: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}

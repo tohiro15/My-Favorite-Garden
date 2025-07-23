@@ -62,6 +62,10 @@ MonoBehaviour:
     m_Localized: INTERACTION
     m_Metadata:
       m_Items: []
+  - m_Id: 6882350464040960
+    m_Localized: EXIT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

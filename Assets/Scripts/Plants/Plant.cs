@@ -21,7 +21,6 @@ public class Plant : MonoBehaviour
     private Transform _player;
     private bool _isPlayerNear;
     private bool _inPlantMode;
-    private bool _playerCamIsActive;
 
     private const int PlayerCamPriority = 10;
     private const int PlantCamPriority = 20;
@@ -59,29 +58,47 @@ public class Plant : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && _isPlayerNear)
         {
-            _playerCamIsActive = _playerCamera.Priority > _plantCamera.Priority;
+            if (!_inPlantMode)
+                EnterPlantMode();
+            else
+                ExitPlantMode();
         }
 
-        if (!_inPlantMode && _playerCamIsActive)
-        {
-            EnterPlantMode();
-        }
-        else if (_inPlantMode && Input.GetMouseButtonDown(0))
+        if (_inPlantMode && Input.GetMouseButtonDown(0))
         {
             TryPlantAtCursor();
         }
     }
 
+
     private void CheckPlayerDistance()
     {
         float sqrDist = (_player.position - transform.position).sqrMagnitude;
         _isPlayerNear = sqrDist <= _interactionDistance * _interactionDistance;
+
+
+        if (sqrDist < _interactionDistance * _interactionDistance)
+        {
+            _isPlayerNear = true;
+
+            UIManager.Instance.EnableInteractionButton(() => EnterPlantMode(), this);
+        }
+        else
+        {
+            _isPlayerNear = false;
+
+            UIManager.Instance.DisableInteractionButton(this);
+        }
     }
 
     private void EnterPlantMode()
-    { 
+    {
         _inPlantMode = true;
-        _controller.ToggleThirdPersonController(_inPlantMode);
+        _controller.ToggleThirdPersonController(true);
+
+        UIManager.Instance.OpenPlantPanel();
+        UIManager.Instance.EnableExitButton(ExitPlantMode, this);
+
         _plantCamera.Priority = PlantCamPriority;
         _playerCamera.Priority = PlayerCamPriority;
     }
@@ -92,11 +109,15 @@ public class Plant : MonoBehaviour
         if (!_inPlantMode) return;
 
         _inPlantMode = false;
+
+        UIManager.Instance.DisableExitButton(this);
+
         _controller.ToggleThirdPersonController(_inPlantMode);
 
         _plantCamera.Priority = PlantCamIdlePriority;
         _playerCamera.Priority = PlayerCamPriority;
     }
+
 
     private void TryPlantAtCursor()
     {

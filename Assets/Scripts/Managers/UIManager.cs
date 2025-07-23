@@ -24,11 +24,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _sellerPanel;
     [SerializeField] private Button _exitSellerButton;
 
+    [Header("Plant")]
+    [SerializeField] private Canvas _plantCanvas;
+    [SerializeField] private GameObject _plantPanel;
+    [SerializeField] private Button _exitPlantButton;
+
     [Header("Backpack")]
     [SerializeField] private GameObject _backpackPanel;
     [SerializeField] private Button _backpackButton;
 
+    private Vector2 _interactionButtonTargetPosition;
+
     private object _currentInteractionSource;
+    private object _currentExitSource;
+
     private bool _anyPanelOpen = false;
     private bool _isAnimatingPanel = false;
     private void Awake()
@@ -39,6 +48,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        _interactionButtonTargetPosition = _interactionButton.GetComponent<RectTransform>().anchoredPosition;
+
         _HUDCanvas.gameObject.SetActive(true);
 
         _buyerCanvas.gameObject.SetActive(true);
@@ -49,9 +60,13 @@ public class UIManager : MonoBehaviour
         _sellerPanel.SetActive(false);
         _exitSellerButton.onClick.AddListener(() => ClosePanel(_sellerPanel));
 
+        _plantCanvas?.gameObject.SetActive(true);
+        _plantPanel?.gameObject.SetActive(false);
+        _exitPlantButton?.onClick.AddListener(() => ClosePanel(_plantPanel));
+
         _interactionButton.gameObject.SetActive(false);
 
-        _backpackButton.onClick.AddListener(OpenCloseBackpackPanel);
+        _backpackButton.onClick.AddListener(() => ToggleBackpackPanel(_backpackPanel));
         _backpackPanel.SetActive(false);
 
         PlayerStatistic.Instance.OnMoneyChanged += UpdateMoneyCount;
@@ -60,7 +75,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I)) OpenCloseBackpackPanel();
+        if(Input.GetKeyDown(KeyCode.I)) ToggleBackpackPanel(_backpackPanel);
     }
 
     private void UpdateMoneyCount(int money)
@@ -94,7 +109,14 @@ public class UIManager : MonoBehaviour
               _isAnimatingPanel = false;
           });
 
-        if (playOpenSound) SoundManager.Instance.PlayOpenPanelSound();
+        if (panel == _backpackPanel && playOpenSound)
+        {
+            SoundManager.Instance.PlayBackpackOpenSound();
+        }
+        else if (playOpenSound)
+        {
+            SoundManager.Instance.PlayOpenPanelSound();
+        }
     }
 
     public void ClosePanel(GameObject panel)
@@ -116,40 +138,116 @@ public class UIManager : MonoBehaviour
               _isAnimatingPanel = false;
               _currentInteractionSource = null;
           });
-    }
 
-    public void OpenCloseBackpackPanel()
-    {
-        bool opening = !_backpackPanel.activeSelf;
-        if (opening)
+        if (panel == _backpackPanel)
         {
-            OpenPanel(_backpackPanel);
-            SoundManager.Instance.PlayBackpackOpenSound();
-        }
-        else
-        {
-            ClosePanel(_backpackPanel);
             SoundManager.Instance.PlayBackpackCloseSound();
         }
     }
+
+    public void ToggleBackpackPanel(GameObject panel)
+    {
+        bool opening = !panel.activeSelf;
+        if (opening)
+        {
+            OpenPanel(panel);
+        }
+        else
+        {
+            ClosePanel(panel);
+        }
+    }
+
+    public void ToggleBuyerPanel()
+    {
+        bool opening = !_buyerPanel.activeSelf;
+        if (opening)
+        {
+            OpenPanel(_buyerPanel);
+        }
+        else
+        {
+            ClosePanel(_buyerPanel);
+        }
+    }
+
+    public void OpenNPCPanel(NPCType npcType)
+    {
+        switch (npcType)
+        {
+            case NPCType.None:
+
+                break;
+            case NPCType.Seller:
+
+                OpenPanel(_sellerPanel);
+
+                break;
+            case NPCType.Buyer:
+
+                OpenPanel(_buyerPanel);
+
+                break;
+        }
+    }
+    public void OpenPlantPanel() => OpenPanel(_plantPanel);
+    public void ClosePlantPanel() => ClosePanel(_plantPanel);
 
     public void EnableInteractionButton(UnityAction call, object source)
     {
         if (_anyPanelOpen) return;
         if (_currentInteractionSource == source) return;
+        if (_interactionButton == null) return;
 
         _currentInteractionSource = source;
         _interactionButton.onClick.RemoveAllListeners();
         _interactionButton.onClick.AddListener(call);
+
+        RectTransform rt = _interactionButton.GetComponent<RectTransform>();
+        rt.DOKill();
+
+        rt.anchoredPosition = new Vector2(_interactionButtonTargetPosition.x, -Screen.height);
         _interactionButton.gameObject.SetActive(true);
+
+        rt.DOAnchorPos(_interactionButtonTargetPosition, 0.3f)
+          .SetEase(Ease.OutBack);
     }
+
+
 
     public void DisableInteractionButton(object source)
     {
         if (_currentInteractionSource != source) return;
+        if (_interactionButton == null) return;
 
         _currentInteractionSource = null;
         _interactionButton.onClick.RemoveAllListeners();
-        _interactionButton.gameObject.SetActive(false);
+
+        RectTransform rt = _interactionButton.GetComponent<RectTransform>();
+        rt.DOKill();
+
+        rt.DOAnchorPos(new Vector2(_interactionButtonTargetPosition.x, -Screen.height), 0.3f)
+          .SetEase(Ease.InBack)
+          .OnComplete(() => _interactionButton.gameObject.SetActive(false));
+    }
+
+
+    public void EnableExitButton(UnityAction call, object source)
+    {
+        if (_currentExitSource == source) return;
+
+        _currentExitSource = source;
+        _exitPlantButton.onClick.RemoveAllListeners();
+        _exitPlantButton.onClick.AddListener(call);
+        _exitPlantButton.gameObject.SetActive(true);
+    }
+
+    public void DisableExitButton(object source)
+    {
+        if (_currentExitSource != source) return;
+
+        _currentExitSource = null;
+        _exitPlantButton.onClick.RemoveAllListeners();
+        ClosePlantPanel();
     }
 }
