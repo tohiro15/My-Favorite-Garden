@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
+    public static InventoryUI Instance;
+
     [SerializeField] private GameObject _itemPrefab;
 
     [Space]
@@ -30,6 +32,9 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this) Destroy(gameObject);
+        else Instance = this;
+
         for (int i = 0; i < _inventorySlots.Length; i++)
             _inventorySlots[i].Initialization(
                 _itemPrefab, i, this, _normalColor, _selectedColor,
@@ -96,8 +101,15 @@ public class InventoryUI : MonoBehaviour
             {
                 slot.Add(itemData, count);
                 SaveSlot(slot);
+
+                if (slot.IsSelectable && SelectedSlotIndex == slot.SlotIndex && itemData.PlantPrefab != null)
+                {
+                    HandController.Instance.Hold(itemData.PlantPrefab, itemData);
+                }
+
                 return;
             }
+
         }
         // Если не нашли в приоритетной зоне — ищем в другой
         foreach (var slot in secondSearch)
@@ -139,10 +151,9 @@ public class InventoryUI : MonoBehaviour
 
         slot.Select();
 
-        if (!slot.IsEmpty && slot.Item.ItemData.ItemPrefab != null)
+        if (!slot.IsEmpty && slot.Item.ItemData.PlantPrefab != null)
         {
-            var prefab = slot.Item.ItemData.ItemPrefab;
-            HandController.Instance.Hold(prefab);
+            HandController.Instance.Hold(slot.Item.ItemData.PlantPrefab, slot.Item.ItemData);
         }
         else
         {

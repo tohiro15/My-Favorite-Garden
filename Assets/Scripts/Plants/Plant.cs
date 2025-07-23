@@ -17,6 +17,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private float _interactionDistance = 3f;
 
     private ThirdPersonController _controller;
+    private ItemData _selectedData;
     private Collider _plantZoneCollider;
     private Transform _player;
     private bool _isPlayerNear;
@@ -79,13 +80,13 @@ public class Plant : MonoBehaviour
     }
 
     private void EnterPlantMode()
-    {
+    { 
         _inPlantMode = true;
         _controller.ToggleThirdPersonController(_inPlantMode);
-
         _plantCamera.Priority = PlantCamPriority;
         _playerCamera.Priority = PlayerCamPriority;
     }
+
 
     public void ExitPlantMode()
     {
@@ -100,16 +101,27 @@ public class Plant : MonoBehaviour
 
     private void TryPlantAtCursor()
     {
+        _selectedData = HandController.Instance.CurrentItemData;
+
+        if (_selectedData == null || !_selectedData.IsPlantable)
+        {
+            Debug.Log("Нечего садить или предмет не посадочный");
+            return;
+        }
+
         Camera cam = Camera.main;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out var hit) && hit.collider == _plantZoneCollider)
         {
-            Instantiate(_itemPrefab, hit.point, Quaternion.identity, transform);
+            Instantiate(_selectedData.PlantPrefab, hit.point, Quaternion.identity, transform);
+
             _fxPool?.GetFromPool(hit.point);
             SoundManager.Instance.PlayDigSound();
+
+            InventoryUI.Instance.InventorySlots[InventoryUI.Instance.SelectedSlotIndex].Remove(_selectedData, 1);
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {

@@ -91,9 +91,27 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             var go = Instantiate(_itemPrefab, transform);
             _item = go.GetComponent<Item>();
         }
+
         _item.Change(itemData, count);
         _item.gameObject.SetActive(true);
         _isEmpty = false;
+    }
+
+    public void Remove(ItemData itemData, int count)
+    {
+        if (_item == null) return;
+
+        _item.Remove(count);
+
+        if (_item != null && _item.ItemCount > 0)
+        {
+            _item.gameObject.SetActive(true);
+            _isEmpty = false;
+        }
+        else
+        {
+            Clear();
+        }
     }
 
     public void Clear()
@@ -109,6 +127,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             PlayerPrefs.Save();
 
             _item = null;
+        }
+
+        if (_isSelectable && _inventoryUI.SelectedSlotIndex == _slotIndex)
+        {
+            HandController.Instance.Clear();
+            Debug.Log("Предмет закончился");
         }
 
         _isEmpty = true;
@@ -159,10 +183,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 
         if (_isSelectable && _inventoryUI.SelectedSlotIndex >= 0 && _inventoryUI.SelectedSlotIndex < _inventoryUI.InventorySlots.Length && _inventoryUI.InventorySlots[_inventoryUI.SelectedSlotIndex] == this)
         {
-            if (!IsEmpty && Item.ItemData?.ItemPrefab != null)
-                HandController.Instance.Hold(Item.ItemData.ItemPrefab);
+            if (!_isEmpty && _item.ItemData.PlantPrefab)
+            {
+                HandController.Instance.Hold(_item.ItemData.ItemPrefab, _item.ItemData);
+            }
             else
+            {
                 HandController.Instance.Clear();
+            }
         }
     }
 

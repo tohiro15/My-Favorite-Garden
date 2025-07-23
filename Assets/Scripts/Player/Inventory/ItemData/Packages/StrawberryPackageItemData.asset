@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
   m_Name: StrawberryPackageItemData
   m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 0}
+  PlantPrefab: {fileID: 0}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
@@ -25,7 +27,8 @@ MonoBehaviour:
   DefaultCount: 1
   MaxStackSize: 99
   ItemPrice: 1
-  _canSell: 0
+  CanSell: 0
+  IsPlantable: 1
   references:
     version: 2
     RefIds: []

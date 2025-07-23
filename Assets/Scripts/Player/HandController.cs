@@ -4,43 +4,22 @@ public class HandController : MonoBehaviour
 {
     public static HandController Instance { get; private set; }
 
-    [SerializeField] private Transform _handPosition;
-    private GameObject _prefabObject;
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+    private GameObject _currentView;
+    public ItemData CurrentItemData { get; private set; }
 
-        Instance = this;
-    }
-    public void Hold(GameObject itemPrefab)
+    private void Awake() => Instance = this;
+
+    public void Hold(GameObject prefab, ItemData data)
     {
-        if (itemPrefab == null || _handPosition == null) return;
         Clear();
-
-        _prefabObject = Instantiate(itemPrefab, _handPosition);
-        var holdable = _prefabObject.GetComponent<Holdable>();
-
-        if (holdable != null)
-        {
-            _prefabObject.transform.localPosition = holdable.positionOffset;
-            _prefabObject.transform.localEulerAngles = holdable.rotationOffset;
-        }
-        else
-        {
-            _prefabObject.transform.localPosition = Vector3.zero;
-            _prefabObject.transform.localRotation = Quaternion.identity;
-        }
+        _currentView = Instantiate(prefab, transform);
+        CurrentItemData = data;
+        Debug.Log($"У вас в руках {data.ItemName}");
     }
 
     public void Clear()
     {
-        if (_handPosition == null) return;
-
-        if (_prefabObject != null)
-            Destroy(_prefabObject);
+        if (_currentView != null) Destroy(_currentView);
+        CurrentItemData = null;
     }
 }
