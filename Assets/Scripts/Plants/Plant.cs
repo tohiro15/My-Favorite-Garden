@@ -133,7 +133,7 @@ public class Plant : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out var hit) && hit.collider == _plantZoneCollider)
         {
-            Instantiate(_selectedData.PlantPrefab, hit.point, Quaternion.identity, transform);
+            var plant = Instantiate(_selectedData.PlantPrefab, hit.point, Quaternion.identity, transform);
 
             _fxPool?.GetFromPool(hit.point);
             SoundManager.Instance.PlayDigSound();

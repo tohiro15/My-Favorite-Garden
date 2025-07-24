@@ -17,7 +17,7 @@ public class HandController : MonoBehaviour
             _currentView = Instantiate(prefab, transform);
         }
         CurrentItemData = data;
-        Debug.Log($"У вас в руках {data.ItemName}");
+        Debug.Log($"Вы взяли предмет в руку");
     }
 
     public void Clear()
