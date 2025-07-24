@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7447788123197329212}
   - component: {fileID: 7447788123197329211}
   m_Layer: 0
-  m_Name: FX_CuttingSmallTree
+  m_Name: FX_CuttingTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

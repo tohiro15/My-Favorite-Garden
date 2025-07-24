@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ClosePanel(GameObject panel)
+    public void ClosePanel(GameObject panel, bool playOpenSound = false)
     {
         if (panel == null || !_anyPanelOpen || _isAnimatingPanel) return;
 
@@ -139,7 +139,7 @@ public class UIManager : MonoBehaviour
               _currentInteractionSource = null;
           });
 
-        if (panel == _backpackPanel)
+        if (panel == _backpackPanel && playOpenSound)
         {
             SoundManager.Instance.PlayBackpackCloseSound();
         }
@@ -150,11 +150,11 @@ public class UIManager : MonoBehaviour
         bool opening = !panel.activeSelf;
         if (opening)
         {
-            OpenPanel(panel);
+            OpenPanel(panel, true);
         }
         else
         {
-            ClosePanel(panel);
+            ClosePanel(panel, true);
         }
     }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StrawberryItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 2380274916805294372, guid: 4cff40cefa656cd47bc206b33441b49f, type: 3}
+  PlantPrefab: {fileID: 0}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
@@ -23,10 +24,11 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   Icon: {fileID: 21300000, guid: ba3f3c7fec011d443ac441ee5a8ebfd4, type: 3}
-  DefaultCount: 1
+  DefaultCount: 4
   MaxStackSize: 99
   ItemPrice: 2
   CanSell: 1
+  IsPlantable: 0
   references:
     version: 2
     RefIds: []

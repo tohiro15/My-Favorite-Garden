@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class FXPool : MonoBehaviour
 {
-    [SerializeField] private GameObject _fxDigPrefab;
+    [SerializeField] private GameObject _fxPrefab;
     [SerializeField] private int _poolSize = 10;
 
     private List<GameObject> _pool = new();
@@ -12,7 +14,7 @@ public class FXPool : MonoBehaviour
     {
         for (int i = 0; i < _poolSize; i++)
         {
-            GameObject obj = Instantiate(_fxDigPrefab, transform);
+            GameObject obj = Instantiate(_fxPrefab, transform);
             obj.SetActive(false);
             _pool.Add(obj);
         }
@@ -42,7 +44,7 @@ public class FXPool : MonoBehaviour
             }
         }
 
-        GameObject newObj = Instantiate(_fxDigPrefab, position, Quaternion.identity, transform);
+        GameObject newObj = Instantiate(_fxPrefab, position, Quaternion.identity, transform);
         _pool.Add(newObj);
 
         ParticleSystem newPs = newObj.GetComponent<ParticleSystem>();
@@ -62,5 +64,25 @@ public class FXPool : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         fxObj.SetActive(false);
+    }
+
+    public void DestroyParent(GameObject parent, Vector3 position)
+    {
+        StartCoroutine(DestroyWithFX(parent, position));
+    }
+    private IEnumerator DestroyWithFX(GameObject parent,Vector3 position)
+    {
+        GameObject fx = GetFromPool(position);
+        ParticleSystem ps = fx.GetComponent<ParticleSystem>();
+
+        float duration = ps != null ?
+            ps.main.duration + ps.main.startLifetime.constantMax :
+            2f;
+
+        parent.transform.DOScale(Vector3.zero, ps.main.duration + ps.main.startLifetime.constantMax).SetEase(Ease.InCirc).OnComplete(() => { parent.gameObject.SetActive(false); });
+
+        yield return new WaitForSeconds(duration);
+
+        Destroy(parent);
     }
 }

@@ -94,6 +94,11 @@ public class InventoryUI : MonoBehaviour
                 slot.Item.Add(count);
                 SaveSlot(slot);
 
+                if (slot.IsSelectable && SelectedSlotIndex == slot.SlotIndex && itemData.PlantPrefab != null)
+                {
+                    HandController.Instance.Hold(itemData.ItemPrefab, itemData);
+                }
+
                 OnInventoryChanged?.Invoke();
                 return;
             }
@@ -125,6 +130,13 @@ public class InventoryUI : MonoBehaviour
             {
                 slot.Add(itemData, count);
                 SaveSlot(slot);
+
+
+                if (slot.IsSelectable && SelectedSlotIndex == slot.SlotIndex && itemData.PlantPrefab != null)
+                {
+                    HandController.Instance.Hold(itemData.ItemPrefab, itemData);
+                }
+
                 OnInventoryChanged?.Invoke();
                 return;
             }

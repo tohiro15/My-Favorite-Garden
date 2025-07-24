@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4412658305001634}
   - component: {fileID: 3890836979136254187}
+  - component: {fileID: 8864915557038020160}
   - component: {fileID: 33443390445766852}
   - component: {fileID: 23638982917113718}
   - component: {fileID: -1372321945845832835}
@@ -75,6 +76,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _itemData: {fileID: 11400000, guid: 52ce3445201e3ca458e1d782ee7c2de3, type: 2}
+  _fxPool: {fileID: -5191926404368433975, guid: e48b8d820d122d64484926ce5e8f6e8c, type: 3}
   _localizedHarvestString:
     m_TableReference:
       m_TableCollectionName: GUID:bd860135052cfc9478a224a6034fb9cc
@@ -88,6 +90,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &8864915557038020160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289759693286266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6bdf30ece02534aaa79149bcf1bb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fxPrefab: {fileID: 7447788123197329209, guid: e4af3fa38dc4dc440a63d89fa29b5962, type: 3}
+  _poolSize: 5
 --- !u!33 &33443390445766852
 MeshFilter:
   m_ObjectHideFlags: 0
