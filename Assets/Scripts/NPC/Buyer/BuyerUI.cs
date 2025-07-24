@@ -24,6 +24,16 @@ public class BuyerUI : MonoBehaviour
     private int _selectedItemPrice;
     public event Action<int> OnSelectedItemPriceChanged;
 
+    private void Awake()
+    {
+        InventoryUI.OnInventoryChanged += InitializeItem;
+    }
+
+    private void OnDestroy()
+    {
+        InventoryUI.OnInventoryChanged -= InitializeItem;
+    }
+
     private void Start()
     {
         InitializeItem();
@@ -102,6 +112,9 @@ public class BuyerUI : MonoBehaviour
         _emptyItemText.gameObject.SetActive(noItems);
         _sellAllButton.gameObject.SetActive(!noItems);
         _sellButton.gameObject.SetActive(!noItems);
+
+        RecalculateAllPrice();
+        UpdateUI();
     }
 
 

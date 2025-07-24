@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -29,9 +30,11 @@ public class InventoryUI : MonoBehaviour
 
     public int SelectedSlotIndex => _selectedSlot;
 
+    public static event Action OnInventoryChanged;
 
     private void Awake()
     {
+
         if (Instance != null && Instance != this) Destroy(gameObject);
         else Instance = this;
 
@@ -90,6 +93,8 @@ public class InventoryUI : MonoBehaviour
             {
                 slot.Item.Add(count);
                 SaveSlot(slot);
+
+                OnInventoryChanged?.Invoke();
                 return;
             }
         }
@@ -107,6 +112,8 @@ public class InventoryUI : MonoBehaviour
                     HandController.Instance.Hold(itemData.ItemPrefab, itemData);
                 }
 
+                OnInventoryChanged?.Invoke();
+
                 return;
             }
 
@@ -118,6 +125,7 @@ public class InventoryUI : MonoBehaviour
             {
                 slot.Add(itemData, count);
                 SaveSlot(slot);
+                OnInventoryChanged?.Invoke();
                 return;
             }
         }
