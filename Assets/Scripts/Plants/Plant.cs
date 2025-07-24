@@ -4,12 +4,6 @@ using StarterAssets;
 
 public class Plant : MonoBehaviour
 {
-    [Header("Cameras")]
-    [Tooltip("Новая CinemachineCamera над грядкой")]
-    [SerializeField] private CinemachineCamera _plantCamera;
-
-    private CinemachineCamera _playerCamera;
-
     [Header("Planting Settings")]
     [SerializeField] private FXPool _fxPool;
     [SerializeField] private GameObject _plantZone;
@@ -34,21 +28,13 @@ public class Plant : MonoBehaviour
             return;
         }
         _player = _controller.transform;
-
-        _playerCamera = _controller.MainCamera;
-        if (_playerCamera == null)
-        {
-            Debug.LogError("Не найдена CinemachineCamera на игроке!");
-            enabled = false;
-            return;
-        }
     }
 
     private void Update()
     {
         CheckPlayerDistance();
 
-        if (Input.GetMouseButtonDown(0))
+        if (_isPlayerNear && Input.GetMouseButtonDown(0))
         {
             TryPlantAtCursor();
         }

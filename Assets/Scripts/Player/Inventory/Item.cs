@@ -77,6 +77,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (hasAny)
         {
             _countText.text = $"x{_itemCount}";
+            _itemNameText.text = _itemData.ItemName.GetLocalizedString();
             _itemData.ItemName.StringChanged += s => _itemNameText.text = s;
         }
     }
@@ -115,7 +116,10 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void SetSelected(bool selected)
     {
         _isSelected = selected;
-        _itemNameText.gameObject.SetActive(_isSelected || _isPointerOver);
+        if(selected) _itemNameText.gameObject.SetActive(_isSelected);
+        else _itemNameText.gameObject.SetActive(_isPointerOver);
+
+        UpdateUI();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

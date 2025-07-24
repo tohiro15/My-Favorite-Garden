@@ -95,6 +95,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         _item.Change(itemData, count);
         _item.gameObject.SetActive(true);
         _isEmpty = false;
+
+        if (_isSelected)
+            _item.SetSelected(true);
     }
 
     public void Remove(ItemData itemData, int count)
