@@ -75,7 +75,19 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _itemData: {fileID: 11400000, guid: d71a32ca8ce904443896afffc3cbae09, type: 2}
+  _localizedHarvestString:
+    m_TableReference:
+      m_TableCollectionName: GUID:bd860135052cfc9478a224a6034fb9cc
+    m_TableEntryReference:
+      m_KeyId: 7175065382748160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   _harvestTimer: {fileID: 3714054567926238309}
+  references:
+    version: 2
+    RefIds: []
 --- !u!33 &33702985728997866
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -319,8 +331,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
-  m_sharedMaterial: {fileID: -5660775149628104760, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
+  m_sharedMaterial: {fileID: 2657779068781279388, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

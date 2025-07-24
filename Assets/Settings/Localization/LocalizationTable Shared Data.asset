@@ -63,6 +63,10 @@ MonoBehaviour:
     m_Key: ExitButtonKey
     m_Metadata:
       m_Items: []
+  - m_Id: 7175065382748160
+    m_Key: HarvestCropsKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

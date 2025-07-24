@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(BoxCollider))]
 
@@ -11,7 +12,7 @@ public class PlantController : MonoBehaviour
     [SerializeField, Tooltip("Scale of the plant at full maturity.")] private Vector3 _maxScale = Vector3.one;
     [SerializeField, Tooltip("Curve to control scale over normalized growth progress.")] private AnimationCurve _growthCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField, Tooltip("The harvest that will be given out after harvesting")] private ItemData _itemData;
-
+    [SerializeField] private LocalizedString _localizedHarvestString;
     //[Header("Watering Settings")]
     //[SerializeField, Tooltip("How much water (units) the plant can hold.")] private float _maxMoisture = 100f;
     //[SerializeField, Tooltip("Rate at which moisture decreases per second.")] private float _moistureDecayRate = 0.5f;
@@ -44,7 +45,11 @@ public class PlantController : MonoBehaviour
     {
         HandleInput();
 
-        if (_isMature) return;
+        if (_isMature)
+        {
+            _localizedHarvestString.StringChanged += s => _harvestTimer.text = s;
+            return;
+        }
 
         //_currentMoisture = Mathf.Max(0f, _currentMoisture - _moistureDecayRate * Time.deltaTime);
 
@@ -93,7 +98,15 @@ public class PlantController : MonoBehaviour
     {
         float remainingTime = _growthDuration - elapsedGrowthTime;
         TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
-        _harvestTimer.text = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+
+        if (timeSpan.Minutes > 1)
+        {
+            _harvestTimer.text = string.Format("{0:D2}m : {1:D2}s", timeSpan.Minutes, timeSpan.Seconds);
+        }
+        else
+        {
+            _harvestTimer.text = string.Format("{0:D2}s", timeSpan.Seconds);
+        }
         _harvestTimer.transform.LookAt(Camera.main.transform);
         _harvestTimer.transform.rotation = Camera.main.transform.rotation;
     }

@@ -66,6 +66,10 @@ MonoBehaviour:
     m_Localized: EXIT
     m_Metadata:
       m_Items: []
+  - m_Id: 7175065382748160
+    m_Localized: HARVEST CROPS
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
