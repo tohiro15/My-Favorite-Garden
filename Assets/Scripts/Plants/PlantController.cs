@@ -33,10 +33,13 @@ public class PlantController : MonoBehaviour
     //private float _currentMoisture;
     private float _elapsedGrowthTime;
     private bool _isMature;
+    private bool _isCollected = false;
 
     private void Awake()
     {
         if (_itemData == null) Debug.LogWarning("The seedling crop has not been initialized, and nothing will be given during harvesting!");
+
+        _isCollected = false;
 
         _boxCollider = GetComponent<BoxCollider>();
         _fxPool = GetComponent<FXPool>();
@@ -49,25 +52,38 @@ public class PlantController : MonoBehaviour
 
     private void Update()
     {
-        HandleInput();
+        if (_isMature)
+        {
+            _localizedHarvestString.StringChanged += s => _harvestTimer.text = s;
+        }
 
         _harvestTimer.transform.LookAt(Camera.main.transform);
         _harvestTimer.transform.rotation = Camera.main.transform.rotation;
 
-        if (_isMature)
+
+        HandleInput();
+        if(!_isMature) Growth();
+        // CalculateWatering();
+    }
+
+    public void HandleInput()
+    {
+        if (!_isMature) return;
+
+        if (!_isCollected && Input.GetMouseButtonDown(0))
         {
-            _localizedHarvestString.StringChanged += s => _harvestTimer.text = s;
-            return;
+            Harvest();
+            Debug.Log("Вы подобрали этот предмет");
         }
+        else if (_isCollected && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Вы уже подобрали этот предмет");
+        }
+    }
 
-        //_currentMoisture = Mathf.Max(0f, _currentMoisture - _moistureDecayRate * Time.deltaTime);
 
-        //if (_currentMoisture < _moistureThreshold)
-        //{
-        //    OnDry?.Invoke();
-        //    return;
-        //}
-
+    public void Growth()
+    {
         _elapsedGrowthTime = Mathf.Min(_growthDuration, _elapsedGrowthTime + Time.deltaTime);
         float normalizedProgress = Mathf.Clamp01(_elapsedGrowthTime / _growthDuration);
 
@@ -82,14 +98,6 @@ public class PlantController : MonoBehaviour
             OnMature?.Invoke();
         }
     }
-
-    public void HandleInput()
-    {
-        if (_isMature && Input.GetMouseButtonDown(0))
-        {
-            Harvest();
-        }
-    }
     public void Harvest()
     {
         Camera cam = Camera.main;
@@ -100,7 +108,19 @@ public class PlantController : MonoBehaviour
                 InventoryUI.Instance.AddItem(_itemData, _itemData.DefaultCount);
 
             _fxPool.DestroyParent(gameObject, hit.point);
+            _isCollected = true;
         }
+    }
+
+    private void CalculateWatering()
+    {
+        //_currentMoisture = Mathf.Max(0f, _currentMoisture - _moistureDecayRate * Time.deltaTime);
+
+        //if (_currentMoisture < _moistureThreshold)
+        //{
+        //    OnDry?.Invoke();
+        //    return;
+        //}
     }
 
     public void UpdateUI(float elapsedGrowthTime)
