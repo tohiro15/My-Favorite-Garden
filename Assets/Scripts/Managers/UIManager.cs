@@ -24,11 +24,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _sellerPanel;
     [SerializeField] private Button _exitSellerButton;
 
-    [Header("Plant")]
-    [SerializeField] private Canvas _plantCanvas;
-    [SerializeField] private GameObject _plantPanel;
-    [SerializeField] private Button _exitPlantButton;
-
     [Header("Backpack")]
     [SerializeField] private GameObject _backpackPanel;
     [SerializeField] private Button _backpackButton;
@@ -59,10 +54,6 @@ public class UIManager : MonoBehaviour
         _sellerCanvas.gameObject.SetActive(true);
         _sellerPanel.SetActive(false);
         _exitSellerButton.onClick.AddListener(() => ClosePanel(_sellerPanel));
-
-        _plantCanvas?.gameObject.SetActive(true);
-        _plantPanel?.gameObject.SetActive(false);
-        _exitPlantButton?.onClick.AddListener(() => ClosePanel(_plantPanel));
 
         _interactionButton.gameObject.SetActive(false);
 
@@ -190,8 +181,6 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
-    public void OpenPlantPanel() => OpenPanel(_plantPanel);
-    public void ClosePlantPanel() => ClosePanel(_plantPanel);
 
     public void EnableInteractionButton(UnityAction call, object source)
     {
@@ -237,9 +226,6 @@ public class UIManager : MonoBehaviour
         if (_currentExitSource == source) return;
 
         _currentExitSource = source;
-        _exitPlantButton.onClick.RemoveAllListeners();
-        _exitPlantButton.onClick.AddListener(call);
-        _exitPlantButton.gameObject.SetActive(true);
     }
 
     public void DisableExitButton(object source)
@@ -247,7 +233,5 @@ public class UIManager : MonoBehaviour
         if (_currentExitSource != source) return;
 
         _currentExitSource = null;
-        _exitPlantButton.onClick.RemoveAllListeners();
-        ClosePlantPanel();
     }
 }
