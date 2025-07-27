@@ -761,6 +761,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2010140620}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2010140620}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &38817154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6532,6 +6564,7 @@ GameObject:
   - component: {fileID: 283983779}
   - component: {fileID: 283983781}
   - component: {fileID: 283983780}
+  - component: {fileID: 283983783}
   - component: {fileID: 283983782}
   m_Layer: 5
   m_Name: InteractionText (TMP)
@@ -6698,6 +6731,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &283983783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283983778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -8, z: 0}
 --- !u!1 &289934953
 GameObject:
   m_ObjectHideFlags: 0
@@ -8932,6 +8978,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 283983783}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 283983783}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &426139369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9481,6 +9559,7 @@ GameObject:
   - component: {fileID: 439640813}
   - component: {fileID: 439640815}
   - component: {fileID: 439640814}
+  - component: {fileID: 439640816}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9606,6 +9685,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439640812}
   m_CullTransparentMesh: 1
+--- !u!114 &439640816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439640812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -15, z: 0}
 --- !u!1 &453347778
 GameObject:
   m_ObjectHideFlags: 0
@@ -10388,7 +10480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 299.99997}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 1650}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &493062926
@@ -12988,6 +13080,38 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1847944670}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1847944670}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -19564,8 +19688,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1727242485}
   m_HandleRect: {fileID: 1727242484}
   m_Direction: 2
-  m_Value: 0.71428573
-  m_Size: 0.36363637
+  m_Value: 0.9999999
+  m_Size: 0.36363634
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21686,6 +21810,7 @@ GameObject:
   - component: {fileID: 1004628626}
   - component: {fileID: 1004628629}
   - component: {fileID: 1004628628}
+  - component: {fileID: 1004628630}
   - component: {fileID: 1004628627}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -21854,6 +21979,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004628625}
   m_CullTransparentMesh: 1
+--- !u!114 &1004628630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004628625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -15, z: 0}
 --- !u!1 &1008462528
 GameObject:
   m_ObjectHideFlags: 0
@@ -27161,6 +27299,38 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: a1d5a2ca3d51b7a4990f4a783dbf6e86, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1004628630}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1004628630}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -36500,8 +36670,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 683780400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.45454547}
-  m_AnchorMax: {x: 1, y: 0.8181819}
+  m_AnchorMin: {x: 0, y: 0.63636357}
+  m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37799,6 +37969,38 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 8300000, guid: 7abccce1359ba0d4a8421bcc212783c5, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 439640816}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 439640816}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -39136,6 +39338,7 @@ GameObject:
   - component: {fileID: 1847944666}
   - component: {fileID: 1847944668}
   - component: {fileID: 1847944667}
+  - component: {fileID: 1847944670}
   - component: {fileID: 1847944669}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -39304,6 +39507,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1847944670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847944665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -15, z: 0}
 --- !u!1 &1851256667
 GameObject:
   m_ObjectHideFlags: 0
@@ -42609,6 +42825,7 @@ GameObject:
   - component: {fileID: 2010140617}
   - component: {fileID: 2010140619}
   - component: {fileID: 2010140618}
+  - component: {fileID: 2010140620}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -42734,6 +42951,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010140616}
   m_CullTransparentMesh: 1
+--- !u!114 &2010140620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010140616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -15, z: 0}
 --- !u!1 &2010674412
 GameObject:
   m_ObjectHideFlags: 0

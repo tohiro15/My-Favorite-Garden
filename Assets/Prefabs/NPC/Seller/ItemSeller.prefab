@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4493829060926546232}
   - component: {fileID: 1776793297902618462}
   - component: {fileID: 29781521213730300}
+  - component: {fileID: 1436376206342994792}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -210,6 +211,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccda9c65ed2f614ba9d24339a5dc1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1436376206342994792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925267919237651764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3568196839084751647}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 9164964125185286547}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetPressedPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3568196839084751647}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 9164964125185286547}
+          m_TargetAssemblyTypeName: TMP_Modules, Assembly-CSharp
+          m_MethodName: SetNormalPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5394861024371360349
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +524,7 @@ GameObject:
   - component: {fileID: 6039053763706935158}
   - component: {fileID: 2522697790474446734}
   - component: {fileID: 7474758513517351333}
+  - component: {fileID: 3568196839084751647}
   - component: {fileID: 5616737227389726826}
   m_Layer: 5
   m_Name: Buy(TMP) (2)
@@ -582,6 +653,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3568196839084751647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242729894004451006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -15, z: 0}
 --- !u!114 &5616737227389726826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +717,7 @@ GameObject:
   - component: {fileID: 4146637297064289355}
   - component: {fileID: 600904021314716516}
   - component: {fileID: 7636043317412305144}
+  - component: {fileID: 9164964125185286547}
   m_Layer: 5
   m_Name: ItemPrice(TMP) (1)
   m_TagString: Untagged
@@ -760,3 +845,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9164964125185286547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842867289100694588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fddca2fc452d549b2ef039896e1c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressedPosition: {x: 0, y: -15, z: 0}

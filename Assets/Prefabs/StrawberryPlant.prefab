@@ -76,7 +76,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _itemData: {fileID: 11400000, guid: f2525a2c4422d4a47a9054d39ed8a930, type: 2}
-  _fxPool: {fileID: -5191926404368433975, guid: e48b8d820d122d64484926ce5e8f6e8c, type: 3}
+  _fxPool: {fileID: 0}
   _localizedHarvestString:
     m_TableReference:
       m_TableCollectionName: GUID:bd860135052cfc9478a224a6034fb9cc
