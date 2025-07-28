@@ -1,4 +1,3 @@
-// BuyerUI.cs
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
@@ -39,10 +38,10 @@ public class BuyerUI : MonoBehaviour
         InitializeItem();
         SubscribeSlots();
 
-        _sellAllButton.onClick.RemoveAllListeners();
-        _sellAllButton.onClick.AddListener(SellAll);
-        _sellButton.onClick.RemoveAllListeners();
-        _sellButton.onClick.AddListener(SellSelectedItem);
+        _sellAllButton?.onClick.RemoveAllListeners();
+        _sellAllButton?.onClick.AddListener(SellAll);
+        _sellButton?.onClick.RemoveAllListeners();
+        _sellButton?.onClick.AddListener(SellSelectedItem);
 
         RecalculateAllPrice();
         UpdateUI();
@@ -74,15 +73,19 @@ public class BuyerUI : MonoBehaviour
     private void RecalculateAllPrice()
     {
         _totalPrice = 0;
-        foreach (var slot in _playerInventory.InventorySlots)
+        foreach (var slot in _playerInventory?.InventorySlots)
+            if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell)
+                _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
+
+        foreach (var slot in _playerInventory?.BackpackSlots)
             if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell)
                 _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
     }
 
     public void InitializeItem()
     {
-        var sellableSlots = _playerInventory.InventorySlots
-            .Concat(_playerInventory.BackpackSlots)
+        var sellableSlots = _playerInventory?.InventorySlots
+            .Concat(_playerInventory?.BackpackSlots)
             .Where(s => s != null && !s.IsEmpty && s.Item.ItemData.CanSell)
             .ToArray();
 
@@ -100,7 +103,7 @@ public class BuyerUI : MonoBehaviour
                 var slice = new InventorySlot[countInThisLine];
                 Array.Copy(sellableSlots, startIdx, slice, 0, countInThisLine);
 
-                _lines[i].Initialize(this, slice, _buyerItemPrefab);
+                _lines[i].Initialize(slice, _buyerItemPrefab);
             }
             else
             {

@@ -33,7 +33,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         _item = GetComponentInChildren<Item>();
         if(_item != null ) _isEmpty = false; 
     }
-
     public void Initialization(GameObject itemPrefab, int index, InventoryUI parentUI, Color normalColor, Color selectedColor, float normalScale, float selectedScale, float tweenDuration, bool isSelectable = true)
     {
         _itemPrefab = itemPrefab;

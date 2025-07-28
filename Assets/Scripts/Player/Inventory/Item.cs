@@ -1,4 +1,3 @@
-using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -34,11 +33,6 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         _originSlot = GetComponentInParent<InventorySlot>();
         _itemNameText.gameObject.SetActive(false);
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.V)) Add(1);
-        if (Input.GetKeyDown(KeyCode.C)) Remove(1);
     }
     private void OnDisable()
     {

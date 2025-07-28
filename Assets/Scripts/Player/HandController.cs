@@ -4,6 +4,8 @@ public class HandController : MonoBehaviour
 {
     public static HandController Instance { get; private set; }
 
+    [SerializeField] private Transform _handPosition;
+
     private GameObject _currentView;
     public ItemData CurrentItemData { get; private set; }
 
@@ -14,7 +16,7 @@ public class HandController : MonoBehaviour
         Clear();
         if (prefab != null)
         {
-            _currentView = Instantiate(prefab, transform);
+            _currentView = Instantiate(prefab, _handPosition);
         }
         CurrentItemData = data;
         Debug.Log($"Вы взяли предмет в руку");
