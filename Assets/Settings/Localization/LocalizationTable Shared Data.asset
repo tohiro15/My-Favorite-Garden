@@ -67,6 +67,10 @@ MonoBehaviour:
     m_Key: HarvestCropsKey
     m_Metadata:
       m_Items: []
+  - m_Id: 9085306874617856
+    m_Key: PlayButtonKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

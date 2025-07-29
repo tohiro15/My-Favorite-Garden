@@ -776,8 +776,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
-  m_sharedMaterial: {fileID: -5660775149628104760, guid: 26507f248a46cbf4fa958167f580e2ce, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
+  m_sharedMaterial: {fileID: 2657779068781279388, guid: 178acf53ef393fa4f88109443d83f6bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

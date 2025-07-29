@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f93e6f0cf0f02249ad170249a98ca24, type: 3}
+  m_Name: CabbageItemData
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 5995608954096290038, guid: 6656824cf076ff94184db46112f19a7c, type: 3}
+  ItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
+    m_TableEntryReference:
+      m_KeyId: 17878286336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  Icon: {fileID: 21300000, guid: ebcd6d6bdbbd5064c8688a6851e5863b, type: 3}
+  DefaultCount: 1
+  MaxStackSize: 99
+  ItemPrice: 8
+  CanSell: 1
+  references:
+    version: 2
+    RefIds: []
