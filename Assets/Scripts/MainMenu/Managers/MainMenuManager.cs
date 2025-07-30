@@ -21,9 +21,6 @@ public class MainMenuManager : MonoBehaviour
         if (_mainMenuUIManager != null) _mainMenuUIManager?.Initialization(this);
         else Debug.LogError("MainMenu UI Manager - not initialized!");
 
-        if (_mainMenuSoundManager != null) _mainMenuSoundManager?.Initialization(this);
-        else Debug.LogError("MainMenu Sound Manager - not initialized!");
-
         if (_settingsManager != null) _settingsManager?.Initialization(this);
         else Debug.LogError("Settings Manager - not initialized!");
     }

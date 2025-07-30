@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _russianLanguageButton: {fileID: 1829138682}
   _englishLanguageButton: {fileID: 810033413}
+  _sfxSlider: {fileID: 1129686763}
+  _musicSlider: {fileID: 1673730932}
 --- !u!1 &79370756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2369,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e9d626faac3d6404dabad31c61852189, type: 3}
   m_Resource: {fileID: 8300000, guid: e9d626faac3d6404dabad31c61852189, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2766,6 +2768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6816a34daf7a65d4f8e6817a460140be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfxMixer: {fileID: 24100000, guid: ffa8db796b2b1954b86dc9705469211d, type: 2}
+  _musicMixer: {fileID: 24100000, guid: 725f25dc7ae50f44c9b7e8c7eb4ac497, type: 2}
 --- !u!1 &843398597
 GameObject:
   m_ObjectHideFlags: 0

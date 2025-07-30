@@ -31,6 +31,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     [SerializeField] private SettingsUIManager _settingsUIManager;
 
+    private MainMenuManager _mainMenuManager;
+
     private Tween _settingsTween;
     private Tween _updatesTween;
 
@@ -40,6 +42,8 @@ public class MainMenuUIManager : MonoBehaviour
     private Vector2 _settingsStartPos;
     public void Initialization(MainMenuManager mainMenuManager)
     {
+        _mainMenuManager = mainMenuManager;
+
         // canvas debug
         if (_mainMenuCanvas == null) Debug.Log("Main Menu Canvas - not initialized!");
 
@@ -61,13 +65,13 @@ public class MainMenuUIManager : MonoBehaviour
 
         // mainMenu init
         _playButton?.onClick.RemoveAllListeners();
-        _playButton?.onClick.AddListener(mainMenuManager.StartGame);
+        _playButton?.onClick.AddListener(_mainMenuManager.StartGame);
 
         _settingsButton?.onClick.RemoveAllListeners();
         _settingsButton?.onClick?.AddListener(ShowSettingsPanel);
 
         _exitButton?.onClick.RemoveAllListeners();
-        _exitButton?.onClick?.AddListener(mainMenuManager.ExitGame);
+        _exitButton?.onClick?.AddListener(_mainMenuManager.ExitGame);
 
         // settings init
         _settingsPanel?.gameObject.SetActive(false);
@@ -102,6 +106,8 @@ public class MainMenuUIManager : MonoBehaviour
     public void HideSettingsPanel()
     {
         if (_settingsPanel == null) return;
+
+        _mainMenuManager.GetSettingsManager.SaveSettings();
 
         _settingsTween.Kill();
         _settingsTween = _settingsPanel?.transform
