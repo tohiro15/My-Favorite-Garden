@@ -27,6 +27,10 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private float _offset = 385;
     [Space]
 
+    [Header("Managers")]
+
+    [SerializeField] private SettingsUIManager _settingsUIManager;
+
     private Tween _settingsTween;
     private Tween _updatesTween;
 
@@ -51,6 +55,10 @@ public class MainMenuUIManager : MonoBehaviour
         // updates debug
         if (_updatesPanelRT == null) Debug.Log("Updates Panel - not initialized!");
 
+        // managers debug
+
+        if (_settingsUIManager == null) Debug.LogError("Settings UI Manager - not initialized!");
+
         // mainMenu init
         _playButton?.onClick.RemoveAllListeners();
         _playButton?.onClick.AddListener(mainMenuManager.StartGame);
@@ -74,6 +82,10 @@ public class MainMenuUIManager : MonoBehaviour
 
         // updates init
         _updateHidePos = _updatesPanelRT.anchoredPosition;
+
+        // managers init
+
+        _settingsUIManager?.Initialization(mainMenuManager);
     }
 
     public void ShowSettingsPanel()
