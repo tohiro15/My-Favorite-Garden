@@ -245,9 +245,9 @@ MonoBehaviour:
   _settingsPanel: {fileID: 899985943}
   _closeButton: {fileID: 1240784463}
   _settingsOpenSpeed: 1
-  _updatesPanel: {fileID: 494638319}
+  _updatesPanelRT: {fileID: 494638320}
   _updatesOpenSpeed: 0.3
-  _offset: 385
+  _offset: 235
 --- !u!1 &79370756
 GameObject:
   m_ObjectHideFlags: 0

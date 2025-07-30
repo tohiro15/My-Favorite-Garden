@@ -22,7 +22,7 @@ public class MainMenuUIManager : MonoBehaviour
     [Space]
 
     [Header("Updates panel")]
-    [SerializeField] private GameObject _updatesPanel;
+    [SerializeField] private RectTransform _updatesPanelRT;
     [SerializeField] private float _updatesOpenSpeed = 0.3f;
     [SerializeField] private float _offset = 385;
     [Space]
@@ -30,7 +30,7 @@ public class MainMenuUIManager : MonoBehaviour
     private Tween _settingsTween;
     private Tween _updatesTween;
 
-    private Vector2 _updateStartPos;
+    private Vector2 _updateHidePos;
 
     private Vector2 _centerScreenPos;
     private Vector2 _settingsStartPos;
@@ -49,7 +49,7 @@ public class MainMenuUIManager : MonoBehaviour
         if (_closeButton == null) Debug.Log("Exit Settings Button - not initialized!");
 
         // updates debug
-        if (_updatesPanel == null) Debug.Log("Updates Panel - not initialized!");
+        if (_updatesPanelRT == null) Debug.Log("Updates Panel - not initialized!");
 
         // mainMenu init
         _playButton?.onClick.RemoveAllListeners();
@@ -73,7 +73,7 @@ public class MainMenuUIManager : MonoBehaviour
         _settingsPanel.transform.position = _settingsStartPos;
 
         // updates init
-        _updateStartPos = _updatesPanel.transform.position;
+        _updateHidePos = _updatesPanelRT.anchoredPosition;
     }
 
     public void ShowSettingsPanel()
@@ -99,18 +99,16 @@ public class MainMenuUIManager : MonoBehaviour
     }
     public void ShowUpdatesPanel()
     {
-        if(_updatesTween != null) _updatesTween.Kill();
-
-        _updatesTween = _updatesPanel.transform
-            .DOMoveX(_updateStartPos.x - _offset, _updatesOpenSpeed)
-            .SetEase(Ease.Flash);
+        _updatesTween?.Kill();
+        _updatesTween = _updatesPanelRT.DOAnchorPosX(-_offset, _updatesOpenSpeed)
+            .SetEase(Ease.OutCubic);
     }
 
     public void HideUpdatesPanel()
     {
-        if (_updatesTween != null) _updatesTween.Kill();
-        _updatesTween = _updatesPanel.transform
-            .DOMoveX(_updateStartPos.x, _updatesOpenSpeed)
-            .SetEase(Ease.Flash);
+        _updatesTween?.Kill();
+        _updatesTween = _updatesPanelRT.DOAnchorPosX(_updateHidePos.x, _updatesOpenSpeed)
+            .SetEase(Ease.InCubic);
     }
+
 }
