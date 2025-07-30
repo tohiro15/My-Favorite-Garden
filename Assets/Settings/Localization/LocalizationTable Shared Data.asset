@@ -59,14 +59,6 @@ MonoBehaviour:
     m_Key: InteractionButtonKey
     m_Metadata:
       m_Items: []
-  - m_Id: 9085306874617856
-    m_Key: PlayButtonKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9206923655110656
-    m_Key: SettingsButtonKey
-    m_Metadata:
-      m_Items: []
   - m_Id: 6882350464040960
     m_Key: ExitButtonKey
     m_Metadata:

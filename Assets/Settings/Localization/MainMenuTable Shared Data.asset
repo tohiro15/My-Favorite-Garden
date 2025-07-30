@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainMenuTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainMenuTable
+  m_TableCollectionNameGuidString: ad69951cfc26d2a4eb178870eae16b5a
+  m_Entries:
+  - m_Id: 11393892352
+    m_Key: SettingsButtonKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 248850219008
+    m_Key: PlayButtonKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10145587331072
+    m_Key: LanquageSettingsKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10212587143168
+    m_Key: VolumeTitleSettingsKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10332292579328
+    m_Key: MusicVolumeSettingsKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10408243036160
+    m_Key: SFXVolumeSettingsKey
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2797373781678227456
+  references:
+    version: 2
+    RefIds:
+    - rid: 2797373781678227456
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1753897915712
