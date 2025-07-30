@@ -9,7 +9,7 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
     public InventorySlot SourceSlot => _sourceSlot;
 
     private BuyerItem _buyerItem;
-    private bool _isEmpty = true;
+    //private bool _isEmpty = true;
     private bool _isSelected = false;
     private Color _defaultColor;
 
@@ -35,7 +35,7 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
 
         _buyerItem.Change(data, count);
         _buyerItem.gameObject.SetActive(true);
-        _isEmpty = false;
+        //_isEmpty = false;
     }
 
     public void Clear()
@@ -45,7 +45,7 @@ public class BuyerSlot : MonoBehaviour, IPointerClickHandler
 
         GetComponent<Image>().color = _defaultColor;
         _buyerItem = null;
-        _isEmpty = true;
+        //_isEmpty = true;
         _isSelected = false;
 
         // Больше не очищаем _sourceSlot здесь!
