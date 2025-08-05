@@ -145,6 +145,9 @@ public class BuyerUI : MonoBehaviour
         foreach (var invSlot in _playerInventory.InventorySlots)
             if (invSlot != null && !invSlot.IsEmpty && invSlot.Item.ItemData.CanSell)
                 invSlot.Clear();
+        foreach (var bacpackSlot in _playerInventory.BackpackSlots)
+            if (bacpackSlot != null && !bacpackSlot.IsEmpty && bacpackSlot.Item.ItemData.CanSell)
+                bacpackSlot.Clear();
 
         PlayerStatistic.Instance.AddMoney(_totalPrice);
         _totalPrice = 0;

@@ -23,10 +23,11 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private float _normalSlotScale = 1f;
     [SerializeField] private float _selectedSlotScale = 1.2f;
     [SerializeField] private float _tweenSlotDuration = 0.15f;
-    public InventorySlot[] InventorySlots => _inventorySlots;
-    public InventorySlot[] BackpackSlots => _backpackSlots;
 
     private int _selectedSlot = -1;
+    public InventorySlot[] InventorySlots => _inventorySlots;
+    public InventorySlot[] BackpackSlots => _backpackSlots;
+    public ItemData[] AllItemTypes => _allItemTypes;
 
     public int SelectedSlotIndex => _selectedSlot;
 
