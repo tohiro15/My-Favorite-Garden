@@ -35,10 +35,6 @@ MonoBehaviour:
     m_Key: MoneyManualKey
     m_Metadata:
       m_Items: []
-  - m_Id: 161382135824384
-    m_Key: ItemManualKey
-    m_Metadata:
-      m_Items: []
   - m_Id: 3386249941417984
     m_Key: BackpackEmptyBuyerKey
     m_Metadata:

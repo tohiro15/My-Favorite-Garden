@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
 using System;
+using UnityEngine.Localization;
 
 public class BuyerUI : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class BuyerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _emptyItemText;
 
     [Header("Buyer Settings")]
+    [SerializeField] private LocalizedString _seasonLocalizedString;
+    [SerializeField] private TextMeshProUGUI _currentSeasonText;
     [SerializeField] private TextMeshProUGUI _totalPriceText;
     [SerializeField] private TextMeshProUGUI _selectedItemPriceText;
+    [Space]
     [SerializeField] private Button _sellButton;
     [SerializeField] private Button _sellAllButton;
 
@@ -158,6 +162,7 @@ public class BuyerUI : MonoBehaviour
         UpdateUI();
     }
 
+
     public void UpdateUI()
     {
         var nfi = new NumberFormatInfo
@@ -166,10 +171,20 @@ public class BuyerUI : MonoBehaviour
             NumberDecimalDigits = 0
         };
 
+        _seasonLocalizedString.TableEntryReference = SeasonManager.Instance.GetCurrentSeasonLocalizationKey();
+        _seasonLocalizedString.StringChanged += UpdateSeasonText;
+
         _totalPriceText.text = _totalPrice.ToString("N0", nfi);
         _selectedItemPriceText.text = _selectedItemPrice.ToString("N0", nfi);
 
         bool hasSelected = _lines.SelectMany(line => line.Slots).Any(s => s.IsSeleted);
         _sellButton.gameObject.SetActive(hasSelected);
     }
+
+    private void UpdateSeasonText(string localizedValue)
+    {
+        _currentSeasonText.text = localizedValue;
+        _seasonLocalizedString.StringChanged -= UpdateSeasonText;
+    }
+
 }

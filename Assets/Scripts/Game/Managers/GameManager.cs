@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private int _mainMenuSceneIndex = 0;
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
