@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,9 @@ public class SettingsUIManager : MonoBehaviour
     [Header("Language Settings")]
     [SerializeField] private Button _russianLanguageButton;
     [SerializeField] private Button _englishLanguageButton;
+    [Space]
+    [SerializeField] private Color _selectedLanguageTextColor = Color.yellow;
+    [SerializeField] private Color _defaultLanguageTextColor = Color.white;
     [Space]
 
     [Header("Volume Settings")]
@@ -53,4 +57,24 @@ public class SettingsUIManager : MonoBehaviour
         if(_musicSlider != null) _mainMenuManager.GetSettingsManager.OnVolumeMusicChanged += v => _musicSlider.value = v;
     }
 
+    public void ChangeCurrentLanguage(string currentLocaleCode)
+    {
+        if(currentLocaleCode == "ru")
+        {
+            _russianLanguageButton.GetComponentInChildren<TextMeshProUGUI>().color = _selectedLanguageTextColor;
+            _englishLanguageButton.GetComponentInChildren<TextMeshProUGUI>().color = _defaultLanguageTextColor;
+
+            return;
+        }
+        else if(currentLocaleCode == "en")
+        {
+            _russianLanguageButton.GetComponentInChildren<TextMeshProUGUI>().color = _defaultLanguageTextColor;
+            _englishLanguageButton.GetComponentInChildren<TextMeshProUGUI>().color = _selectedLanguageTextColor;
+
+            return;
+        }
+
+        _russianLanguageButton.GetComponentInChildren<TextMeshProUGUI>().color = _defaultLanguageTextColor;
+        _englishLanguageButton.GetComponentInChildren<TextMeshProUGUI>().color = _defaultLanguageTextColor;
+    }
 }

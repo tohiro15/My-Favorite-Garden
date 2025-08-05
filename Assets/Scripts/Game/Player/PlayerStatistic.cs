@@ -5,6 +5,12 @@ public class PlayerStatistic : MonoBehaviour
 {
     public static PlayerStatistic Instance { get; private set; }
 
+    [Header("Start Settings")]
+    [SerializeField] private int _startMoneyCount = 1;
+    [Space]
+    [Header("Development mode")]
+    [SerializeField] private Canvas _developmentCanvas;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,8 +32,14 @@ public class PlayerStatistic : MonoBehaviour
     }
     private void Update()
     {
+        if (_developmentCanvas != null && Debug.isDebugBuild || Application.isEditor) HandleDevInput();
+    }
+    private void HandleDevInput()
+    {
+        _developmentCanvas.gameObject.SetActive(true);
+
         if (Input.GetKeyDown(KeyCode.X)) AddMoney(100);
-        else if (Input.GetKeyDown(KeyCode.Z)) RemoveMoney(100);
+        if (Input.GetKeyDown(KeyCode.Z)) RemoveMoney(100);
     }
     public void AddMoney(int amount)
     {
@@ -54,6 +66,6 @@ public class PlayerStatistic : MonoBehaviour
 
     public void LoadStatistic()
     {
-        Money = PlayerPrefs.GetInt("MoneyKey", 0);
+        Money = PlayerPrefs.GetInt("MoneyKey", _startMoneyCount);
     }
 }

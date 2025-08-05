@@ -3,8 +3,21 @@ using UnityEngine.Audio;
 
 public class MainMenuSoundManager : MonoBehaviour
 {
+    [Header("Mixer")]
     [SerializeField] private AudioMixer _sfxMixer;
     [SerializeField] private AudioMixer _musicMixer;
+    [Space]
+
+    [Header("Audio Source")]
+    [SerializeField] private AudioSource _SFXAudioSource;
+    [SerializeField] private AudioSource _MusicAudioSource;
+    [Space]
+
+    [Header("Audio Clips")]
+    [Space]
+    [Header("SFX")]
+    [SerializeField] private AudioClip _openPanelSound;
+    [Space]
 
     [Range(0f, 1f)] private float _sfxVolume = 1.0f;
     [Range(0f, 1f)] private float _musicVolume = 1.0f;
@@ -39,4 +52,11 @@ public class MainMenuSoundManager : MonoBehaviour
         float dB = Mathf.Lerp(-80f, 0f, volume);
         _musicMixer.SetFloat("MusicVolume", dB);
     }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        _SFXAudioSource.PlayOneShot(clip);
+    }
+
+    public void PlayOpenPanelSound() => PlaySFX(_openPanelSound);
 }

@@ -8,6 +8,8 @@ public class SettingsManager : MonoBehaviour
     private MainMenuManager _mainMenuManager;
     private string _currentLocaleCode;
 
+    public string CurrentLocaleCode => _currentLocaleCode;
+
     public event Action<float> OnVolumeSFXChanged;
     public event Action<float> OnVolumeMusicChanged;
 
@@ -52,6 +54,8 @@ public class SettingsManager : MonoBehaviour
         {
             Debug.LogWarning($"Locale с кодом {localeCode} не найден в Available Locales!");
         }
+
+        _mainMenuManager?.GetMainMenuUIManager?.GetSettingsUIManager?.ChangeCurrentLanguage(_currentLocaleCode);
     }
 
     public void ChangeSFXVolume(float volume)

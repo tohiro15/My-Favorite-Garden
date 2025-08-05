@@ -31,6 +31,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     [SerializeField] private SettingsUIManager _settingsUIManager;
 
+    public SettingsUIManager GetSettingsUIManager => _settingsUIManager;
+
     private MainMenuManager _mainMenuManager;
 
     private Tween _settingsTween;
