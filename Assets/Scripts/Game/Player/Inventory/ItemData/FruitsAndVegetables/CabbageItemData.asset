@@ -28,6 +28,9 @@ MonoBehaviour:
   MaxStackSize: 99
   ItemPrice: 13
   CanSell: 1
+  BonusSeason: 5
+  PriceMultiplierInSeason: 1.5
+  PriceMultiplierOffSeason: 0.8
   IsPlantable: 0
   references:
     version: 2

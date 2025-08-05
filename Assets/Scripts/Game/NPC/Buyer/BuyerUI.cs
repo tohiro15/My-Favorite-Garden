@@ -86,7 +86,7 @@ public class BuyerUI : MonoBehaviour
         foreach (var line in _lines)
             foreach (var slot in line.Slots)
                 if (slot.IsSeleted && slot.BuyerItem.ItemData.CanSell)
-                    _selectedItemPrice += slot.BuyerItem.ItemData.ItemPrice * slot.BuyerItem.ItemCount;
+                    _selectedItemPrice += slot.BuyerItem.ItemData.GetCurrentPrice() * slot.BuyerItem.ItemCount;
     }
 
     private void RecalculateAllPrice()
@@ -94,11 +94,11 @@ public class BuyerUI : MonoBehaviour
         _totalPrice = 0;
         foreach (var slot in _playerInventory?.InventorySlots)
             if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell)
-                _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
+                _totalPrice += slot.Item.ItemData.GetCurrentPrice() * slot.Item.ItemCount;
 
         foreach (var slot in _playerInventory?.BackpackSlots)
             if (slot != null && !slot.IsEmpty && slot.Item.ItemData.CanSell)
-                _totalPrice += slot.Item.ItemData.ItemPrice * slot.Item.ItemCount;
+                _totalPrice += slot.Item.ItemData.GetCurrentPrice() * slot.Item.ItemCount;
     }
 
     public void InitializeItem()
@@ -166,7 +166,7 @@ public class BuyerUI : MonoBehaviour
         foreach (var buyerSlot in selectedSlots)
         {
             int count = buyerSlot.BuyerItem.ItemCount;
-            int price = buyerSlot.BuyerItem.ItemData.ItemPrice * count;
+            int price = buyerSlot.BuyerItem.ItemData.GetCurrentPrice() * count;
             PlayerStatistic.Instance.AddMoney(price);
 
             if (buyerSlot.SourceSlot != null)
@@ -191,7 +191,6 @@ public class BuyerUI : MonoBehaviour
         if (bg != null)
             _currentSeasonImage.sprite = bg;
 
-        // Пересчитать цены
         RecalculateAllPrice();
         RecalculateSelectedPrice();
 
