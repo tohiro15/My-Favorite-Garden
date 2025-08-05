@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CabbageItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 5995608954096290038, guid: 6656824cf076ff94184db46112f19a7c, type: 3}
+  PlantPrefab: {fileID: 0}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
@@ -25,8 +26,9 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: ebcd6d6bdbbd5064c8688a6851e5863b, type: 3}
   DefaultCount: 1
   MaxStackSize: 99
-  ItemPrice: 8
+  ItemPrice: 13
   CanSell: 1
+  IsPlantable: 0
   references:
     version: 2
     RefIds: []

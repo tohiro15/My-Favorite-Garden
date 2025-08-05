@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CarrotItemData
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 7432622799770361029, guid: 51a67f3bc21583a409feb699124a9203, type: 3}
+  PlantPrefab: {fileID: 0}
   ItemName:
     m_TableReference:
       m_TableCollectionName: GUID:cfedb9ba72f35c84ca5fb960ba280c44
@@ -25,8 +26,9 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 0f23346d89e008f46badaeb5ce56d965, type: 3}
   DefaultCount: 1
   MaxStackSize: 99
-  ItemPrice: 5
+  ItemPrice: 10
   CanSell: 1
+  IsPlantable: 0
   references:
     version: 2
     RefIds: []
