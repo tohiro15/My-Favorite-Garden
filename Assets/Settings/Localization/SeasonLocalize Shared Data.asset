@@ -39,6 +39,10 @@ MonoBehaviour:
     m_Key: season_cabbage
     m_Metadata:
       m_Items: []
+  - m_Id: 22127133581312
+    m_Key: CurrentSeasonText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

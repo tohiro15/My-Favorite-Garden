@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Localized: Calm Before the Harves
     m_Metadata:
       m_Items: []
+  - m_Id: 22127133581312
+    m_Localized: 'Current Season:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

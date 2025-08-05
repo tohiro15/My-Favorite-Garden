@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Unity.Cinemachine;
 using StarterAssets;
 
 public class Plant : MonoBehaviour

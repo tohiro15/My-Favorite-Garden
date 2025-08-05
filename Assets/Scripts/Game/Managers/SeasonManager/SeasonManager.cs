@@ -6,11 +6,9 @@ public class SeasonManager : MonoBehaviour
     public static SeasonManager Instance { get; private set; }
 
     [SerializeField] private SeasonTypes _currentSeason = SeasonTypes.None;
-
     public event Action<SeasonTypes> OnSeasonChanged;
 
-    private const string SeasonKey = "CurrentSeason";
-    public SeasonTypes CurrentSeason => _currentSeason;
+    private DateTime _lastCheckedDate;
 
     private void Awake()
     {
@@ -21,32 +19,35 @@ public class SeasonManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        LoadSeason();
+
+        UpdateSeasonForToday();
     }
 
-
-    public void LoadSeason()
+    private void Update()
     {
-        int seasonValue = PlayerPrefs.GetInt(SeasonKey, (int)SeasonTypes.None);
-        _currentSeason = (SeasonTypes)seasonValue;
-        Debug.Log($"Season loaded: {_currentSeason}");
+        if (DateTime.UtcNow.Date != _lastCheckedDate)
+        {
+            UpdateSeasonForToday();
+        }
+    }
+
+    private void UpdateSeasonForToday()
+    {
+        _lastCheckedDate = DateTime.UtcNow.Date;
+        _currentSeason = GetSeasonForDate(_lastCheckedDate);
         OnSeasonChanged?.Invoke(_currentSeason);
+        Debug.Log($"Season for {_lastCheckedDate.ToShortDateString()}: {_currentSeason}");
     }
 
-    public void SaveSeason()
+    private SeasonTypes GetSeasonForDate(DateTime date)
     {
-        PlayerPrefs.SetInt(SeasonKey, (int)_currentSeason);
-        PlayerPrefs.Save();
-        Debug.Log($"Season saved: {_currentSeason}");
-    }
+        int seed = date.Year * 1000 + date.DayOfYear;
+        System.Random rng = new System.Random(seed);
 
-    public void SetSeason(SeasonTypes newSeason)
-    {
-        if (_currentSeason == newSeason) return;
-        _currentSeason = newSeason;
-        Debug.Log($"Season changed to: {_currentSeason}");
-        SaveSeason();
-        OnSeasonChanged?.Invoke(_currentSeason);
+        Array values = Enum.GetValues(typeof(SeasonTypes));
+        int index = rng.Next(values.Length);
+
+        return (SeasonTypes)values.GetValue(index);
     }
 
     public string GetCurrentSeasonLocalizationKey()
@@ -56,7 +57,7 @@ public class SeasonManager : MonoBehaviour
             case SeasonTypes.StrawberrySeason:
                 return "season_strawberry";
             case SeasonTypes.CarrotSeason:
-                return "season_carror";
+                return "season_carrot";
             case SeasonTypes.TomatoSeason:
                 return "season_tomato";
             case SeasonTypes.PotatoSeason:
@@ -67,4 +68,6 @@ public class SeasonManager : MonoBehaviour
                 return "season_none";
         }
     }
+
+    public SeasonTypes CurrentSeason => _currentSeason;
 }

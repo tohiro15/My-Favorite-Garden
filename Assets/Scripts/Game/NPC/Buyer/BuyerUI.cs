@@ -20,6 +20,9 @@ public class BuyerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _totalPriceText;
     [SerializeField] private TextMeshProUGUI _selectedItemPriceText;
     [Space]
+    [SerializeField] private Image _currentSeasonImage;
+    [SerializeField] private Sprite[] _seasonBackgrounds;
+    [Space]
     [SerializeField] private Button _sellButton;
     [SerializeField] private Button _sellAllButton;
 
@@ -35,6 +38,18 @@ public class BuyerUI : MonoBehaviour
     private void OnDestroy()
     {
         InventoryUI.OnInventoryChanged -= InitializeItem;
+    }
+
+    private void OnEnable()
+    {
+        if (SeasonManager.Instance != null)
+            SeasonManager.Instance.OnSeasonChanged += HandleSeasonChanged;
+    }
+
+    private void OnDisable()
+    {
+        if (SeasonManager.Instance != null)
+            SeasonManager.Instance.OnSeasonChanged -= HandleSeasonChanged;
     }
 
     private void Start()
@@ -162,6 +177,24 @@ public class BuyerUI : MonoBehaviour
         UpdateUI();
     }
 
+    private void HandleSeasonChanged(SeasonTypes newSeason)
+    {
+        Debug.Log($"BuyerUI: season changed to {newSeason}");
+
+        _seasonLocalizedString.TableEntryReference = SeasonManager.Instance.GetCurrentSeasonLocalizationKey();
+        _seasonLocalizedString.RefreshString();
+
+        var bg = GetBackgroundForSeason(newSeason);
+        if (bg != null)
+            _currentSeasonImage.sprite = bg;
+
+        // Пересчитать цены
+        RecalculateAllPrice();
+        RecalculateSelectedPrice();
+
+        UpdateUI();
+    }
+
 
     public void UpdateUI()
     {
@@ -173,6 +206,11 @@ public class BuyerUI : MonoBehaviour
 
         _seasonLocalizedString.TableEntryReference = SeasonManager.Instance.GetCurrentSeasonLocalizationKey();
         _seasonLocalizedString.StringChanged += UpdateSeasonText;
+
+        var currentSeason = SeasonManager.Instance.CurrentSeason;
+        var bg = GetBackgroundForSeason(currentSeason);
+        if (bg != null)
+            _currentSeasonImage.sprite = bg;
 
         _totalPriceText.text = _totalPrice.ToString("N0", nfi);
         _selectedItemPriceText.text = _selectedItemPrice.ToString("N0", nfi);
@@ -187,4 +225,11 @@ public class BuyerUI : MonoBehaviour
         _seasonLocalizedString.StringChanged -= UpdateSeasonText;
     }
 
+    private Sprite GetBackgroundForSeason(SeasonTypes season)
+    {
+        int idx = (int)season;
+        if (idx >= 0 && idx < _seasonBackgrounds.Length)
+            return _seasonBackgrounds[idx];
+        return null;
+    }
 }
