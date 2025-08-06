@@ -23243,9 +23243,9 @@ MonoBehaviour:
   _currentSeasonImage: {fileID: 473548440}
   _seasonBackgrounds:
   - {fileID: 21300000, guid: a4fe21cb8dc440d4b98767a6323ba20a, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: b7caef0fedbb885449153ac687c42232, type: 3}
   - {fileID: 21300000, guid: 6539632abc951ac43aac7cd931b8f6d4, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 22cc06c700c606044b8ce9cd9df0f36b, type: 3}
   - {fileID: 21300000, guid: eb8d4964242697943bc6caa99d963f51, type: 3}
   - {fileID: 21300000, guid: 1da8d1dadb2aa234d9a9db6afda59fda, type: 3}
   _sellButton: {fileID: 617147336}
