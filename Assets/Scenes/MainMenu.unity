@@ -2821,7 +2821,7 @@ MonoBehaviour:
   _musicMixer: {fileID: 24100000, guid: 725f25dc7ae50f44c9b7e8c7eb4ac497, type: 2}
   _SFXAudioSource: {fileID: 1557378050}
   _MusicAudioSource: {fileID: 796473856}
-  _openPanelSound: {fileID: 8300000, guid: 72431433bf9fb29459549c447a28fb86, type: 3}
+  _openPanelSound: {fileID: 8300000, guid: 523924e8918aa8e47a8e695ff5b7a463, type: 3}
 --- !u!1 &843398597
 GameObject:
   m_ObjectHideFlags: 0

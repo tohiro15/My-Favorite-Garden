@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Linq.Expressions;
 
 public class UIManager : MonoBehaviour
 {
@@ -149,19 +150,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ToggleBuyerPanel()
-    {
-        bool opening = !_buyerPanel.activeSelf;
-        if (opening)
-        {
-            OpenPanel(_buyerPanel);
-        }
-        else
-        {
-            ClosePanel(_buyerPanel);
-        }
-    }
-
     public void OpenNPCPanel(NPCType npcType)
     {
         switch (npcType)
@@ -171,12 +159,12 @@ public class UIManager : MonoBehaviour
                 break;
             case NPCType.Seller:
 
-                OpenPanel(_sellerPanel);
+                OpenPanel(_sellerPanel, true);
 
                 break;
             case NPCType.Buyer:
 
-                OpenPanel(_buyerPanel);
+                OpenPanel(_buyerPanel, true);
 
                 break;
         }

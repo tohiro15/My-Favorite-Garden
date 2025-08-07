@@ -30,6 +30,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _errorClickSound;
     [Header("Plant")]
     [SerializeField] private AudioClip[] _digClips;
+    [SerializeField] private AudioClip[] _harvestClips;
     [Header("Inventory")]
     [SerializeField] private AudioClip _selectedSound;
     [SerializeField] private AudioClip _dropSound;
@@ -89,6 +90,11 @@ public class SoundManager : MonoBehaviour
     {
         int randomClip = Random.Range(0, _digClips.Length);
         PlaySFX(_digClips[randomClip]);
+    }
+    public void PlayHarvestSound()
+    {
+        int randomClip = Random.Range(0, _harvestClips.Length);
+        PlaySFX(_harvestClips[randomClip]);
     }
     public void PlaySelectedSound() => PlaySFX(_selectedSound);
     public void PlayInventoryDropSound() => PlaySFX(_dropSound);

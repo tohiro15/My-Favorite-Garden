@@ -108,6 +108,8 @@ public class PlantController : MonoBehaviour
 
             _fxPool.DestroyParent(gameObject, hit.point);
             _isCollected = true;
+
+            SoundManager.Instance.PlayHarvestSound();
         }
     }
 
