@@ -1,4 +1,5 @@
-﻿using Unity.Cinemachine;
+﻿using GamePush;
+using Unity.Cinemachine;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -203,7 +204,7 @@ namespace StarterAssets
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(1) || GP_Device.IsMobile())
             {
                 if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
                 {
