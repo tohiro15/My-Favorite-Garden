@@ -204,7 +204,7 @@ namespace StarterAssets
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
-            if (Input.GetMouseButton(1) || GP_Device.IsMobile())
+            if (Input.GetMouseButton(1) && GP_Device.IsDesktop() || GP_Device.IsMobile())
             {
                 if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
                 {
@@ -219,7 +219,7 @@ namespace StarterAssets
             }
             else
             {
-                Cursor.visible = true; Cursor.lockState = CursorLockMode.Confined;
+                if(GP_Device.IsDesktop()) Cursor.visible = true; Cursor.lockState = CursorLockMode.Confined;
             }
 
             // clamp our rotations so our values are limited 360 degrees
