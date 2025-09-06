@@ -11,8 +11,10 @@ In this game, you’ll grow and upgrade your own garden — starting from tiny s
 # 📞 Contact:
 Telegram: @GTtohiro
 
-Dev Channel: https://t.me/gamedev_my_love
+[![Telegram Channel RU](https://img.shields.io/endpoint?style=for-the-badge&color=0891b2&labelColor=1c1917&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fgamedev_my_love&label=Channel%20RU)](https://t.me/gamedev_my_love)
+[![Telegram Channel EN](https://img.shields.io/endpoint?style=for-the-badge&color=0891b2&labelColor=1c1917&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fgamedev_my_love_2&label=Channel%20EN)](https://t.me/gamedev_my_love_2)
+[![Telegram Solyanka Community](https://img.shields.io/endpoint?label=Solyanka%20community&style=for-the-badge&color=0891b2&labelColor=1c1917&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fsolycmty)](https://t.me/solycmty)
 
 Want to help or chat about game development? Feel free to reach out!
 
-[![Telegram Solyanka Community](https://img.shields.io/endpoint?label=Solyanka%20community&style=for-the-badge&color=0891b2&labelColor=1c1917&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fsolycmty)](https://t.me/solycmty)
+
