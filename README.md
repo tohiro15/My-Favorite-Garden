@@ -6,7 +6,6 @@ In this game, you’ll grow and upgrade your own garden — starting from tiny s
 ---
 
 # 🛠 Developed by the JJS GAMES team.
-🎮 The game will be ported to Yandex Games soon.
 
 🔓 The source code is open to everyone — feel free to explore, learn, or contribute!
 
